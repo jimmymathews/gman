@@ -142,6 +142,11 @@ public:
 
 	void ctrl_h(){};
 
+	bool is_on_first_category()
+	{
+		return selection_history.size() == 1;
+	};
+
 	node* get_current_selection()
 	{
 		if(selection_history.size() > 0)

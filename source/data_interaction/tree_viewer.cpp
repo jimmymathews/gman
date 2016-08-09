@@ -414,7 +414,7 @@ void tree_viewer::alphanumeric(int ch)
 		if(ch == 'l' && linking)
 		{
 			stop_linking();
-		}
+		} 
 		if(ch == 'l' && !linking)
 		{
 			linking = true;
