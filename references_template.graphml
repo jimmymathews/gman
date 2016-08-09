@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<key id="d0" for="node" attr.name="contents" attr.type="string" />
+<key id="d1" for="node" attr.name="category" attr.type="string" />
+<key id="d2" for="node" attr.name="color" attr.type="int" />
+<key id="d3" for="edge" attr.name="relation" attr.type="string" />
+<graphml>
+	<graph id="C" edgedefault="directed">
+		<node id="c0">
+			<data key="d1">genre</data>
+			<data key="d2">6</data>
+		</node>
+		<node id="c1">
+			<data key="d1">record type</data>
+			<data key="d2">5</data>
+		</node>
+		<node id="c2">
+			<data key="d1">title</data>
+			<data key="d2">2</data>
+		</node>
+		<node id="c3">
+			<data key="d1">date</data>
+			<data key="d2">3</data>
+		</node>
+		<node id="c4">
+			<data key="d1">person</data>
+			<data key="d2">1</data>
+		</node>
+		<node id="c5">
+			<data key="d1">publisher</data>
+			<data key="d2">4</data>
+		</node>
+		<node id="c6">
+			<data key="d1">note</data>
+			<data key="d2">0</data>
+		</node>
+	</graph>
+	<graph id="N" edgedefault="directed">
+		<node id="n0">
+			<data key="d0">general non-fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n7">
+			<data key="d0">social non-fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n14">
+			<data key="d0">technical non-fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n21">
+			<data key="d0">literary fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n28">
+			<data key="d0">science fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n1">
+			<data key="d0">online article</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n8">
+			<data key="d0">journal article</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n15">
+			<data key="d0">book (general)</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n22">
+			<data key="d0">novel</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n29">
+			<data key="d0">monograph</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n36">
+			<data key="d0">textbook</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n2">
+			<data key="d0">The Phantom Public Sphere</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n3">
+			<data key="d0">1993</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n10">
+			<data key="d0">2016</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n4">
+			<data key="d0">Nancy Fraser</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n11">
+			<data key="d0">Frederic Jameson</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n18">
+			<data key="d0">Dana Polan</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n25">
+			<data key="d0">Bruce Robbins</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n5">
+			<data key="d0">Dover</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n12">
+			<data key="d0">AK Press</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n19">
+			<data key="d0">Avon Books</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n26">
+			<data key="d0">Fifth House</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n33">
+			<data key="d0">Harper &amp; Brothers</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n40">
+			<data key="d0">Princeton University Press</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n47">
+			<data key="d0">University of Minnesota Press</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n6">
+			<data key="d0">Essay compilation</data>
+			<data key="d1">note</data>
+		</node>
+		<node id="n13">
+			<data key="d0">Nordhoff was a journalist, and this was his account "from personal visit and observation" of the Amana, the Harmonists, Shakers, and several other experimental communities of the mid-19th century.</data>
+			<data key="d1">note</data>
+		</node>
+		<edge id="n7n2" source="n7" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n11" source="n2" target="n11">
+			<data key="d3">author      </data>
+		</edge>
+		<edge id="n2n47" source="n2" target="n47">
+			<data key="d3">published by</data>
+		</edge>
+		<edge id="n2n18" source="n2" target="n18">
+			<data key="d3">author      </data>
+		</edge>
+		<edge id="n2n4" source="n2" target="n4">
+			<data key="d3">author      </data>
+		</edge>
+		<edge id="n2n25" source="n2" target="n25">
+			<data key="d3">edited by</data>
+		</edge>
+		<edge id="n2n7" source="n2" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n3" source="n2" target="n3">
+			<data key="d3">published in</data>
+		</edge>
+		<edge id="n2n6" source="n2" target="n6">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n2" source="n3" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n2" source="n4" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n11n2" source="n11" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n18n2" source="n18" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n2" source="n25" target="n2">
+			<data key="d3">authored</data>
+		</edge>
+		<edge id="n47n2" source="n47" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n6n2" source="n6" target="n2">
+			<data key="d3"></data>
+		</edge>
+	</graph>
+</graphml>
