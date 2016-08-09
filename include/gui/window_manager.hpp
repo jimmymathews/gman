@@ -114,11 +114,8 @@ public:
 			if(mt.tv.ne.is_editing())
 				mt.alphanumeric(ch);
 			else
-			if(ch=='n')
 			{
-				if(mt.tv.is_on_first_category())
-					mt.alphanumeric(ch);
-				else
+				if(!mt.tv.is_on_first_category() && ch=='n')
 				{
 					if(!cb.is_selecting_new_node_category())
 					{
@@ -128,21 +125,9 @@ public:
 						cb.highlight_focal_tile();
 					}
 				}
+				else
+					mt.alphanumeric(ch);
 			}
-
-
-			// if(!mt.tv.ne.is_editing() && ch== 'n')
-			// {
-			// 	if(!cb.is_selecting_new_node_category())
-			// 	{
-			// 		cb.start_new_node_category_selection(mt.tv.get_depth_limit(),mt.tv.get_focal_parent());
-			// 		// cb.push_focal_tile();
-			// 		update_focus(&cb);
-			// 		cb.highlight_focal_tile();
-			// 	}
-			// }
-			// else
-			// 	mt.alphanumeric(ch);
 		}
 	};
 	void large_up()
