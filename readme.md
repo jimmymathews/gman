@@ -14,7 +14,7 @@ Originally, I started writing this program because I wanted a minimalist persona
 
 (Illustration of Desargues configuration, c/o [Geogebra](http://geogebra.org))
 
-<!-- ![Hasse diagram of so(8) root system]() -->
+![](images/hdSO8.png)
 
 [(Type D4 Hasse Diagram, for so(8) Lie algebra)](https://commons.wikimedia.org/wiki/Category:Root_system_Hasse_diagrams#/media/File:D4Hasse.svg)
 
@@ -50,6 +50,9 @@ If you make a mistake in the configuration, remove the configuration file `.mk_k
 
 Controls
 --------
+
+
+Basic
 
 - **Ctrl-Up/Down**. Go down to the fields / up to the categories
 - **Ctrl-s**. Save to `.graphml` file 
