@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<key id="d0" for="node" attr.name="contents" attr.type="string" />
+<key id="d1" for="node" attr.name="category" attr.type="string" />
+<key id="d2" for="node" attr.name="color" attr.type="int" />
+<key id="d3" for="edge" attr.name="relation" attr.type="string" />
+<graphml>
+	<graph id="C" edgedefault="directed">
+		<node id="c0">
+			<data key="d1">level 5</data>
+			<data key="d2">5</data>
+		</node>
+		<node id="c1">
+			<data key="d1">level 4</data>
+			<data key="d2">4</data>
+		</node>
+		<node id="c2">
+			<data key="d1">level 3</data>
+			<data key="d2">3</data>
+		</node>
+		<node id="c3">
+			<data key="d1">level 2</data>
+			<data key="d2">2</data>
+		</node>
+		<node id="c4">
+			<data key="d1">simple roots</data>
+			<data key="d2">1</data>
+		</node>
+	</graph>
+	<graph id="N" edgedefault="directed">
+		<node id="n0">
+			<data key="d0">a1+(2)a2+a3+a4</data>
+			<data key="d1">level 5</data>
+		</node>
+		<node id="n1">
+			<data key="d0">a1+a2+a3+a4</data>
+			<data key="d1">level 4</data>
+		</node>
+		<node id="n2">
+			<data key="d0">a1+a2+a4</data>
+			<data key="d1">level 3</data>
+		</node>
+		<node id="n7">
+			<data key="d0">a1+a2+a3</data>
+			<data key="d1">level 3</data>
+		</node>
+		<node id="n12">
+			<data key="d0">a2+a3+a4</data>
+			<data key="d1">level 3</data>
+		</node>
+		<node id="n3">
+			<data key="d0">a2+a4</data>
+			<data key="d1">level 2</data>
+		</node>
+		<node id="n8">
+			<data key="d0">a2+a3</data>
+			<data key="d1">level 2</data>
+		</node>
+		<node id="n13">
+			<data key="d0">a1+a2</data>
+			<data key="d1">level 2</data>
+		</node>
+		<node id="n4">
+			<data key="d0">a1</data>
+			<data key="d1">simple roots</data>
+		</node>
+		<node id="n9">
+			<data key="d0">a2</data>
+			<data key="d1">simple roots</data>
+		</node>
+		<node id="n14">
+			<data key="d0">a3</data>
+			<data key="d1">simple roots</data>
+		</node>
+		<node id="n19">
+			<data key="d0">a4</data>
+			<data key="d1">simple roots</data>
+		</node>
+		<edge id="n0n1" source="n0" target="n1">
+			<data key="d3">-a2</data>
+		</edge>
+		<edge id="n1n12" source="n1" target="n12">
+			<data key="d3">-a1</data>
+		</edge>
+		<edge id="n1n2" source="n1" target="n2">
+			<data key="d3">-a3</data>
+		</edge>
+		<edge id="n1n7" source="n1" target="n7">
+			<data key="d3">-a4</data>
+		</edge>
+		<edge id="n1n0" source="n1" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n3" source="n2" target="n3">
+			<data key="d3">-a1</data>
+		</edge>
+		<edge id="n2n13" source="n2" target="n13">
+			<data key="d3">-a4</data>
+		</edge>
+		<edge id="n2n1" source="n2" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n8" source="n7" target="n8">
+			<data key="d3">-a1</data>
+		</edge>
+		<edge id="n7n13" source="n7" target="n13">
+			<data key="d3">-a3</data>
+		</edge>
+		<edge id="n7n1" source="n7" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n12n3" source="n12" target="n3">
+			<data key="d3">-a3</data>
+		</edge>
+		<edge id="n12n8" source="n12" target="n8">
+			<data key="d3">-a4</data>
+		</edge>
+		<edge id="n12n1" source="n12" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n19" source="n3" target="n19">
+			<data key="d3">-a2</data>
+		</edge>
+		<edge id="n3n9" source="n3" target="n9">
+			<data key="d3">-a4</data>
+		</edge>
+		<edge id="n3n2" source="n3" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n12" source="n3" target="n12">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n14" source="n8" target="n14">
+			<data key="d3">-a2</data>
+		</edge>
+		<edge id="n8n9" source="n8" target="n9">
+			<data key="d3">-a3</data>
+		</edge>
+		<edge id="n8n7" source="n8" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n12" source="n8" target="n12">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n4" source="n13" target="n4">
+			<data key="d3">-a2</data>
+		</edge>
+		<edge id="n13n2" source="n13" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n7" source="n13" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n13" source="n4" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n9n8" source="n9" target="n8">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n9n3" source="n9" target="n3">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n14n8" source="n14" target="n8">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n3" source="n19" target="n3">
+			<data key="d3"></data>
+		</edge>
+	</graph>
+</graphml>

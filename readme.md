@@ -16,7 +16,7 @@ Originally, I started writing this program because I wanted a minimalist persona
 
 <!-- ![Hasse diagram of so(8) root system]() -->
 
-[(Type D4 Hasse Diagram)](https://commons.wikimedia.org/wiki/Category:Root_system_Hasse_diagrams#/media/File:D4Hasse.svg)
+[(Type D4 Hasse Diagram, for so(8) Lie algebra)](https://commons.wikimedia.org/wiki/Category:Root_system_Hasse_diagrams#/media/File:D4Hasse.svg)
 
 How it works
 ------------
@@ -30,7 +30,7 @@ You can edit fields and category names, add new ones, and link up related nodes.
 Get started
 -----------
 
-You'll probably need to be running Linux, but Mac support should be forthcoming (and even Windows, especially if Microsoft delivers on their promise to bundle a native terminal emulator with the new OS). The only library dependency is `ncurses`. The [GraphML](http://graphml.graphdrawing.org/) implementation is based on [PugiXML](http://pugixml.org/) (courtesy of ...), with the source provided here.
+You'll probably need to be running Linux, but Mac support should be forthcoming (and even Windows, especially if Microsoft delivers on their promise to bundle a native terminal emulator with the new OS). The only library dependency is `ncurses`. The [GraphML](http://graphml.graphdrawing.org/) implementation is based on [PugiXML](http://pugixml.org/) (thanks to Arseny Kapoulkine), with the source provided here.
 
 Instructions:
 
