@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="veryhigh" time="1470778068">
+        Fill in empty rel-desc pad with genre name, colored?
+    </note>
+    <note priority="veryhigh" time="1470778377">
+        Bug that save dialog gets stuck in keyhandling or something
+    </note>
+    <note priority="veryhigh" time="1470830153">
+        Release some of that empty space when other's lengthening links aren't displayed
+    </note>
+    <note priority="veryhigh" time="1470832244">
+        Make focus scroll down then stick until scrolled up
+    </note>
+    <note priority="veryhigh" time="1470832258">
+        Make filename update sooner
+    </note>
+    <note priority="veryhigh" time="1470832273">
+        Make deletion remain on link list if possible
+    </note>
+</todo>

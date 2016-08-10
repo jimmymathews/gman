@@ -1,0 +1,423 @@
+<?xml version="1.0"?>
+<key id="d0" for="node" attr.name="contents" attr.type="string" />
+<key id="d1" for="node" attr.name="category" attr.type="string" />
+<key id="d2" for="node" attr.name="color" attr.type="int" />
+<key id="d3" for="edge" attr.name="relation" attr.type="string" />
+<graphml>
+	<graph id="C" edgedefault="directed">
+		<node id="c0">
+			<data key="d1">point</data>
+			<data key="d2">3</data>
+		</node>
+		<node id="c1">
+			<data key="d1">line</data>
+			<data key="d2">1</data>
+		</node>
+		<node id="c2">
+			<data key="d1">plane</data>
+			<data key="d2">2</data>
+		</node>
+	</graph>
+	<graph id="N" edgedefault="directed">
+		<node id="n0">
+			<data key="d0">a1</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n3">
+			<data key="d0">a2</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n6">
+			<data key="d0">a3</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n9">
+			<data key="d0">b1</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n12">
+			<data key="d0">b2</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n15">
+			<data key="d0">b3</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n18">
+			<data key="d0">i1</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n21">
+			<data key="d0">i2</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n24">
+			<data key="d0">i3</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n27">
+			<data key="d0">c</data>
+			<data key="d1">point</data>
+		</node>
+		<node id="n1">
+			<data key="d0">A1</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n4">
+			<data key="d0">A2</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n7">
+			<data key="d0">A3</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n10">
+			<data key="d0">B1</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n13">
+			<data key="d0">B2</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n16">
+			<data key="d0">B3</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n19">
+			<data key="d0">l1</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n22">
+			<data key="d0">l2</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n25">
+			<data key="d0">l3</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n28">
+			<data key="d0">i</data>
+			<data key="d1">line</data>
+		</node>
+		<node id="n2">
+			<data key="d0">Pa</data>
+			<data key="d1">plane</data>
+		</node>
+		<node id="n5">
+			<data key="d0">Pb</data>
+			<data key="d1">plane</data>
+		</node>
+		<node id="n8">
+			<data key="d0">P1</data>
+			<data key="d1">plane</data>
+		</node>
+		<node id="n11">
+			<data key="d0">P2</data>
+			<data key="d1">plane</data>
+		</node>
+		<node id="n14">
+			<data key="d0">P3</data>
+			<data key="d1">plane</data>
+		</node>
+		<edge id="n0n19" source="n0" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n7" source="n0" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n4" source="n0" target="n4">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n22" source="n3" target="n22">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n7" source="n3" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n1" source="n3" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n6n25" source="n6" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n6n4" source="n6" target="n4">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n6n1" source="n6" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n9n19" source="n9" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n9n16" source="n9" target="n16">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n9n13" source="n9" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n12n22" source="n12" target="n22">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n12n16" source="n12" target="n16">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n12n10" source="n12" target="n10">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n15n25" source="n15" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n15n13" source="n15" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n15n10" source="n15" target="n10">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n18n10" source="n18" target="n10">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n18n1" source="n18" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n18n28" source="n18" target="n28">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n21n13" source="n21" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n21n4" source="n21" target="n4">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n21n28" source="n21" target="n28">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n24n16" source="n24" target="n16">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n24n7" source="n24" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n24n28" source="n24" target="n28">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n27n25" source="n27" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n27n22" source="n27" target="n22">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n27n19" source="n27" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n18" source="n1" target="n18">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n6" source="n1" target="n6">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n3" source="n1" target="n3">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n2" source="n1" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n8" source="n1" target="n8">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n21" source="n4" target="n21">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n6" source="n4" target="n6">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n0" source="n4" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n2" source="n4" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n4n11" source="n4" target="n11">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n24" source="n7" target="n24">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n3" source="n7" target="n3">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n0" source="n7" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n2" source="n7" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n14" source="n7" target="n14">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n10n18" source="n10" target="n18">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n10n15" source="n10" target="n15">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n10n12" source="n10" target="n12">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n10n5" source="n10" target="n5">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n10n8" source="n10" target="n8">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n21" source="n13" target="n21">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n15" source="n13" target="n15">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n9" source="n13" target="n9">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n5" source="n13" target="n5">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n11" source="n13" target="n11">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n16n24" source="n16" target="n24">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n16n12" source="n16" target="n12">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n16n9" source="n16" target="n9">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n16n5" source="n16" target="n5">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n16n14" source="n16" target="n14">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n9" source="n19" target="n9">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n0" source="n19" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n27" source="n19" target="n27">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n14" source="n19" target="n14">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n11" source="n19" target="n11">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n22n3" source="n22" target="n3">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n22n12" source="n22" target="n12">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n22n27" source="n22" target="n27">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n22n14" source="n22" target="n14">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n22n8" source="n22" target="n8">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n6" source="n25" target="n6">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n15" source="n25" target="n15">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n27" source="n25" target="n27">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n11" source="n25" target="n11">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n8" source="n25" target="n8">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n28n24" source="n28" target="n24">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n28n21" source="n28" target="n21">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n28n18" source="n28" target="n18">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n28n5" source="n28" target="n5">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n28n2" source="n28" target="n2">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n28" source="n2" target="n28">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n7" source="n2" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n4" source="n2" target="n4">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n2n1" source="n2" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n5n28" source="n5" target="n28">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n5n16" source="n5" target="n16">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n5n13" source="n5" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n5n10" source="n5" target="n10">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n25" source="n8" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n22" source="n8" target="n22">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n10" source="n8" target="n10">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n1" source="n8" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n11n25" source="n11" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n11n19" source="n11" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n11n13" source="n11" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n11n4" source="n11" target="n4">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n14n22" source="n14" target="n22">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n14n19" source="n14" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n14n16" source="n14" target="n16">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n14n7" source="n14" target="n7">
+			<data key="d3"></data>
+		</edge>
+	</graph>
+</graphml>

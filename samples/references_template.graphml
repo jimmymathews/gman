@@ -6,16 +6,16 @@
 <graphml>
 	<graph id="C" edgedefault="directed">
 		<node id="c0">
-			<data key="d1">genre</data>
-			<data key="d2">6</data>
-		</node>
-		<node id="c1">
 			<data key="d1">record type</data>
 			<data key="d2">5</data>
 		</node>
-		<node id="c2">
+		<node id="c1">
 			<data key="d1">title</data>
 			<data key="d2">2</data>
+		</node>
+		<node id="c2">
+			<data key="d1">genre</data>
+			<data key="d2">6</data>
 		</node>
 		<node id="c3">
 			<data key="d1">date</data>
@@ -36,52 +36,52 @@
 	</graph>
 	<graph id="N" edgedefault="directed">
 		<node id="n0">
-			<data key="d0">general non-fiction</data>
-			<data key="d1">genre</data>
-		</node>
-		<node id="n7">
-			<data key="d0">social non-fiction</data>
-			<data key="d1">genre</data>
-		</node>
-		<node id="n14">
-			<data key="d0">technical non-fiction</data>
-			<data key="d1">genre</data>
-		</node>
-		<node id="n21">
-			<data key="d0">literary fiction</data>
-			<data key="d1">genre</data>
-		</node>
-		<node id="n28">
-			<data key="d0">science fiction</data>
-			<data key="d1">genre</data>
-		</node>
-		<node id="n1">
 			<data key="d0">online article</data>
 			<data key="d1">record type</data>
 		</node>
-		<node id="n8">
+		<node id="n7">
 			<data key="d0">journal article</data>
 			<data key="d1">record type</data>
 		</node>
-		<node id="n15">
+		<node id="n14">
 			<data key="d0">book (general)</data>
 			<data key="d1">record type</data>
 		</node>
-		<node id="n22">
+		<node id="n21">
 			<data key="d0">novel</data>
 			<data key="d1">record type</data>
 		</node>
-		<node id="n29">
+		<node id="n28">
 			<data key="d0">monograph</data>
 			<data key="d1">record type</data>
 		</node>
-		<node id="n36">
+		<node id="n35">
 			<data key="d0">textbook</data>
 			<data key="d1">record type</data>
 		</node>
-		<node id="n2">
+		<node id="n1">
 			<data key="d0">The Phantom Public Sphere</data>
 			<data key="d1">title</data>
+		</node>
+		<node id="n2">
+			<data key="d0">general non-fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n9">
+			<data key="d0">social non-fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n16">
+			<data key="d0">technical non-fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n23">
+			<data key="d0">literary fiction</data>
+			<data key="d1">genre</data>
+		</node>
+		<node id="n30">
+			<data key="d0">science fiction</data>
+			<data key="d1">genre</data>
 		</node>
 		<node id="n3">
 			<data key="d0">1993</data>
@@ -143,52 +143,58 @@
 			<data key="d0">Nordhoff was a journalist, and this was his account "from personal visit and observation" of the Amana, the Harmonists, Shakers, and several other experimental communities of the mid-19th century.</data>
 			<data key="d1">note</data>
 		</node>
-		<edge id="n7n2" source="n7" target="n2">
+		<edge id="n14n1" source="n14" target="n1">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n2n11" source="n2" target="n11">
+		<edge id="n1n11" source="n1" target="n11">
 			<data key="d3">author      </data>
 		</edge>
-		<edge id="n2n47" source="n2" target="n47">
+		<edge id="n1n47" source="n1" target="n47">
 			<data key="d3">published by</data>
 		</edge>
-		<edge id="n2n18" source="n2" target="n18">
+		<edge id="n1n18" source="n1" target="n18">
 			<data key="d3">author      </data>
 		</edge>
-		<edge id="n2n4" source="n2" target="n4">
+		<edge id="n1n4" source="n1" target="n4">
 			<data key="d3">author      </data>
 		</edge>
-		<edge id="n2n25" source="n2" target="n25">
+		<edge id="n1n25" source="n1" target="n25">
 			<data key="d3">edited by</data>
 		</edge>
-		<edge id="n2n7" source="n2" target="n7">
+		<edge id="n1n9" source="n1" target="n9">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n2n3" source="n2" target="n3">
+		<edge id="n1n3" source="n1" target="n3">
 			<data key="d3">published in</data>
 		</edge>
-		<edge id="n2n6" source="n2" target="n6">
+		<edge id="n1n6" source="n1" target="n6">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n3n2" source="n3" target="n2">
+		<edge id="n1n14" source="n1" target="n14">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n4n2" source="n4" target="n2">
+		<edge id="n9n1" source="n9" target="n1">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n11n2" source="n11" target="n2">
+		<edge id="n3n1" source="n3" target="n1">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n18n2" source="n18" target="n2">
+		<edge id="n4n1" source="n4" target="n1">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n25n2" source="n25" target="n2">
+		<edge id="n11n1" source="n11" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n18n1" source="n18" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n1" source="n25" target="n1">
 			<data key="d3">authored</data>
 		</edge>
-		<edge id="n47n2" source="n47" target="n2">
+		<edge id="n47n1" source="n47" target="n1">
 			<data key="d3"></data>
 		</edge>
-		<edge id="n6n2" source="n6" target="n2">
+		<edge id="n6n1" source="n6" target="n1">
 			<data key="d3"></data>
 		</edge>
 	</graph>
