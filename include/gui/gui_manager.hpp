@@ -1,6 +1,7 @@
 #ifndef GUI_MANAGER_HPP
 #define GUI_MANAGER_HPP
 
+#include <locale>
 #include "io/file_request_handler.hpp"
 #include "data/database_manager.hpp"
 #include "gui/screen_handler.hpp"
@@ -17,6 +18,8 @@ public:
 
 	void start_screen()
 	{
+		std::set_locale(LC_ALL, "en_US.UTF-8");
+
 		sh.initialize();
 		if(! kh.listening())
 			endwin();

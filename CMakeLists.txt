@@ -17,7 +17,7 @@ source/Main.cpp
 )
 
 ADD_EXECUTABLE(gman ${sources})
-TARGET_LINK_LIBRARIES(gman ncurses)
+TARGET_LINK_LIBRARIES(gman ncursesw)
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)

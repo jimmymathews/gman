@@ -15,7 +15,7 @@ public:
 	node_writer() {tab_size = config_p::tab_size;};
 
 	void write_link(int max_relation_length, directed_link* dl,int depth)
-	{
+	{			// Need to change this... carefully manage indices and string lengths, for unicode support
 		int print_size = w-tab_size*depth;
 		if(print_size <=0 )
 			return;
@@ -51,7 +51,7 @@ public:
 	};
 
 	void write_to_end_of_line(node* n,int depth)
-	{
+	{			// Need to change this... carefully manage indices and string lengths, for unicode support
 		int print_size = w-tab_size*depth;
 		if(print_size <=0 )
 			return;

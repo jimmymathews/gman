@@ -361,6 +361,14 @@ public:
 			contents_pos = start;
 			selecting=false;
 		}
+
+		//test
+		if(ch == 'u')
+		{			// Need to change this... carefully manage indices and string lengths, for unicode support
+			focal_node->add_unicode_char("\u2070");
+			str1char = 26;
+		}
+
 		contents_reference.insert(start, str1char );
 		contents_pos= start+1;
 	};

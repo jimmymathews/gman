@@ -60,7 +60,9 @@ class node
 	vector<directed_link*>	links; //manage alphabetical order of these?
 	int			max_relation_length=0;
 	string					temporary_id;
+	vector<string> unicode_characters;
 public:
+	void					add_unicode_char(string s){ unicode_characters.push_back(s);};
 	void					lose_focus()		{focus = false;};
 	void					get_focus()			{focus = true;};
 	bool					has_focus()			{return focus;};
