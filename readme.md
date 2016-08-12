@@ -2,7 +2,7 @@
 
 `gman` is a lightweight `ncurses`-based text-mode tool for navigating and annotating a mathematical graph, also known as a network. For example, notes for a project, references for an article--or Hasse diagrams, Cayley graphs, ... .
 
-Originally, I started writing this program because I wanted a minimalist personal wiki for organizing notes and references. The other programs I found were too mouse-driven, feature-loaded, or application-specific, and I wanted something simpler than Emacs Org-mode.
+Originally, I started writing this program because I wanted a minimalist personal wiki for organizing notes and references. The other programs I found were too mouse-driven, toolbar-loaded, or application-specific, and I wanted something simpler than Emacs Org-mode.
 
 
 ![](images/expand_view.gif)
