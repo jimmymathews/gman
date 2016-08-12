@@ -14,7 +14,7 @@ Originally, I started writing this program because I wanted a minimalist persona
 
 (Illustration of Desargues configuration, c/o [Geogebra](http://geogebra.org))
 
-![](images/hdSO8.png)
+![](images/d4so8.png)
 
 [(Type D4 root system, for so(8) Lie algebra)](https://commons.wikimedia.org/wiki/Category:Root_system_Hasse_diagrams#/media/File:D4Hasse.svg)
 
