@@ -89,7 +89,7 @@ Category bar
 
 Relation names
 
-To add a description of the relationship between two linked nodes (to label an edge of the graph), prepend to the target node contents something like `some-relation-description: ` (emphasis on the last two characters, the colon and space).
+To add a description of the relationship between two linked nodes (to label an edge of the graph), prepend to the target node contents something like `some-relation-description: ` (the last two characters are a colon and space).
 
 Development
 -----------
