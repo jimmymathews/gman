@@ -40,9 +40,9 @@ Instructions:
     make
     ./gman
 
-For the above you'll need `cmake` and make tools. Its a fairly primitive use of `cmake`, so you could instead compile it yourself with something like
+For the above you'll need `git`. You'll also need `cmake` and make tools. Its a fairly primitive use of `cmake`, so you could instead compile it yourself with something like
 
-    g++ third_party_modules/pugixml/pugixml.cpp source/data/database_manager.cpp source/gui/screen_handler.cpp source/key_handling/key_handler.cpp source/gui/category_bar.cpp source/gui/category_tile.cpp source/data_interaction/tree_viewer.cpp source/Main.cpp -Iinclude -Ithird_party_modules/pugixml -Ikey_registration_module/include -std=c++11 -lncurses -o gman
+    g++ third_party_modules/pugixml/pugixml.cpp source/data/database_manager.cpp source/gui/screen_handler.cpp source/key_handling/key_handler.cpp source/gui/category_bar.cpp source/gui/category_tile.cpp source/data_interaction/tree_viewer.cpp source/Main.cpp -Iinclude -Ithird_party_modules/pugixml -Ikey_registration_module/include -std=c++11 -lncursesw -o gman
 
 Since every terminal emulator handles keys differently, a little key-setup program runs the first time `gman` is run. (Actually it works as a self-contained module for mediating keystrokes, which you could easily use in your own `ncurses` projects.)
 
