@@ -16,12 +16,10 @@ class node_editor
 	bool bout_to_superscript = false;
 	bool bout_to_subscript = false;
 	node* focal_node = NULL;
-	int tab_size;
 	int contents_pos = 0;
 	int mark_pos = -1;
 	int print_width;
 	vector<node*> focal_selection_history;
-
 
 	//Selection-related	
 	int horizontal_offset;
@@ -37,7 +35,6 @@ public:
 	node_writer nw;
 	node_editor()
 	{
-		tab_size = config_p::tab_size;
 		focal_selection_history.push_back(NULL);
 	};
 
@@ -60,50 +57,6 @@ public:
 		greek_input = !greek_input;
 	};
 
-	bool stop_editing()
-	{
-		if(focal_selection_history.back() == NULL)
-			return false;
-		editing = false;
-		selecting = false;
-		contents_pos = 0;
-		mark_pos = -1;
-
-
-		string combo = focal_selection_history.back()->get_contents();
-		string& contents_reference = focal_selection_history.back()->get_contents();
-		contents_reference = get_new_contents(combo);
-	
-		int n = focal_selection_history.size();		
-		if(n>1)
-		{
-			node* parent = focal_selection_history[n-2];
-			node* child = focal_selection_history[n-1];
-			directed_link* dl = NULL;
-			for(int i=0; i<parent->get_links().size(); i++)
-			{
-				directed_link* li = parent->get_links()[i];
-				if(li->get_end_node() == child)
-					dl = li;
-			}
-			
-			if(dl != NULL) //assert..
-			{
-				dl->set_name(get_new_relation_descriptor(combo));
-				parent->update_max_relation_length();
-			}
-			
-		}
-		
-		
-		if(focal_selection_history.back()->get_contents() == "")
-		{
-			// focal_node = NULL;
-			return true;
-		}
-		return false;
-	};
-
 	void start_editing(vector<node*> fsh)
 	{
 		int n = fsh.size();
@@ -111,7 +64,7 @@ public:
 			return;
 		focal_selection_history = fsh; //?
 		int depth = fsh.size()-1;
-		print_width = w - (depth*tab_size);
+		print_width = w - (depth*config_p::tab_size);
 		editing = true;
 		contents_pos = 0;
 
@@ -138,6 +91,44 @@ public:
 				}
 			}	
 		}
+	};
+
+	bool stop_editing()
+	{
+		if(focal_selection_history.back() == NULL)
+			return false;
+		editing = false;
+		selecting = false;
+		contents_pos = 0;
+		mark_pos = -1;
+
+		string combo = focal_selection_history.back()->get_contents();
+		string& contents_reference = focal_selection_history.back()->get_contents();
+		contents_reference = get_new_contents(combo);
+	
+		int n = focal_selection_history.size();		
+		if(n>1)
+		{
+			node* parent = focal_selection_history[n-2];
+			node* child = focal_selection_history[n-1];
+			directed_link* dl = NULL;
+			for(int i=0; i<parent->get_links().size(); i++)
+			{
+				directed_link* li = parent->get_links()[i];
+				if(li->get_end_node() == child)
+					dl = li;
+			}
+			
+			if(dl != NULL) //assert..
+			{
+				dl->set_name(get_new_relation_descriptor(combo));
+				parent->update_max_relation_length();
+			}
+		}
+		
+		if(focal_selection_history.back()->get_contents() == "")
+			return true;
+		return false;
 	};
 
 	bool is_editing() { return editing;};
@@ -180,34 +171,15 @@ public:
 	//Writing
 	void write_editing_node(node* n)
 	{
-		// focal_node = n;
-		vertical_offset = cursor_y();
+		int x;
+		int y;
+		getyx(win, y,x);
+
+		vertical_offset = y;
 		int depth = focal_selection_history.size() -1;
-		horizontal_offset = tab_size*depth;
+		horizontal_offset = config_p::tab_size*depth;
 	
 		nw.write_editing_node(n, vertical_offset, horizontal_offset, print_width, selection_start(), selection_end(), selecting);
-	};
-
-	void carriage()
-	{
-		if(cursor_y() < h-1)
-			wmove(win, cursor_y()+1,0); 
-	};
-
-	int cursor_y()
-	{
-		int x;
-		int y;
-		getyx(win, y,x);
-		return y;
-	};
-
-	int cursor_x()
-	{
-		int x;
-		int y;
-		getyx(win, y,x);
-		return y;
 	};
 
 
@@ -325,21 +297,14 @@ public:
 	};
 
 
-
 	//Insertion
 	void alphanumeric(int ch)
 	{
-		//
 		//	32~126: 						regular chars, includes, numerals 48~57, symbols before that, and 65~122 letters
-		//	
 		//	48~57 - (48-14) = 14~23:		superscript numerals
-		//
 		//	48~57 + (128-48) = 128~137:		subscript numerals
-		//
 		//	97~122 + (138-97) = 138~163:	subscript lowercase letters
-		//
 		//	65~122 + 128 = 193~250:			greek letters
-		//
 		//	24,25,27,28:					special +/- sup and superscripts	
 
 		unsigned char char_cache = ch;
@@ -403,6 +368,7 @@ public:
 		}
 
 		//encodes upper lower greek and superscripts as chars in these strings... not safe for ordinary string processing after this point.
+		// the point is to keep the simplicity of string length / substring operations
 		contents_reference.insert(start, str1char );
 		contents_pos= start+1;
 	};
@@ -430,51 +396,6 @@ public:
 
 	
 	//Selection
-	void mark_selection()
-	{
-		push_cursor(win);
-		wattron(win, A_REVERSE);
-
-		int start = selection_start();
-		int end = selection_end();
-		string& contents_reference = focal_selection_history.back()->get_contents();
-		string s = contents_reference.substr(start,end-start);
-		int y = get_y_of_contents(start);
-		int x = get_x_of_contents(start);
-		wmove(win,y,x);
-		nw.print_fancy_string(s);
-		wattroff(win, A_REVERSE);
-		pop_cursor(win);			
-	};
-
-	int get_y_of_contents(int contents_position)
-	{
-		if(contents_position<0)
-			return 0;
-		int temp_y = vertical_offset + (contents_position / (print_width));
-		if(temp_y >= h)		//limits to page
-			temp_y = h -1;
-		return temp_y;
-	};
-
-	int get_x_of_contents(int contents_position)
-	{
-		if(contents_position<0)
-			return 0;
-		int temp_x = horizontal_offset + (contents_position % (print_width));
-		return temp_x;
-	};
-
-	void push_cursor(WINDOW* win)
-	{
-		getyx(win, temporary_cursor_y, temporary_cursor_x);
-	};
-
-	void pop_cursor(WINDOW* win)
-	{
-		wmove(win, temporary_cursor_y, temporary_cursor_x);
-	};
-
 	string get_selection()
 	{
 		string t;

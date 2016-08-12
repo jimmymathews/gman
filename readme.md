@@ -16,7 +16,7 @@ Originally, I started writing this program because I wanted a minimalist persona
 
 ![](images/hdSO8.png)
 
-[(Type D4 Hasse Diagram, for so(8) Lie algebra)](https://commons.wikimedia.org/wiki/Category:Root_system_Hasse_diagrams#/media/File:D4Hasse.svg)
+[(Type D4 root system, for so(8) Lie algebra)](https://commons.wikimedia.org/wiki/Category:Root_system_Hasse_diagrams#/media/File:D4Hasse.svg)
 
 How it works
 ------------
@@ -69,6 +69,9 @@ Main window
 - **Home/End**. Navigation if editing field contents
 - **Ctrl-c**. Copy selection
 - **Ctrl-v**. Paste selection
+- **Ctrl-g**. Initiate a greek character (upper or lower case)
+- **^**. Initiate a superscript numeral
+- **_**. initiate a subscript numeral
 - **`n`**. New node linked to chosen node (select a category then *Enter* to start entering contents)
 - **`l`** then **`t`**.  **L**ink the current node **t**o another node; repeat **t** to link more nodes. **Enter** to stop linking
 - **`u`**.  Unlink the current node from its parent
@@ -103,7 +106,6 @@ If you'd like, consider reporting bugs, sharing recommendations, or writing new 
 - Mac/Windows support 
 - Export to BibTex
 - Export to plain text
-- Unicode Greek letters and superscripts/subscripts for math notes (needs the wide chars from `ncursesw`)
 - Figure out `ncurses` colors to get more than 8 choices
 - Create complete sub-graphs ("cliques") on ([small!](https://en.wikipedia.org/wiki/Factorial)) selections
 
