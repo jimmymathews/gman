@@ -24,4 +24,7 @@
     <note priority="veryhigh" time="1470981592">
         Bug: Saves nodes when contents are equal, but crashes on loading such data
     </note>
+    <note priority="veryhigh" time="1471028539">
+        Bug: Freezes on special control characters unrelated to the program; print screen, etc
+    </note>
 </todo>
