@@ -150,6 +150,8 @@ public:
 
 	void print_fancy_editing_string_conditionally(string s, int start, int end, bool selecting)
 	{
+		if(number_of_scrolls > 0)
+			return;
 		for(int i=0; i<s.length(); i++)
 		{
 
@@ -157,8 +159,8 @@ public:
 				reached_selection_position = true;
 			if(reached_selection_position && cursor_y() > h-2 && cursor_x() == w-1)
 				number_of_scrolls++;
-			if(number_of_scrolls > 0)
-				return;
+			// if(number_of_scrolls > 0)
+			// 	return;
 
 			int c = s.at(i);
 			print_fancy_editing_character(c, start, end, selecting);
