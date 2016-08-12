@@ -12,6 +12,9 @@ class node_writer
 	int tab_size;
 
 	int position_counter = 0;
+	int number_of_scrolls = 0;
+	int scroll_limit = 1000;
+	bool reached_selection_position = false;
 public:
 	node_writer() {tab_size = config_p::tab_size;};
 
@@ -85,23 +88,31 @@ public:
 		int whole_lines = contents_size / print_width;
 
 		position_counter = 0;
+		number_of_scrolls = 0;
+		scroll_limit = (h-vertical_offset)/2;
+		reached_selection_position = false;
 
 		n->get_node_type().turn_on_color(win);
 
 		for(int i=0; i < whole_lines; i++)
 		{
 			print_pad(horizontal_offset);
-			print_fancy_editing_string(content.substr(i*print_width,print_width), start, end, selecting);
-			if( vertical_offset + i == h-1) //test this
-			{
-				n->get_node_type().turn_off_color(win);
-				return;
-			}
+			print_fancy_editing_string_conditionally(content.substr(i*print_width,print_width), start, end, selecting);
+			// if( vertical_offset + i == h) //test this
+			// {
+			// 	n->get_node_type().turn_off_color(win);
+			// 	return;
+			// }
 		}
 
 		int last_position = print_width * whole_lines;
-		print_pad(horizontal_offset);
-		print_fancy_editing_string(content.substr(last_position, contents_size-last_position), start, end, selecting);
+		if(position_counter == last_position)
+		{
+			print_pad(horizontal_offset);
+			print_fancy_editing_string(content.substr(last_position, contents_size-last_position), start, end, selecting);
+		}
+
+
 
 		if(start == contents_size && !selecting)
 		{
@@ -137,6 +148,24 @@ public:
 		}
 	};
 
+	void print_fancy_editing_string_conditionally(string s, int start, int end, bool selecting)
+	{
+		for(int i=0; i<s.length(); i++)
+		{
+
+			if(position_counter == start)
+				reached_selection_position = true;
+			if(reached_selection_position && cursor_y() > h-2 && cursor_x() == w-1)
+				number_of_scrolls++;
+			if(number_of_scrolls > 0)
+				return;
+
+			int c = s.at(i);
+			print_fancy_editing_character(c, start, end, selecting);
+			position_counter++;
+		}
+	};
+
 	void print_fancy_editing_string(string s, int start, int end, bool selecting)
 	{
 		for(int i=0; i<s.length(); i++)
@@ -149,6 +178,7 @@ public:
 
 	void print_fancy_editing_character(int ch, int start, int end, bool selecting)
 	{
+
 		if(selecting)
 		{
 			if(position_counter >= start && position_counter < end)
@@ -398,12 +428,44 @@ public:
 
 	void carriage()
 	{
+		// if(cursor_y() < h)
 		if(cursor_y() < h-1)
-			wmove(win, cursor_y()+1,0); 
+			wmove(win, cursor_y()+1,0);
 		else
 		{
 			wscrl(win,1);
 			wmove(win,h-1,0);
+		}
+	};
+
+	void edit_carriage()
+	{
+		if(cursor_y() < h-1)
+		{
+			if(number_of_scrolls < scroll_limit)
+				wmove(win, cursor_y()+1,0); 
+			// waddstr(win,(to_string(cursor_y())+"---").c_str());
+			// if(cursor_y() == h-1)
+			// {
+				if(number_of_scrolls < scroll_limit && reached_selection_position)
+					number_of_scrolls ++;
+			// }
+		}
+		else
+		{
+			// waddstr(win,(to_string(number_of_scrolls)+"---").c_str());
+			// if(number_of_scrolls < scroll_limit)
+			// {
+			// 	wscrl(win,1);
+			// 	wmove(win,h-1,0);
+
+
+			// 	if(reached_selection_position)
+			// 	{
+			// 		number_of_scrolls++;
+					
+			// 	}
+			// }
 		}
 	};
 

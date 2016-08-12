@@ -120,10 +120,7 @@ public:
 			}
 			
 			if(dl != NULL) //assert..
-			{
 				dl->set_name(get_new_relation_descriptor(combo));
-				// parent->update_max_relation_length();
-			}
 		}
 		
 		if(focal_selection_history.back()->get_contents() == "")
