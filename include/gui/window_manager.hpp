@@ -184,9 +184,9 @@ public:
 	};
 	void ctrl_v(){if(focal_text_window == &mt) mt.ctrl_v();};
 	void ctrl_c(){if(focal_text_window == &mt) mt.ctrl_c();};
+	void ctrl_g(){if(focal_text_window == &mt) mt.ctrl_g();};
 	void home(){if(focal_text_window == &mt) mt.home();};
 	void end(){if(focal_text_window == &mt) mt.end();};
-	void ctrl_h(){if(focal_text_window == &mt) mt.ctrl_h();};
 	void handle_delete()
 	{
 		if(focal_text_window == &cb)

@@ -59,9 +59,9 @@ public:
 	void shift_left() 	{ tv.shift_left();};
 	void shift_right() 	{ tv.shift_right();};
 	void enter() 		{ tv.enter(); };
-	void ctrl_h() 		{ tv.ctrl_h(); };
 	void ctrl_v() 		{ tv.ctrl_v(); };
 	void ctrl_c() 		{ tv.ctrl_c(); };
+	void ctrl_g()		{ tv.ctrl_g();};
 	void home()			{ tv.home(); };
 	void end()			{ tv.end(); };
 	bool handle_delete(){ return tv.handle_delete();};

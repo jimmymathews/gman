@@ -18,7 +18,8 @@ public:
 
 	void start_screen()
 	{
-		std::set_locale(LC_ALL, "en_US.UTF-8");
+		// std::setlocale(LC_ALL, "en_US.UTF-8");
+		std::setlocale(LC_ALL, "");
 
 		sh.initialize();
 		if(! kh.listening())

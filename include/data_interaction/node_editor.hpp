@@ -2,6 +2,7 @@
 #define NODE_EDITOR_HPP
 
 #include "config_p.hpp"
+#include "node_writer.hpp"
 
 class node_editor
 {
@@ -11,6 +12,9 @@ class node_editor
 	int w;
 	bool editing = false;
 	bool selecting = false;
+	bool greek_input = false;
+	bool bout_to_superscript = false;
+	bool bout_to_subscript = false;
 	node* focal_node = NULL;
 	int tab_size;
 	int contents_pos = 0;
@@ -30,7 +34,7 @@ class node_editor
 	string clip_cache;
 
 public:
-	// node_editor () : nw(win,h,w,tab_size) {};
+	node_writer nw;
 	node_editor() {tab_size = config_p::tab_size;};
 
 	//State
@@ -39,11 +43,17 @@ public:
 		win = window;
 		h = height;
 		w = width;
+		nw.initialize(window, height, width);
 	};
 
 	void refresh_data()
 	{
 		stop_editing();
+	};
+
+	void toggle_greek_mode()
+	{
+		greek_input = !greek_input;
 	};
 
 	bool stop_editing()
@@ -179,13 +189,15 @@ public:
 		focal_node->get_node_type().turn_on_color(win);
 		for(int i=0; i < whole_lines; i++)
 		{
-			waddstr(win, (string(horizontal_offset,' ') + content.substr(i*print_width,print_width)).c_str() );
+			// waddstr(win, (string(horizontal_offset,' ') + content.substr(i*print_width,print_width)).c_str() );
+			nw.print_fancy_string( string(horizontal_offset,' ') + content.substr(i*print_width,print_width));
 			if( vertical_offset + i == h-1) //test this
 				return;
 		}
 
 		int last_position = print_width * whole_lines;
-		waddstr(win, (string(tab_size*depth,' ') + content.substr(last_position, contents_size) ).c_str());
+		// waddstr(win, (string(tab_size*depth,' ') + content.substr(last_position, contents_size) ).c_str());
+		nw.print_fancy_string(string(tab_size*depth,' ') + content.substr(last_position, contents_size));
 		carriage();
 
 		if(selecting)
@@ -197,9 +209,31 @@ public:
 			push_cursor(win);  //prob not necessary
 			int local_editor_y = (contents_pos / print_width) + vertical_offset;
 			int local_editor_x =(contents_pos % (print_width) + horizontal_offset );
+
+
+
+
+			// char local_c = mvwinch(win, local_editor_y , local_editor_x);
+			// int local_c = mvwinch(win, local_editor_y , local_editor_x);
 			char local_c = mvwinch(win, local_editor_y , local_editor_x);
+
 			wattron(win, A_UNDERLINE);
-			mvwaddch(win, local_editor_y, local_editor_x, local_c);
+
+
+
+			int start = contents_pos;
+			string& contents_reference = focal_node->get_contents();
+			string s = contents_reference.substr(start,1);
+			wmove(win,local_editor_y,local_editor_x);
+			nw.print_fancy_string(s);
+
+
+
+
+			// if(32<= local_c && local_c <=126)
+			// 	mvwaddch(win, local_editor_y, local_editor_x, local_c);
+			// wmove(win,local_editor_y,local_editor_x);
+			// nw.print_fancy_character(local_c);
 			wattroff(win, A_UNDERLINE);
 			pop_cursor(win);  //
 		}
@@ -348,7 +382,66 @@ public:
 	//Insertion
 	void alphanumeric(int ch)
 	{
-		char char_cache = ch;
+		//
+		//	32~126: 						regular chars, includes, numerals 48~57, symbols before that, and 65~122 letters
+		//	
+		//	48~57 - (48-14) = 14~23:		superscript numerals
+		//
+		//	48~57 + (128-48) = 128~137:		subscript numerals
+		//
+		//	97~122 + (138-97) = 138~163:	subscript lowercase letters
+		//
+		//	65~122 + 128 = 193~250:			greek letters
+		//
+		//	24,25,27,28:					special +/- sup and superscripts	
+
+		unsigned char char_cache = ch;
+		if(greek_input)
+		{
+			greek_input = false;
+			char_cache = ch + 128;
+		}
+		else
+		{
+			if(32<=ch && ch<=126)
+				char_cache = ch;
+
+			if(bout_to_superscript)
+			{
+				bout_to_superscript = false;
+				if(ch >= 48 && ch <=57)
+					char_cache = ch - (48-14);
+				if(ch == 43)
+					char_cache = 24;	//+
+				if(ch == 45)
+					char_cache = 25;	//-
+			}
+
+			if(bout_to_subscript)
+			{
+				bout_to_subscript = false;
+				if( (ch>=48 && ch<=57))
+					char_cache = ch + (128-48);
+				if(ch=='a' || ch=='e' || ch=='o' || ch=='x' || ch=='h' ||ch =='k' || ch=='l'|| ch=='m'|| ch=='n'|| ch=='p'|| ch=='s'|| ch=='t')
+					char_cache = ch + (138-97);
+				if(ch == 43)
+					char_cache = 27;	//+
+				if(ch == 45)
+					char_cache = 28;	//-
+			}
+
+			if(ch == 95)
+			{
+				bout_to_subscript = true;
+				return;
+			}
+			if(ch == 94)
+			{
+				bout_to_superscript = true;
+				return;
+			}
+		}
+
 		string str1char(1,char_cache);
 		string& contents_reference = focal_node->get_contents();
 		int contents_position = contents_pos;
@@ -362,13 +455,7 @@ public:
 			selecting=false;
 		}
 
-		//test
-		if(ch == 'u')
-		{			// Need to change this... carefully manage indices and string lengths, for unicode support
-			focal_node->add_unicode_char("\u2070");
-			str1char = 26;
-		}
-
+		//encodes upper lower greek and superscripts as chars in these strings... not safe for ordinary string processing after this point.
 		contents_reference.insert(start, str1char );
 		contents_pos= start+1;
 	};
@@ -401,13 +488,24 @@ public:
 		push_cursor(win);
 		wattron(win, A_REVERSE);
 
-		for(int i = selection_start(); i<selection_end(); i++)
-		{
-			int y = get_y_of_contents(i);
-			int x = get_x_of_contents(i);
-			char local_c = mvwinch(win, y, x);
-			mvwaddch(win, y, x, local_c);
-		}
+		int start = selection_start();
+		int end = selection_end();
+		string& contents_reference = focal_node->get_contents();
+		string s = contents_reference.substr(start,end-start);
+		int y = get_y_of_contents(start);
+		int x = get_x_of_contents(start);
+		wmove(win,y,x);
+		nw.print_fancy_string(s);
+
+		// for(int i = selection_start(); i<selection_end(); i++)
+		// {
+		// 	int y = get_y_of_contents(i);
+		// 	int x = get_x_of_contents(i);
+		// 	int local_c = mvwinch(win, y, x);
+		// 	// mvwaddch(win, y, x, local_c);
+		// 	wmove(win,y,x);
+		// 	// nw.print_fancy_character(local_c);
+		// }
 
 		wattroff(win, A_REVERSE);
 		pop_cursor(win);			

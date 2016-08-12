@@ -18,4 +18,7 @@
     <note priority="veryhigh" time="1470832273">
         Make deletion remain on link list if possible
     </note>
+    <note priority="veryhigh" time="1470951490">
+        Make up your own encoding for greek upper/lower (52) and superscripts subscripts (~22) more characters in a byte?
+    </note>
 </todo>

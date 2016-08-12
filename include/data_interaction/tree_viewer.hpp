@@ -33,9 +33,8 @@ class tree_viewer
 
 public:
 	node_editor		ne;
-	node_writer		nw;
 	tree_viewer(database_manager& dm, status_bar& sb)
-	: dm(dm), db(dm.db), sb(sb), nw() {refresh_data();};
+	: dm(dm), db(dm.db), sb(sb) {refresh_data();};
 
 	bool is_linking() { return linking;};
 	int get_depth_limit() {return depth_limit;};
@@ -87,6 +86,10 @@ public:
 	{
 		if(ne.is_editing()) ne.clip();
 	};
+	void ctrl_g()
+	{
+		if(ne.is_editing()) ne.toggle_greek_mode();
+	};
 	void stop_linking()
 	{
 		linking = false;
@@ -103,7 +106,6 @@ public:
 		w = width;
 		win = window;
 		ne.initialize(window, height, width);
-		nw.initialize(window, height, width);
 		curs_set(0);
 		scrollok(win,true);
 	};
@@ -139,8 +141,6 @@ public:
 		getyx(win, y,x);
 		return x;
 	};
-
-	void ctrl_h(){};
 
 	bool is_on_first_category()
 	{

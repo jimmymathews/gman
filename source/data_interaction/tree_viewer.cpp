@@ -65,7 +65,7 @@ bool tree_viewer::write_node(node* n, vector<node*> writing_history)
 	if(n->has_focus() && ne.is_editing_specific_element(writing_history))
 		ne.write_editing_node(n);
 	else
-		nw.write_to_end_of_line(n, writing_history.size());
+		ne.nw.write_to_end_of_line(n, writing_history.size());
 	return write_reflection(n,writing_history);
 }
 
@@ -75,7 +75,7 @@ bool tree_viewer::write_link(int max_relation_length, directed_link* dl, vector<
 	if(n->has_focus() && ne.is_editing_specific_element(writing_history))
 		ne.write_editing_node(n);
 	else
-		nw.write_link(max_relation_length, dl, writing_history.size());
+		ne.nw.write_link(max_relation_length, dl, writing_history.size());
 	return write_reflection(n,writing_history);
 }
 
