@@ -71,7 +71,7 @@ Main window
 - **Ctrl-v**. Paste selection
 - **Ctrl-g**. Initiate a greek character (upper or lower case)
 - **^**. Initiate a superscript numeral
-- **_**. initiate a subscript numeral
+- **_**. Initiate a subscript numeral
 - **`n`**. New node linked to chosen node (select a category then *Enter* to start entering contents)
 - **`l`** then **`t`**.  **L**ink the current node **t**o another node; repeat **t** to link more nodes. **Enter** to stop linking
 - **`u`**.  Unlink the current node from its parent
