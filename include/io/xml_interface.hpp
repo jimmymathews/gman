@@ -226,7 +226,8 @@ public:
 			pugi::xml_node cat = contents.next_sibling();
 			
 			node* my_node = dm.add_node(contents.child_value(), cat.child_value());
-			my_node->set_id(n.attribute("id").value());
+			if(my_node!=NULL)
+				my_node->set_id(n.attribute("id").value());
 		}
 	};
 

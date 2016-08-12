@@ -29,7 +29,8 @@ public:
 		if(rd != ""  && rd.length() < (print_size -3))
 		{
 			print_size = print_size - max_relation_length -2;
-			waddstr(win,(rd+": ").c_str());
+			// waddstr(win,(rd+": ").c_str());
+			print_fancy_string(rd+": ");
 		}
 
 		string to_print;

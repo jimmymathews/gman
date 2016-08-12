@@ -21,4 +21,7 @@
     <note priority="veryhigh" time="1470951490">
         Make up your own encoding for greek upper/lower (52) and superscripts subscripts (~22) more characters in a byte?
     </note>
+    <note priority="veryhigh" time="1470981592">
+        Bug: Saves nodes when contents are equal, but crashes on loading such data
+    </note>
 </todo>
