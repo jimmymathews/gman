@@ -177,53 +177,57 @@ public:
 	void write_editing_node(node* n)
 	{
 		focal_node = n;
-		string content = focal_node->get_contents();// string& contents_reference = focal_node->get_contents();
+		string& content = focal_node->get_contents();// string& contents_reference = focal_node->get_contents();
 		int depth = focal_selection_history.size() -1;
-		int contents_size = content.length();
+		// int contents_size = content.length();
 		vertical_offset = cursor_y();
 		horizontal_offset = tab_size*depth;
-		if(print_width <= 0)
-			return;
-		int whole_lines = contents_size / print_width;
+		// if(print_width <= 0)
+		// 	return;
+		// int whole_lines = contents_size / print_width;
 
-		focal_node->get_node_type().turn_on_color(win);
-		for(int i=0; i < whole_lines; i++)
-		{
-			nw.print_fancy_string( string(horizontal_offset,' ') + content.substr(i*print_width,print_width));
-			if( vertical_offset + i == h-1) //test this
-				return;
-		}
+		// focal_node->get_node_type().turn_on_color(win);
+	
+		nw.write_editing_node(n, content, vertical_offset, horizontal_offset, print_width, selection_start(), selection_end(), selecting);
 
-		int last_position = print_width * whole_lines;
-		nw.print_fancy_string(string(tab_size*depth,' ') + content.substr(last_position, contents_size));
-		carriage();
 
-		if(selecting)
-		{
-			mark_selection();
-		}
-		else
-		{
-			push_cursor(win);  //prob not necessary
-			int local_editor_y = (contents_pos / print_width) + vertical_offset;
-			int local_editor_x =(contents_pos % (print_width) + horizontal_offset );
+		// for(int i=0; i < whole_lines; i++)
+		// {
+		// 	nw.print_fancy_string( string(horizontal_offset,' ') + content.substr(i*print_width,print_width));
+		// 	if( vertical_offset + i == h-1) //test this
+		// 		return;
+		// }
 
-			wattron(win, A_UNDERLINE);
+		// int last_position = print_width * whole_lines;
+		// nw.print_fancy_string(string(tab_size*depth,' ') + content.substr(last_position, contents_size));
+		// carriage();
 
-			int start = contents_pos;
-			string& contents_reference = focal_node->get_contents();
-			string s = contents_reference.substr(start,1);
-			wmove(win,local_editor_y,local_editor_x);
-			if(s.length()==1)
-				nw.print_fancy_string(s);
-			else
-				nw.print_fancy_string(" ");
+		// if(selecting)
+		// {
+		// 	mark_selection();
+		// }
+		// else
+		// {
+		// 	push_cursor(win);  //prob not necessary
+		// 	int local_editor_y = (contents_pos / print_width) + vertical_offset;
+		// 	int local_editor_x =(contents_pos % (print_width) + horizontal_offset );
 
-			wattroff(win, A_UNDERLINE);
-			pop_cursor(win);  //
-		}
+		// 	wattron(win, A_UNDERLINE);
 
-		focal_node->get_node_type().turn_off_color(win);
+		// 	int start = contents_pos;
+		// 	string& contents_reference = focal_node->get_contents();
+		// 	string s = contents_reference.substr(start,1);
+		// 	wmove(win,local_editor_y,local_editor_x);
+		// 	if(s.length()==1)
+		// 		nw.print_fancy_string(s);
+		// 	else
+		// 		nw.print_fancy_string(" ");
+
+		// 	wattroff(win, A_UNDERLINE);
+		// 	pop_cursor(win);  //
+		// }
+
+		// focal_node->get_node_type().turn_off_color(win);
 	};
 
 	void carriage()
@@ -527,6 +531,8 @@ public:
 
 	int selection_start()
 	{
+		if(!selecting)
+			return contents_pos;
 		int start = contents_pos;
 		int end = mark_pos;
 		if(start > end)

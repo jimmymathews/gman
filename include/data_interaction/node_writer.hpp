@@ -11,6 +11,7 @@ class node_writer
 	int w;
 	int tab_size;
 
+	int position_counter = 0;
 public:
 	node_writer() {tab_size = config_p::tab_size;};
 
@@ -29,7 +30,6 @@ public:
 		if(rd != ""  && rd.length() < (print_size -3))
 		{
 			print_size = print_size - max_relation_length -2;
-			// waddstr(win,(rd+": ").c_str());
 			print_fancy_string(rd+": ");
 		}
 
@@ -45,7 +45,6 @@ public:
 			
 		n->turn_on_formatting(win);
 		print_fancy_string(to_print);
-		// waddstr(win, to_print.c_str() );
 		n->turn_off_formatting(win);
 		
 		if(cursor_x()!=0)
@@ -53,7 +52,7 @@ public:
 	};
 
 	void write_to_end_of_line(node* n,int depth)
-	{			// Need to change this... carefully manage indices and string lengths, for unicode support
+	{
 		int print_size = w-tab_size*depth;
 		if(print_size <=0 )
 			return;
@@ -70,12 +69,62 @@ public:
 		}
 			
 		n->turn_on_formatting(win);
-		// waddstr(win, to_print.c_str() );
 		print_fancy_string(to_print);
 		n->turn_off_formatting(win);
 		
 		if(cursor_x()!=0)
 			carriage();
+	};
+
+	void write_editing_node(node* n, string& content, int vertical_offset, int horizontal_offset, int print_width, int start, int end, bool selecting)
+	{
+		int contents_size = content.length();				//currently print_width has to reach all the way to the end of the screen; no newlines are added
+		if(print_width <= 0)
+			return;
+		int whole_lines = contents_size / print_width;
+
+		position_counter = 0;
+
+		n->get_node_type().turn_on_color(win);
+
+		for(int i=0; i < whole_lines; i++)
+		{
+			print_pad(horizontal_offset);
+			print_fancy_editing_string(content.substr(i*print_width,print_width), start, end, selecting);
+			if( vertical_offset + i == h-1) //test this
+			{
+				n->get_node_type().turn_off_color(win);
+				return;
+			}
+		}
+
+		int last_position = print_width * whole_lines;
+		print_pad(horizontal_offset);
+		print_fancy_editing_string(content.substr(last_position, contents_size-last_position), start, end, selecting);
+
+		if(start == contents_size && !selecting)
+		{
+			if(cursor_x() == w)
+			{
+				carriage();
+				print_pad(horizontal_offset);
+			}
+			wattron(win,A_UNDERLINE);
+			waddstr(win," ");
+			wattroff(win,A_UNDERLINE);
+			carriage();
+		}
+		else
+		{		
+			carriage();
+		}
+
+		n->get_node_type().turn_off_color(win);
+	};
+
+	void print_pad(int horizontal_offset)
+	{
+		waddstr(win,string(horizontal_offset,' ').c_str());
 	};
 
 	void print_fancy_string(string s)
@@ -84,7 +133,43 @@ public:
 		{
 			int c = s.at(i);
 			print_fancy_character(c);
-			// waddstr(win,(to_string(c)+"|").c_str());
+		}
+	};
+
+	void print_fancy_editing_string(string s, int start, int end, bool selecting)
+	{
+		for(int i=0; i<s.length(); i++)
+		{
+			int c = s.at(i);
+			print_fancy_editing_character(c, start, end, selecting);
+			position_counter++;
+		}
+	};
+
+	void print_fancy_editing_character(int ch, int start, int end, bool selecting)
+	{
+		if(selecting)
+		{
+			if(position_counter >= start && position_counter < end)
+				wattron(win,A_REVERSE);
+		}
+		else
+		{
+			if(position_counter == start)
+				wattron(win,A_UNDERLINE);
+		}
+
+		print_fancy_character(ch);
+
+		if(selecting)
+		{
+			if(position_counter >= start && position_counter < end)
+				wattroff(win,A_REVERSE);
+		}
+		else
+		{
+			if(position_counter == start)
+				wattroff(win,A_UNDERLINE);
 		}
 	};
 
@@ -94,7 +179,8 @@ public:
 		char cc =static_cast<char>(ch);
 		if(32 <= cc && cc<= 126)
 		{
-			waddstr(win,&cc);
+			string s = string(1,cc);
+			waddstr(win,s.c_str());
 			return;
 		}
 

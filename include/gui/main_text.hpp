@@ -52,7 +52,7 @@ public:
 
 	void up()			{ tv.up();};
 	void down() 		{ tv.down();};
-	void right() 		{ tv.right();};
+	void right() 		{ tv.right();draw();};
 	void left() 		{ tv.left();};
 	void shift_up() 	{ tv.shift_up();};
 	void shift_down() 	{ tv.shift_down();};
