@@ -76,8 +76,9 @@ public:
 			carriage();
 	};
 
-	void write_editing_node(node* n, string& content, int vertical_offset, int horizontal_offset, int print_width, int start, int end, bool selecting)
+	void write_editing_node(node* n, int vertical_offset, int horizontal_offset, int print_width, int start, int end, bool selecting)
 	{
+		string& content = n->get_contents();
 		int contents_size = content.length();				//currently print_width has to reach all the way to the end of the screen; no newlines are added
 		if(print_width <= 0)
 			return;
