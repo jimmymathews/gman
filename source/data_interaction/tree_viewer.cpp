@@ -7,6 +7,12 @@ void tree_viewer::write_on(WINDOW* window, int height, int width)
 	if(db.there_is_no_data() || !check_first_node_selection())
 		return;
 
+	if(mne.is_using_big_editor())
+	{
+		mne.write_editing_node(selection_history.back());
+		return;
+	}
+
 	had_to_scroll = false;
 	reached_selection = false;
 
@@ -63,20 +69,20 @@ bool tree_viewer::write_links_of(node* n, vector<node*> writing_history)
 //Single item
 bool tree_viewer::write_node(node* n, vector<node*> writing_history)
 {
-	if(n->has_focus() && ne.is_editing_specific_element(writing_history))
-		ne.write_editing_node(n);
+	if(n->has_focus() && mne.is_editing_specific_element(writing_history))
+		mne.write_editing_node(n);
 	else
-		ne.nw.write_to_end_of_line(n, writing_history.size());
+		mne.nw.write_to_end_of_line(n, writing_history.size());
 	return write_reflection(n,writing_history);
 }
 
 bool tree_viewer::write_link(int max_relation_length, directed_link* dl, vector<node*> writing_history)
 {
 	node* n = dl->get_end_node();
-	if(n->has_focus() && ne.is_editing_specific_element(writing_history))
-		ne.write_editing_node(n);
+	if(n->has_focus() && mne.is_editing_specific_element(writing_history))
+		mne.write_editing_node(n);
 	else
-		ne.nw.write_link(max_relation_length, dl, writing_history.size());
+		mne.nw.write_link(max_relation_length, dl, writing_history.size());
 	return write_reflection(n,writing_history);
 }
 
@@ -225,32 +231,32 @@ void tree_viewer::handle_internal_traversal(string direction)
 
 void tree_viewer::left()
 {
-	if(!ne.is_editing()) handle_traversal("left");
-	else ne.navigation_action("left");
+	if(!mne.is_editing()) handle_traversal("left");
+	else mne.navigation_action("left");
 }
 
 void tree_viewer::right()
 {
-	if(!ne.is_editing()) handle_traversal("right");
-	else ne.navigation_action("right");
+	if(!mne.is_editing()) handle_traversal("right");
+	else mne.navigation_action("right");
 }
 
 void tree_viewer::up()
 {
-	if(!ne.is_editing()) handle_traversal("up");
-	else ne.navigation_action("up");
+	if(!mne.is_editing()) handle_traversal("up");
+	else mne.navigation_action("up");
 }
 
 void tree_viewer::down()
 {
-	if(!ne.is_editing()) handle_traversal("down");
-	else ne.navigation_action("down");
+	if(!mne.is_editing()) handle_traversal("down");
+	else mne.navigation_action("down");
 }
 
 void tree_viewer::shift_left()
 {
-	if(ne.is_editing())
-		ne.shift_navigation_action("left");
+	if(mne.is_editing())
+		mne.shift_navigation_action("left");
 	else
 	if(depth_limit>selection_history.size()-1)
 		if(!(selection_history.back()->get_node_type() == db.get_node_containers()[depth_limit]->get_node_type()))
@@ -259,8 +265,8 @@ void tree_viewer::shift_left()
 
 void tree_viewer::shift_right()
 {
-	if(ne.is_editing())
-		ne.shift_navigation_action("right");
+	if(mne.is_editing())
+		mne.shift_navigation_action("right");
 	else
 	{
 		depth_limit++;
@@ -271,16 +277,16 @@ void tree_viewer::shift_right()
 
 void tree_viewer::shift_up()
 {
-	if(ne.is_editing())
-		ne.shift_navigation_action("up");
+	if(mne.is_editing())
+		mne.shift_navigation_action("up");
 	else
 		handle_swap("up");
 }
 
 void tree_viewer::shift_down()
 {
-	if(ne.is_editing())
-		ne.shift_navigation_action("down");
+	if(mne.is_editing())
+		mne.shift_navigation_action("down");
 	else
 		handle_swap("down");
 }
@@ -346,19 +352,52 @@ void tree_viewer::enter()
 		return;
 	}
 
-	if(ne.is_editing())
+	if(mne.is_using_big_editor())
 	{
-		if(	ne.stop_editing() )
+		mne.enter();
+		return;
+	}
+
+
+	if(mne.is_editing())
+	{
+		if(	mne.stop_editing() )
 			handle_delete();
 	}
 	else
-		ne.start_editing(selection_history);
-}
+		mne.start_editing(selection_history);
+};
+
+void tree_viewer::ctrl_e()
+{
+	if(!mne.is_using_big_editor())
+	{
+		mne.start_editing(selection_history);
+		mne.use_big_editor();
+	}
+	else
+		handled_cancel();
+};
+
+bool tree_viewer::handled_cancel()
+{
+	if(mne.is_using_big_editor())
+	{
+		mne.turn_off_big_editor();
+	}
+	if(mne.is_editing())
+	{
+		if(mne.stop_editing())
+			handle_delete();
+		return true;
+	}
+	return false;
+};
 
 bool tree_viewer::handle_delete()
 {
-	if(ne.is_editing())
-		return ne.handle_delete();
+	if(mne.is_editing())
+		return mne.handle_delete();
 	
 	int n = selection_history.size();	
 	if(n == 1)
@@ -406,8 +445,8 @@ bool tree_viewer::handle_delete()
 
 void tree_viewer::alphanumeric(int ch)
 {
-	if(ne.is_editing())
-		ne.alphanumeric(ch);
+	if(mne.is_editing())
+		mne.alphanumeric(ch);
 	else
 	{
 		if(ch == 'n')

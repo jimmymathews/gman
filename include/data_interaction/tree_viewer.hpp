@@ -6,7 +6,7 @@
 #include "data/data_structures.hpp"
 #include <ncurses.h>
 #include "data_interaction/node_iterators.hpp"
-#include "data_interaction/node_editor.hpp"
+#include "data_interaction/mini_node_editor.hpp"
 #include "data_interaction/node_writer.hpp"
 #include <vector>
 
@@ -32,7 +32,7 @@ class tree_viewer
 	bool reached_selection = false;
 
 public:
-	node_editor		ne;
+	mini_node_editor		mne;
 	tree_viewer(database_manager& dm, status_bar& sb)
 	: dm(dm), db(dm.db), sb(sb) {refresh_data();};
 
@@ -67,11 +67,13 @@ public:
 	void shift_up();
 	void shift_down();
 	void handle_swap(string direction);
+	void ctrl_e();
+	bool handled_cancel();
 	bool handle_delete();
 
-	void home(){if(ne.is_editing()) ne.home();};
-	void end(){if(ne.is_editing()) ne.end();};
-	void backspace(){if(ne.is_editing()) ne.backspace();};
+	void home(){if(mne.is_editing()) mne.home();};
+	void end(){if(mne.is_editing()) mne.end();};
+	void backspace(){if(mne.is_editing()) mne.backspace();};
 	void alphanumeric(int ch);
 
 //editing and linking
@@ -80,15 +82,15 @@ public:
 	void make_new_node_for_editing();
 	void ctrl_v()
 	{
-		if(ne.is_editing()) ne.paste();
+		if(mne.is_editing()) mne.paste();
 	};
 	void ctrl_c()
 	{
-		if(ne.is_editing()) ne.clip();
+		if(mne.is_editing()) mne.clip();
 	};
 	void ctrl_g()
 	{
-		if(ne.is_editing()) ne.toggle_greek_mode();
+		if(mne.is_editing()) mne.toggle_greek_mode();
 	};
 	void stop_linking()
 	{
@@ -105,7 +107,7 @@ public:
 		h = height;
 		w = width;
 		win = window;
-		ne.initialize(window, height, width);
+		mne.initialize(window, height, width);
 		curs_set(0);
 		scrollok(win,true);
 	};
@@ -114,7 +116,7 @@ public:
 	{
 		selection_history.clear();
 		check_first_node_selection();
-		ne.refresh_data();
+		mne.refresh_data();
 	};
 
 	bool is_alphanumeric (int ch){ return (32 <= ch && ch <= 126); };

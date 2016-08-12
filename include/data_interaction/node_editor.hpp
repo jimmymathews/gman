@@ -1,5 +1,5 @@
-#ifndef NODE_EDITOR_HPP
-#define NODE_EDITOR_HPP
+#ifndef BIG_NODE_EDITOR_HPP
+#define BIG_NODE_EDITOR_HPP
 
 #include "config_p.hpp"
 #include "node_writer.hpp"

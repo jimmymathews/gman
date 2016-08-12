@@ -24,7 +24,8 @@ key_handler::key_handler(screen_handler& sh, file_request_handler& fh) : sh(sh),
 	km.add_key("backspace",		"delete previous character and move", "backspace");
 	km.add_key("ctrl-v",		"paste",							"ctrl-v");
 	km.add_key("ctrl-c",		"copy",								"ctrl-c");
-	km.add_key("ctrl-g",		"toggle history display",			"ctrl-g");
+	km.add_key("ctrl-g",		"initiate greek input",				"ctrl-g");
+	km.add_key("ctrl-e",		"toggle big editor",				"ctrl-e");
 	km.add_key("save",			"save to file",						"ctrl-s");
 	km.add_key("open",			"open file",						"ctrl-o");
 	km.add_key("escape",		"quit program",						"escape-escape(twice)");
@@ -86,6 +87,8 @@ bool key_handler::listening()
 			sh.wm.ctrl_c();
 		else if( k == "ctrl-g")
 			sh.wm.ctrl_g();
+		else if( k == "ctrl-e")
+			sh.wm.ctrl_e();
 		else if( k == "home")
 			sh.wm.home();
 		else if( k == "end")
@@ -93,9 +96,7 @@ bool key_handler::listening()
 
 		if (k == "escape")
 		{
-			if(sh.wm.cb.is_selecting_new_node_category())
-				sh.wm.handle_cancel();
-			else
+			if(!sh.wm.handled_cancel())
 				break;
 		}
 

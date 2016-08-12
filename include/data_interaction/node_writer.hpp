@@ -12,9 +12,7 @@ class node_writer
 	int tab_size;
 
 	int position_counter = 0;
-	int number_of_scrolls = 0;
-	int scroll_limit = 1000;
-	bool reached_selection_position = false;
+
 public:
 	node_writer() {tab_size = config_p::tab_size;};
 
@@ -88,21 +86,14 @@ public:
 		int whole_lines = contents_size / print_width;
 
 		position_counter = 0;
-		number_of_scrolls = 0;
-		scroll_limit = (h-vertical_offset)/2;
-		reached_selection_position = false;
+		scrollok(win,false);
 
 		n->get_node_type().turn_on_color(win);
 
 		for(int i=0; i < whole_lines; i++)
 		{
 			print_pad(horizontal_offset);
-			print_fancy_editing_string_conditionally(content.substr(i*print_width,print_width), start, end, selecting);
-			// if( vertical_offset + i == h) //test this
-			// {
-			// 	n->get_node_type().turn_off_color(win);
-			// 	return;
-			// }
+			print_fancy_editing_string(content.substr(i*print_width,print_width), start, end, selecting);
 		}
 
 		int last_position = print_width * whole_lines;
@@ -111,7 +102,6 @@ public:
 			print_pad(horizontal_offset);
 			print_fancy_editing_string(content.substr(last_position, contents_size-last_position), start, end, selecting);
 		}
-
 
 
 		if(start == contents_size && !selecting)
@@ -132,6 +122,7 @@ public:
 		}
 
 		n->get_node_type().turn_off_color(win);
+		scrollok(win,true);
 	};
 
 	void print_pad(int horizontal_offset)
@@ -145,26 +136,6 @@ public:
 		{
 			int c = s.at(i);
 			print_fancy_character(c);
-		}
-	};
-
-	void print_fancy_editing_string_conditionally(string s, int start, int end, bool selecting)
-	{
-		if(number_of_scrolls > 0)
-			return;
-		for(int i=0; i<s.length(); i++)
-		{
-
-			if(position_counter == start)
-				reached_selection_position = true;
-			if(reached_selection_position && cursor_y() > h-2 && cursor_x() == w-1)
-				number_of_scrolls++;
-			// if(number_of_scrolls > 0)
-			// 	return;
-
-			int c = s.at(i);
-			print_fancy_editing_character(c, start, end, selecting);
-			position_counter++;
 		}
 	};
 
@@ -214,6 +185,12 @@ public:
 		{
 			string s = string(1,cc);
 			waddstr(win,s.c_str());
+			return;
+		}
+
+		if(ch == 10)
+		{
+			carriage();
 			return;
 		}
 
@@ -440,37 +417,6 @@ public:
 		}
 	};
 
-	void edit_carriage()
-	{
-		if(cursor_y() < h-1)
-		{
-			if(number_of_scrolls < scroll_limit)
-				wmove(win, cursor_y()+1,0); 
-			// waddstr(win,(to_string(cursor_y())+"---").c_str());
-			// if(cursor_y() == h-1)
-			// {
-				if(number_of_scrolls < scroll_limit && reached_selection_position)
-					number_of_scrolls ++;
-			// }
-		}
-		else
-		{
-			// waddstr(win,(to_string(number_of_scrolls)+"---").c_str());
-			// if(number_of_scrolls < scroll_limit)
-			// {
-			// 	wscrl(win,1);
-			// 	wmove(win,h-1,0);
-
-
-			// 	if(reached_selection_position)
-			// 	{
-			// 		number_of_scrolls++;
-					
-			// 	}
-			// }
-		}
-	};
-
 	int cursor_y()
 	{
 		int x;
@@ -485,6 +431,28 @@ public:
 		int y;
 		getyx(win, y,x);
 		return x;
+	};
+
+	int width()
+	{
+		return w;
+	};
+
+	int height()
+	{
+		return h;
+	};
+
+	WINDOW* window()
+	{
+		return win;
+	};
+
+	void clear()
+	{
+		position_counter = 0;
+		wclear(win);
+		wmove(win,0,0);
 	};
 
 	string node_summary(node* n)

@@ -111,7 +111,7 @@ public:
 		else
 		if(focal_text_window == &mt)
 		{
-			if(mt.tv.ne.is_editing())
+			if(mt.tv.mne.is_editing())
 				mt.alphanumeric(ch);
 			else
 			{
@@ -132,7 +132,7 @@ public:
 	};
 	void large_up()
 	{
-		if(focal_text_window == &mt && mt.tv.ne.is_editing())
+		if(focal_text_window == &mt && mt.tv.mne.is_editing())
 			return;
 		if( (focal_text_window == &mt) && cb.is_active())
 		{
@@ -185,6 +185,7 @@ public:
 	void ctrl_v(){if(focal_text_window == &mt) mt.ctrl_v();};
 	void ctrl_c(){if(focal_text_window == &mt) mt.ctrl_c();};
 	void ctrl_g(){if(focal_text_window == &mt) mt.ctrl_g();};
+	void ctrl_e(){if(focal_text_window == &mt) mt.ctrl_e();};
 	void home(){if(focal_text_window == &mt) mt.home();};
 	void end(){if(focal_text_window == &mt) mt.end();};
 	void handle_delete()
@@ -208,14 +209,20 @@ public:
 	void handle_backspace(){if(focal_text_window == &mt) mt.backspace();};
 	void set_status(string s){sb.set_status(s);};
 
-	void handle_cancel()
+	bool handled_cancel()
 	{
 		if(cb.is_selecting_new_node_category())
 		{
 			cb.cache_focal_tile();
 			cb.stop_new_node_category_selection();
 			update_focus(&mt);	
-		}	
+			return true;
+		}
+		if(focal_text_window == &mt)
+		{
+			return mt.tv.handled_cancel();
+		}
+		return false;
 	};
 };
 
