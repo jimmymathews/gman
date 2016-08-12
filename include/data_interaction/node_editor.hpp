@@ -189,14 +189,12 @@ public:
 		focal_node->get_node_type().turn_on_color(win);
 		for(int i=0; i < whole_lines; i++)
 		{
-			// waddstr(win, (string(horizontal_offset,' ') + content.substr(i*print_width,print_width)).c_str() );
 			nw.print_fancy_string( string(horizontal_offset,' ') + content.substr(i*print_width,print_width));
 			if( vertical_offset + i == h-1) //test this
 				return;
 		}
 
 		int last_position = print_width * whole_lines;
-		// waddstr(win, (string(tab_size*depth,' ') + content.substr(last_position, contents_size) ).c_str());
 		nw.print_fancy_string(string(tab_size*depth,' ') + content.substr(last_position, contents_size));
 		carriage();
 
@@ -210,30 +208,17 @@ public:
 			int local_editor_y = (contents_pos / print_width) + vertical_offset;
 			int local_editor_x =(contents_pos % (print_width) + horizontal_offset );
 
-
-
-
-			// char local_c = mvwinch(win, local_editor_y , local_editor_x);
-			// int local_c = mvwinch(win, local_editor_y , local_editor_x);
-			char local_c = mvwinch(win, local_editor_y , local_editor_x);
-
 			wattron(win, A_UNDERLINE);
-
-
 
 			int start = contents_pos;
 			string& contents_reference = focal_node->get_contents();
 			string s = contents_reference.substr(start,1);
 			wmove(win,local_editor_y,local_editor_x);
-			nw.print_fancy_string(s);
+			if(s.length()==1)
+				nw.print_fancy_string(s);
+			else
+				nw.print_fancy_string(" ");
 
-
-
-
-			// if(32<= local_c && local_c <=126)
-			// 	mvwaddch(win, local_editor_y, local_editor_x, local_c);
-			// wmove(win,local_editor_y,local_editor_x);
-			// nw.print_fancy_character(local_c);
 			wattroff(win, A_UNDERLINE);
 			pop_cursor(win);  //
 		}
@@ -496,17 +481,6 @@ public:
 		int x = get_x_of_contents(start);
 		wmove(win,y,x);
 		nw.print_fancy_string(s);
-
-		// for(int i = selection_start(); i<selection_end(); i++)
-		// {
-		// 	int y = get_y_of_contents(i);
-		// 	int x = get_x_of_contents(i);
-		// 	int local_c = mvwinch(win, y, x);
-		// 	// mvwaddch(win, y, x, local_c);
-		// 	wmove(win,y,x);
-		// 	// nw.print_fancy_character(local_c);
-		// }
-
 		wattroff(win, A_REVERSE);
 		pop_cursor(win);			
 	};
