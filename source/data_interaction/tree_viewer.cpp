@@ -37,10 +37,11 @@ bool tree_viewer::write_nodes_and_links_from_iterator(single_category_iterator& 
 bool tree_viewer::write_nodes_and_links_from_link_iterator(category_ordered_link_iterator& i, vector<node*> writing_history)
 {
 	directed_link* dl;
+	int max_relation_length = i.calculate_max_relation_length();
 	while( (dl=i.next_link()) != NULL)
 	{
 		node* subnode = dl->get_end_node();
-		if(!write_link(i.get_parent()->get_max_relation_length(),dl, writing_history))
+		if(!write_link(max_relation_length,dl, writing_history))
 			return false;
 		vector<node*> local_copy_of_writing_history = writing_history;
 		local_copy_of_writing_history.push_back(subnode);

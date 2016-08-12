@@ -6,7 +6,7 @@
     <note priority="veryhigh" time="1470778377">
         Bug that save dialog gets stuck in keyhandling or something
     </note>
-    <note priority="veryhigh" time="1470830153">
+    <note priority="veryhigh" time="1470830153" done="1471031166">
         Release some of that empty space when other's lengthening links aren't displayed
     </note>
     <note priority="veryhigh" time="1470832244">

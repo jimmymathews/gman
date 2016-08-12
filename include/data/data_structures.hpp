@@ -58,7 +58,7 @@ class node
 	node*		alphabetical_predecessor = NULL;
 	node*		alphabetical_successor = NULL;
 	vector<directed_link*>	links; //manage alphabetical order of these?
-	int			max_relation_length=0;
+	// int			max_relation_length=0;
 	string					temporary_id;
 public:
 	void					lose_focus()		{focus = false;};
@@ -90,33 +90,33 @@ public:
 	void set_predecessor(node* p){alphabetical_predecessor = p;};
 	void set_successor(node* s){alphabetical_successor = s;};
 
-	void update_max_relation_length()
-	{
-		int temp = 0;
-		for(int i=0; i<links.size(); i++)
-		{
-			int ll = links[i]->get_name().length();
-			if(ll > temp)
-				temp = ll;
-		}
-		max_relation_length = temp;
-	};
+	// void update_max_relation_length()
+	// {
+	// 	int temp = 0;
+	// 	for(int i=0; i<links.size(); i++)
+	// 	{
+	// 		int ll = links[i]->get_name().length();
+	// 		if(ll > temp)
+	// 			temp = ll;
+	// 	}
+	// 	max_relation_length = temp;
+	// };
 
-	int get_max_relation_length()
-	{
-		return max_relation_length;
-	};
+	// int get_max_relation_length()
+	// {
+	// 	return max_relation_length;
+	// };
 
 	void link(string relation, string relation_reversal, node* other)
 	{
 		links.insert(links.begin(),new directed_link(relation,other));
 		other->get_links().insert(other->get_links().begin(),new directed_link(relation_reversal,this));	//should be alphabetically managed?
-		update_max_relation_length();
+		// update_max_relation_length();
 	};
 	void one_way_link(string relation, node* other)
 	{
 		links.insert(links.begin(),new directed_link(relation,other));	
-		update_max_relation_length();
+		// update_max_relation_length();
 	};
 	void link(vector<node*> others)
 	{
@@ -174,7 +174,7 @@ public:
 			}
 			else {++it;}
 		}
-		update_max_relation_length();
+		// update_max_relation_length();
 	};
 
 	bool operator==(node& n){return (contents() == n.contents());};

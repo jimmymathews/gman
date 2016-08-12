@@ -54,7 +54,7 @@ class category_ordered_link_iterator : public node_iterator
 	int i;
 	int j;
 	int depth=1073741824; //2^30
-
+	int max_relation_length=0;
 
 public:
 	category_ordered_link_iterator(database& db, node* base_node, vector<node*>	writing_history, int d)
@@ -64,11 +64,36 @@ public:
 		base_node(base_node),
 		links(base_node->get_links()),
 		depth(d),
-		i(0), j(0){};
+		i(0), j(0)
+		{};
 
 	node* get_parent()
 	{
 		return base_node;
+	};
+
+	int calculate_max_relation_length()
+	{
+		//Assumes no iteration has taken place yet.
+		//Does a run through, then restores to initial state;
+
+		bool rs = reached_start;
+		int pi = i;
+		int pj = j;
+
+		int max_relation_length = 0;
+		directed_link* dl;
+		while( (dl= next_link() )!=NULL)
+		{
+			int relation_length = dl->get_name().length();
+			if(relation_length> max_relation_length)
+				max_relation_length = relation_length;
+		}
+		
+		reached_start = rs;
+		i = pi;
+		j = pj;
+		return max_relation_length;
 	};
 
 	void set_starting_node(node* s)

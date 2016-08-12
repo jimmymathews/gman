@@ -122,7 +122,7 @@ public:
 			if(dl != NULL) //assert..
 			{
 				dl->set_name(get_new_relation_descriptor(combo));
-				parent->update_max_relation_length();
+				// parent->update_max_relation_length();
 			}
 		}
 		
