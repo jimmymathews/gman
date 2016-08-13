@@ -13,9 +13,14 @@ class node_writer
 
 	int position_counter = 0;
 	int offset = 0;
+	bool showing_relations = true;
 
 public:
 	node_writer() {tab_size = config_p::tab_size;};
+
+	void turn_off_relations() {showing_relations = false;};
+	void turn_on_relations() {showing_relations = true;};
+	bool is_showing_relations() {return showing_relations;};
 
 	void write_link(int max_relation_length, directed_link* dl,int depth)
 	{
@@ -29,12 +34,14 @@ public:
 
 		waddstr(win,string(tab_size*depth,' ').c_str());
 
-		if(rd != ""  && rd.length() < (print_size -3))
+		if(showing_relations)
 		{
-			print_size = print_size - max_relation_length -2;
-			print_fancy_string(rd+": ");
+			if(rd != ""  && rd.length() < (print_size -3))
+			{
+				print_size = print_size - max_relation_length -2;
+				print_fancy_string(rd+": ");
+			}
 		}
-
 
 
 		int x = -1;

@@ -92,6 +92,14 @@ public:
 	{
 		if(mne.is_editing()) mne.toggle_greek_mode();
 	};
+	void ctrl_r()
+	{
+		if(mne.nw.is_showing_relations())
+			mne.nw.turn_off_relations();
+		else
+			mne.nw.turn_on_relations();
+	};
+
 	void stop_linking()
 	{
 		linking = false;

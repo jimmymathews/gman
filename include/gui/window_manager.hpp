@@ -186,6 +186,7 @@ public:
 	void ctrl_c(){if(focal_text_window == &mt) mt.ctrl_c();};
 	void ctrl_g(){if(focal_text_window == &mt) mt.ctrl_g();};
 	void ctrl_e(){if(focal_text_window == &mt) mt.ctrl_e();};
+	void ctrl_r(){if(focal_text_window == &mt) mt.ctrl_r();};
 	void home(){if(focal_text_window == &mt) mt.home();};
 	void end(){if(focal_text_window == &mt) mt.end();};
 	void handle_delete()

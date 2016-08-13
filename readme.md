@@ -64,12 +64,14 @@ Main window
 - **Left/Right/Up/Down**. Navigation
 - **Shift-Up/Down**. Swap fields in the same category
 - **Shift-Left/Right**. Expand or collapse the tree view; selection if editing field contents
-- **Enter**. Start/stop editing a field
+- **Enter**. Start/stop editing a field with small editor
+- **Ctrl-e**. Start editing a field in larger editor. **Enter** allowed here to make new lines.
 - **Delete**. Delete field
 - **Home/End**. Navigation if editing field contents
 - **Ctrl-c**. Copy selection
 - **Ctrl-v**. Paste selection
 - **Ctrl-g**. Initiate a greek character (upper or lower case)
+- **Ctrl-r**. Toggle relation description display
 - **^**. Initiate a superscript numeral
 - **_**. Initiate a subscript numeral
 - **`n`**. New node linked to chosen node (select a category then *Enter* to start entering contents)

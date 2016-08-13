@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
+    <note priority="veryhigh" time="1470830153" done="1471031166">
+        Release some of that empty space when other's lengthening links aren't displayed
+    </note>
     <note priority="veryhigh" time="1470778068">
         Fill in empty rel-desc pad with genre name, colored?
     </note>
     <note priority="veryhigh" time="1470778377">
         Bug that save dialog gets stuck in keyhandling or something
-    </note>
-    <note priority="veryhigh" time="1470830153" done="1471031166">
-        Release some of that empty space when other's lengthening links aren't displayed
     </note>
     <note priority="veryhigh" time="1470832244">
         Make focus scroll down then stick until scrolled up
@@ -26,5 +26,8 @@
     </note>
     <note priority="veryhigh" time="1471028539">
         Bug: Freezes on special control characters unrelated to the program; print screen, etc
+    </note>
+    <note priority="veryhigh" time="1471054031">
+        Weird bug? One time the greek letters and subscripts were all whack when loading from file, tried again and it didn't happen
     </note>
 </todo>

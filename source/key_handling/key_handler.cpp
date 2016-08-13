@@ -26,6 +26,7 @@ key_handler::key_handler(screen_handler& sh, file_request_handler& fh) : sh(sh),
 	km.add_key("ctrl-c",		"copy",								"ctrl-c");
 	km.add_key("ctrl-g",		"initiate greek input",				"ctrl-g");
 	km.add_key("ctrl-e",		"toggle big editor",				"ctrl-e");
+	km.add_key("ctrl-r",		"toggle relation labels",			"ctrl-r");
 	km.add_key("save",			"save to file",						"ctrl-s");
 	km.add_key("open",			"open file",						"ctrl-o");
 	km.add_key("escape",		"quit program",						"escape-escape(twice)");
@@ -89,6 +90,8 @@ bool key_handler::listening()
 			sh.wm.ctrl_g();
 		else if( k == "ctrl-e")
 			sh.wm.ctrl_e();
+		else if( k == "ctrl-r")
+			sh.wm.ctrl_r();
 		else if( k == "home")
 			sh.wm.home();
 		else if( k == "end")
