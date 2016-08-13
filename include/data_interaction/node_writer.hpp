@@ -190,6 +190,8 @@ public:
 
 		if(ch == 10)
 		{
+			if(cursor_x()!=w-1)
+				waddstr(win," ");
 			carriage();
 			return;
 		}
