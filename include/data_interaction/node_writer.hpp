@@ -12,6 +12,7 @@ class node_writer
 	int tab_size;
 
 	int position_counter = 0;
+	int offset = 0;
 
 public:
 	node_writer() {tab_size = config_p::tab_size;};
@@ -23,7 +24,7 @@ public:
 			return;
 	
 		node* n = dl->get_end_node();
-		string& c = n->get_contents();
+		string c = n->get_contents();
 		string rd= pad_string_to(max_relation_length,dl->get_name());
 
 		waddstr(win,string(tab_size*depth,' ').c_str());
@@ -33,6 +34,17 @@ public:
 			print_size = print_size - max_relation_length -2;
 			print_fancy_string(rd+": ");
 		}
+
+
+
+		int x = -1;
+		size_t p = c.find('\n');
+		if(!(p == string::npos))
+			x = (static_cast<int>(p));
+		if(x!=-1)
+			c = (c.substr(0,x) + ".."); 		// x-1?
+
+
 
 		string to_print;
 		if(c.length() == print_size)
@@ -59,6 +71,14 @@ public:
 			return;
 	
 		string c = n->get_contents();
+
+		int x = -1;
+		size_t p = c.find('\n');
+		if(!(p == string::npos))
+			x = (static_cast<int>(p));
+		if(x!=-1)
+			c = (c.substr(0,x) + ".."); 		// x-1?
+
 		string to_print;
 		if(c.length() == print_size)
 			to_print = c;
@@ -90,6 +110,9 @@ public:
 
 		n->get_node_type().turn_on_color(win);
 
+		// mini_writing = true;
+		offset = horizontal_offset;
+
 		for(int i=0; i < whole_lines; i++)
 		{
 			print_pad(horizontal_offset);
@@ -114,13 +137,15 @@ public:
 			wattron(win,A_UNDERLINE);
 			waddstr(win," ");
 			wattroff(win,A_UNDERLINE);
+			offset = 0;
 			carriage();
 		}
 		else
 		{		
+			offset = 0;
 			carriage();
 		}
-
+		
 		n->get_node_type().turn_off_color(win);
 		scrollok(win,true);
 	};
@@ -417,6 +442,7 @@ public:
 			wscrl(win,1);
 			wmove(win,h-1,0);
 		}
+		waddstr(win,string(offset,' ').c_str());
 	};
 
 	int cursor_y()
