@@ -4,7 +4,6 @@
 #include "data/data_structures.hpp"
 #include "gui/text_window.hpp"
 #include <ncurses.h>
-// #include <unistd.h>
 #include <thread>
 #include <chrono>
 #include <string>
