@@ -1,6 +1,8 @@
 #ifndef FILE_REQUEST_HANDLER_HPP
 #define FILE_REQUEST_HANDLER_HPP
 
+#include <unistd.h>
+
 #include "data/data_structures.hpp"
 #include "gui/status_bar.hpp"
 #include "gui/screen_handler.hpp"
@@ -16,22 +18,27 @@ public:
 	bool save(status_bar& sb)
 	{
 		string filename = sb.save_dialog();
-		if(filename == ".graphml" || filename == "")
-			return true;
 		xml_interface x(dm);
 		return x.save(filename);
 	};
+
 	bool open(status_bar& sb)
 	{
 		string filename = sb.open_dialog();
 		return open(filename);
 	};
+
 	bool open(string filename)
 	{
-		if(filename=="")
-			return true;
 		xml_interface x(dm);
 		return x.open(filename);
+	};
+
+	string get_working_path()
+	{
+		int MAXPATHLEN = 1000;
+		char temp[MAXPATHLEN];
+		return ( getcwd(temp, MAXPATHLEN) ? std::string( temp ) : std::string("") );
 	};
 };
 

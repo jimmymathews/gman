@@ -14,7 +14,7 @@ public:
 	key_handler				kh;
 
 	gui_manager(database_manager& dm, file_request_handler& fh)
-	: sh(dm), kh(sh, fh) {};
+	: sh(dm, fh.get_working_path()), kh(sh, fh) {};
 
 	void start_screen()
 	{

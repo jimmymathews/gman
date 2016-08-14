@@ -55,19 +55,16 @@ public:
 		stop_editing();
 	};
 
-	void toggle_greek_mode()
+	void initiate_greek_input()
 	{
-		greek_input = !greek_input;
+		if(!greek_input)
+			greek_input = true;
 	};
 
 	void enter()
 	{
 		if(using_big_editor)
-		{
-			alphanumeric(10);		
-			// bne.enter...
-		}
-
+			alphanumeric(10);
 	};
 
 	void use_big_editor()
@@ -118,9 +115,6 @@ public:
 				}
 			}	
 		}
-
-		//test
-		// use_big_editor();
 	};
 
 	bool stop_editing()
@@ -315,22 +309,11 @@ public:
 			return;
 		if(contents_reference.at(contents_pos-1) == '\n')
 			return;
-
 		basic_action("up");
-		// string& contents_reference = focal_selection_history.back()->get_contents();
-		// int n = contents_reference.size();
-		// contents_pos = min(n-1, contents_pos + 1);
-		// int position_of_new_line =  first_new_line_between(contents_pos+1,contents_pos + print_width);
-		// if(position_of_new_line != -1)
-		// 	contents_pos = position_of_new_line;
-		// // else
-		// 	contents_pos  = (contents_pos / print_width) * print_width;
-
 	};
 
 	void end()
 	{
-		// int temp = contents_pos;
 		string& contents_reference = focal_selection_history.back()->get_contents();
 		int n = contents_reference.size();
 
@@ -348,21 +331,7 @@ public:
 			return;
 		}
 		
-		
 		contents_pos = min(n-1, max(contents_pos - 1,0));
-
-		// string& contents_reference = focal_selection_history.back()->get_contents();
-		// int contents_size = contents_reference.length();
-
-		// if(contents_pos>=contents_size-1)
-		// 	contents_pos = contents_size;
-		// else
-		// {
-		// 	int red = contents_pos / print_width;
-		// 	contents_pos = (red+1)*print_width -1;
-		// }
-		// if(contents_pos>=contents_size-1)
-		// 	contents_pos = contents_size;		
 	};
 
 

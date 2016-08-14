@@ -124,6 +124,7 @@ bool database_manager::are_linked_by_id(string id1, string id2)
 
 
 //Internal
+
 void database_manager::populate_default_database()
 {
 	node_container* points = add_category("Fano point");

@@ -90,7 +90,7 @@ public:
 	};
 	void ctrl_g()
 	{
-		if(mne.is_editing()) mne.toggle_greek_mode();
+		if(mne.is_editing()) mne.initiate_greek_input();
 	};
 	void ctrl_r()
 	{

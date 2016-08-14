@@ -7,6 +7,7 @@
 #include "gui/text_window.hpp"
 #include "data/database_manager.hpp"
 #include "data/data_structures.hpp"
+
 using namespace std;
 
 class window_manager
@@ -20,10 +21,11 @@ public:
 	status_bar			sb;
 	main_text			mt;
 
-	window_manager(database_manager& dm)
+	window_manager(database_manager& dm, string cwd)
 	:
 		dm(dm),
 		cb(dm),
+		sb(cwd),
 		mt(cb, sb, dm)
 	{
 		tws.push_back(&cb);

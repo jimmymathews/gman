@@ -64,13 +64,17 @@ public:
 			return;
 		}
 		else
-		do{	codes.push_back(ch); }
-		while( (ch=getch()) != 10 && (ch) != 13);
+		do
+		{
+			codes.push_back(ch);
+			ch = getch();
+		}
+		while( ch != 10  &&  ch != 13);
 	};
 
-	bool is_alphanumeric		(int ch){ return (32 <= ch && ch <= 126); };
+	bool is_alphanumeric(int ch){ return (32 <= ch && ch <= 126); };
 	
-	string display_sequence		()
+	string display_sequence()
 	{
 		string display;
 		for(int i=0; i<codes.size(); i++)
@@ -78,7 +82,7 @@ public:
 		return display;
 	};
 
-	void save_code				(ofstream& ofs)
+	void save_code(ofstream& ofs)
 	{
 		ofs << name << " = \'";
 		for(int i=0; i<codes.size(); i++)
@@ -100,20 +104,24 @@ public:
 		return true;
 	};
 
-	vector<int>& get_code		(){return codes;};
-	void set_code				(vector<int> c){codes = c;};
-	void clear					(){codes.clear();};
-	void set_name			(string n) {name = n;};
-	void add_character			(int ch) {codes.push_back(ch);};
+	vector<int>& get_code(){return codes;};
+
+	void set_code(vector<int> c){codes = c;};
+
+	void clear(){codes.clear();};
+
+	void set_name(string n) {name = n;};
+
+	void add_character(int ch) {codes.push_back(ch);};
+
 	string to_single_character	()
 	{
 		if(codes.size() == 1 && is_alphanumeric(codes[0]))
-		{
 			return to_string(char(codes[0]));
-		}
 		else
 			return "Not a single character.";
 	};
+
 	bool operator==(string other){return name==other;};
 };
 
@@ -126,30 +134,37 @@ class key_data
 public:
 	key_datum			scratch_key;
 	key_data() : scratch_key("","",""){};
-	void	build_known_key_list()
+
+	void build_known_key_list()
 	{
 		vector<int> sequence;
 
-		sequence.clear();	sequence.push_back(13);
+		sequence.clear();
+		sequence.push_back(13);
 		add_forced_key("enter13", sequence);
 		
-		sequence.clear();	sequence.push_back(10);
+		sequence.clear();
+		sequence.push_back(10);
 		add_forced_key("enter10", sequence);
-	}
-	void	add_key(string name, string description, string default_keys_description)
+	};
+
+	void add_key(string name, string description, string default_keys_description)
 	{
 		key_datum kdm(name, description, default_keys_description);
 		key_list.push_back(kdm);
-	}
-	void 	add_forced_key(string name, vector<int> sequence)
+	};
+
+	void add_forced_key(string name, vector<int> sequence)
 	{
 		key_datum kdm(name, sequence);
 		key_list.push_back(kdm);
-	}
+	};
+
 	vector<key_datum>& keys()
 	{
 		return key_list;
-	}
+	};
+
 	key_datum* match(key_datum& k)
 	{
 		for(int i=0; i<key_list.size(); i++)
@@ -160,7 +175,7 @@ public:
 			}
 		}
 		return NULL;
-	}
+	};
 };
 
 /*********************************************************************/
@@ -168,7 +183,7 @@ public:
 
 class key_registerer
 {
-	GetPot*				op;
+	GetPot*		op;
 	key_data&	kd;
 public:
 	key_registerer(key_data& kd) : kd(kd) {};
@@ -189,6 +204,7 @@ public:
 	};
 
 	void initialize() {	initialize(home_directory() + ".mk_keys"); };
+
 	bool file_exists(string name)
 	{ 
 		ifstream f(name.c_str());
@@ -205,7 +221,7 @@ public:
 
 	string home_directory()
 	{
-		string dir = getenv("HOME");
+		string dir = getenv("HOME");	//Linux only?
 		return dir + "/";
 	};
 
@@ -245,16 +261,6 @@ public:
 		noraw();
 		endwin();
 	};
-
-	void startup_ncurses()
-	{
-		initscr();
-		cbreak();
-		raw();
-		noecho();
-		clear();
-		refresh();
-	};
 };
 
 /*********************************************************************/
@@ -269,7 +275,7 @@ public:
 	key_datum*	get_key(WINDOW* dummy)
 	{
 		//To be used in ncurses ordinary cbreak delayed, blocking mode.
-		int ch = mvwgetch(dummy, 0, 0);		//Get rid of the "mv" part?
+		int ch = mvwgetch(dummy, 0, 0);
 		if(is_alphanumeric(ch))
 			return alphanumeric_key(ch);
 	
@@ -278,12 +284,12 @@ public:
 		key_datum* key_pointer = NULL;
 		do
 		{
-			key_pointer = kd.match(temporary_key);	//Still needs: Abort on fail to match any!
+			key_pointer = kd.match(temporary_key);
 			if(key_pointer!= NULL)
 				return key_pointer;
-			ch = mvwgetch(dummy, 0, 0);				//Get rid of the "mv" part?
+			ch = mvwgetch(dummy, 0, 0);
 			temporary_key.add_character(ch);
-			if(temporary_key.get_code().size() > 10)
+			if(temporary_key.get_code().size() > 12)// hard coded constant
 				break;								// Log error?
 		}while(key_pointer == NULL);
 		
@@ -291,8 +297,9 @@ public:
 		return &(kd.scratch_key);
 	};
 	
-	bool 		is_alphanumeric(int ch) { return (32 <= ch && ch <= 126); };
-	key_datum*	alphanumeric_key(int ch)
+	bool is_alphanumeric(int ch) { return (32 <= ch && ch <= 126); };
+
+	key_datum* alphanumeric_key(int ch)
 	{
 		kd.scratch_key.clear();
 		kd.scratch_key.set_name("alphanumeric");
@@ -306,20 +313,21 @@ public:
 
 class key_manager
 {
-	key_data	kd;
+	key_data		kd;
 	key_registerer	kreg;
 	key_receiver	kr;
 	string			filename;
 public:
 	key_manager()				: kreg(kd), kr(kd), filename("") {};
+	
 	key_manager(string filename): kreg(kd), kr(kd), filename(filename) {};
-	void add_key(string name, string description, string default_keys)
-	{ kd.add_key(name, description, default_keys);};
-	key_datum* get_key()			{return get_key(stdscr);};
-	key_datum* get_key(WINDOW* w)
-	{
-		return kr.get_key(w);
-	};
+
+	void add_key(string name, string description, string default_keys){ kd.add_key(name, description, default_keys);};
+	
+	key_datum* get_key() {return get_key(stdscr);};
+	
+	key_datum* get_key(WINDOW* w) {return kr.get_key(w);};
+	
 	void startup()
 	{
 		if(filename=="")
@@ -327,7 +335,6 @@ public:
 		else
 			kreg.initialize(filename);
 	};
-	void startup_ncurses() { kreg.startup_ncurses();};
 };
 
 #endif

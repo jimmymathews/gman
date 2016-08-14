@@ -1,11 +1,12 @@
 #ifndef SCREEN_HANDLER_HPP
 #define SCREEN_HANDLER_HPP
 
+#include <ncurses.h>
+#include <string>
+
 #include "data/database_manager.hpp"
 #include "data/data_structures.hpp"
 #include "gui/window_manager.hpp"
-#include <ncurses.h>
-#include <string>
 
 using namespace std;
 
@@ -15,10 +16,10 @@ class screen_handler
 	int x;
 
 public:
-	window_manager			wm;
+	window_manager wm;
 
-	screen_handler(database_manager& dm)
-	:	wm(dm) {};
+	screen_handler(database_manager& dm, string cwd)
+	:	wm(dm, cwd) {};
 	void initialize();
 	void setup_ncurses();
 	void initialize_colors();

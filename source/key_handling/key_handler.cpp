@@ -12,8 +12,8 @@ key_handler::key_handler(screen_handler& sh, file_request_handler& fh) : sh(sh),
 	km.add_key("shift-right",	"move right and select",			"shift-right");
 	km.add_key("shift-up",		"move up and select",				"shift-up");
 	km.add_key("shift-down",	"move down and select",				"shift-down");
-	km.add_key("large-left",	"move focus left",					"ctrl-left");
-	km.add_key("large-right",	"move focus right",					"ctrl-right");
+	// km.add_key("large-left",	"move focus left",					"ctrl-left");
+	// km.add_key("large-right",	"move focus right",					"ctrl-right");
 	km.add_key("large-up",		"move focus up",					"ctrl-up");
 	km.add_key("large-down",	"move focus down",					"ctrl-down");
 	km.add_key("home",			"move to left end of line",			"home");
@@ -43,12 +43,20 @@ bool key_handler::listening()
 			continue;
 
 		if (k == "save")
+		{
 			if(!fh.save(sh.wm.sb))
+			{
+				sh.wm.sb.restore_current_filename();
 				sh.wm.sb.set_temporary_status("write failed; check file name");
+			}
+		}
 		if (k == "open")
 		{
 			if(!fh.open(sh.wm.sb))
+			{
+				sh.wm.sb.restore_current_filename();
 				sh.wm.sb.set_temporary_status("open failed; check file name");
+			}
 			sh.wm.refresh_data();
 		}
 
@@ -70,10 +78,10 @@ bool key_handler::listening()
 			sh.wm.large_up();
 		else if (k == "large-down")
 			sh.wm.large_down();
-		else if (k == "large-left")
-			sh.wm.large_left();
-		else if (k == "large-right")
-			sh.wm.large_right();
+		// else if (k == "large-left")
+		// 	sh.wm.large_left();
+		// else if (k == "large-right")
+		// 	sh.wm.large_right();
 		else if (k == "shift-up")
 			sh.wm.shift_up();
 		else if (k == "shift-down")

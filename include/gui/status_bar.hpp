@@ -4,7 +4,7 @@
 #include "data/data_structures.hpp"
 #include "gui/text_window.hpp"
 #include <ncurses.h>
-#include <unistd.h>
+// #include <unistd.h>
 #include <thread>
 #include <chrono>
 #include <string>
@@ -17,23 +17,17 @@ class status_bar : public text_window
 	string status = "";	
 	string cwd;
 	string current_file="";
+	string pushed_filename = "";
 
 	bool linking = false;
 	node* linkee = NULL;
 	node* linko = NULL;
 	bool more_than_one_linko = false;
 
-	string get_working_path()
-	{
-	int MAXPATHLEN = 1000;
-		char temp[MAXPATHLEN];
-		return ( getcwd(temp, MAXPATHLEN) ? std::string( temp ) : std::string("") );
-	};
-
 public:
-	status_bar()
+	status_bar(string cwd) : cwd(cwd)
 	{
-		cwd = get_working_path();
+		// cwd = get_working_path();
 		status = cwd;
 	};
 	void initialize(int termy, int termx) override { make(termy, termx);};
@@ -41,7 +35,14 @@ public:
 	void first_time_opened(string f)
 	{
 		status = cwd + "/" + f;
-	}
+		current_file = cwd + "/" + f;
+	};
+
+	void restore_current_filename()
+	{
+		current_file = pushed_filename;
+		set_status(current_file);
+	};
 	
 	void make(int termy, int termx) override
 	{
@@ -119,13 +120,14 @@ public:
 		status = s;
 		draw();
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1500));
 		status = pushed;
 		draw();
 	}
 
 	string save_dialog()
 	{
+		pushed_filename = current_file;
 		linking = false;
 		werase(w);
 		string addend = "save ";
@@ -174,6 +176,7 @@ public:
 
 	string open_dialog()
 	{
+		pushed_filename = current_file;
 		linking = false;
 		werase(w);
 		string addend = "open ";
