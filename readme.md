@@ -98,7 +98,7 @@ Development
 
 If you'd like, consider reporting bugs (there are plenty), sharing recommendations, or writing new features:
 
-- Simple bars indicating child nodes (currently the padding which is added when relation descriptors are present makes it hard to tell who is connected to who)
+- Simple bars indicating child nodes
 - Search/replace function
 - All-nodes view
 - Filename tab completion
