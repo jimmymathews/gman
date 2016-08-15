@@ -30,7 +30,7 @@ You can edit fields and category names, add new ones, and link up related nodes.
 Get started
 -----------
 
-You'll probably need to be running Linux, but Mac support should be forthcoming (and even Windows, especially if Microsoft delivers on their promise to bundle a native terminal emulator with the new OS). The only library dependency is `ncurses`. The [GraphML](http://graphml.graphdrawing.org/) implementation is based on [PugiXML](http://pugixml.org/) (thanks to Arseny Kapoulkine), with the source provided here.
+You'll probably need to be running Linux, but Mac support should be forthcoming (and even Windows, especially if Microsoft delivers on their promise to bundle a native terminal emulator with the new OS). The only library dependency is `ncursesw`. The [GraphML](http://graphml.graphdrawing.org/) implementation is based on [PugiXML](http://pugixml.org/) (thanks to Arseny Kapoulkine), with the source provided here.
 
 Instructions:
 
@@ -96,7 +96,7 @@ To add a description of the relationship between two linked nodes (to label an e
 Development
 -----------
 
-If you'd like, consider reporting bugs, sharing recommendations, or writing new features:
+If you'd like, consider reporting bugs (there are plenty), sharing recommendations, or writing new features:
 
 - Simple bars indicating child nodes (currently the padding which is added when relation descriptors are present makes it hard to tell who is connected to who)
 - Search/replace function
