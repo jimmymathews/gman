@@ -5,7 +5,7 @@
 Originally, I started writing this program because I wanted a minimalist personal wiki for organizing notes and references. The other programs I found were too mouse-driven, toolbar-loaded, or application-specific, and I wanted something simpler than Emacs Org-mode.
 
 
-![](images/expand_view.gif)
+![](images/books.png)
 
 ![](images/ssLPPL.png)
 
