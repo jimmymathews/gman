@@ -24,7 +24,8 @@ public:
 	void setup_ncurses();
 	void initialize_colors();
 	void grab_dimensions();
-
+	string home_directory();
+	bool file_exists(string name);
 	void resize();
 	bool consider_resize();
 

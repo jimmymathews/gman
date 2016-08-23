@@ -1,5 +1,8 @@
 #include "gui/screen_handler.hpp"
 
+#include <fstream>
+using namespace std;
+
 void screen_handler::initialize()
 {
 	setup_ncurses();
@@ -30,30 +33,75 @@ void screen_handler::initialize_colors()
 		init_pair(i,i, -1);
 }
 
-void screen_handler::grab_dimensions()
+string screen_handler::home_directory()
 {
-	y = LINES;
-	x = COLS;
+	string dir = getenv("HOME");	//Linux only?
+	return dir + "/";
 }
 
+bool screen_handler::file_exists(string name)
+{ 
+	ifstream f(name.c_str());
+    if (f.good())
+    {
+        f.close();
+        return true;
+    } else
+    {
+        f.close();
+        return false;
+    }
+}
+
+void screen_handler::grab_dimensions()
+{
+	string name = home_directory()+".gman";
+	if(file_exists(name))
+	{
+		ifstream settings(name, ios_base::in);
+		int Y=0;
+		int X=0;
+		settings >> Y;
+		settings >> X;
+		if(Y<10000 && X<10000 && Y>2 && X>2)
+			y=Y;
+			x=X;
+	}
+	else
+	{
+		y = LINES;
+		x = COLS;
+	}
+}
 
 void screen_handler::resize()
 {
 	endwin();
 	refresh();
-	y = LINES;
-	x = COLS;
+	grab_dimensions();
+	// y = LINES;
+	// x = COLS;
 	wm.resize(y,x);
 }
 
 bool screen_handler::consider_resize()
 {
-	if(y != LINES || x != COLS)
+	int px=x;
+	int py=y;
+	grab_dimensions();
+	if(px!=x || py!=y)
 	{
 		resize();
 		return true;
 	}
 	return false;
+
+	// if(y != LINES || x != COLS)
+	// {
+	// 	resize();
+	// 	return true;
+	// }
+	// return false;
 }
 
 
