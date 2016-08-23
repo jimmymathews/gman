@@ -48,9 +48,23 @@ public:
 	{
 		if(!lock_codes)
 		{
+			// int y=0;
+			// int x=0;
+			// getyx(stdscr,y,x);
+			// if(y==3)
+			// 	wmove(stdscr,0,0);
+			// // move(1,0);
+			wmove(stdscr,1,0);
 			addstr( ("[" + default_keys_description + "] "+ description +": ").c_str() );
 			get_sequence();
-			addstr( (display_sequence()+"\n").c_str() );
+
+			werase(stdscr);
+			wrefresh(stdscr);
+			// erase();
+			// clear();
+			// refresh();
+			// move(0,0);
+			addstr( (".. "+display_sequence()).c_str() );
 		}
 	};
 
@@ -239,7 +253,11 @@ public:
 		refresh();
 		scrollok(stdscr,true);
 		addstr("Choose keys for the following actions.\nIf you wish to use the defaults in brackets, type them.\nYou will need to press enter after key combinations passed on by the terminal emulator as a sequence of characters.\nThis step is necessary because different terminal emulators pass on different key codes.\nIf you make a mistake, delete .mk_keys from your home folder.\n");
-
+		addstr("Press any key to begin.");
+		getch();
+		erase();
+		clear();
+		refresh();
 		for(int i=0; i<kd.keys().size(); i++)
 			kd.keys()[i].obtain_code_from_user();	
 
@@ -259,6 +277,9 @@ public:
 		else
 			addstr( ("File writing on " + filename + " didn't work").c_str() );
 		noraw();
+		erase();
+		clear();
+		refresh();
 		endwin();
 	};
 };
