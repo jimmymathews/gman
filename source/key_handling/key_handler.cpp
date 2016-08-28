@@ -104,6 +104,10 @@ bool key_handler::listening()
 			sh.wm.home();
 		else if( k == "end")
 			sh.wm.end();
+		else if( k == "page-up")
+			sh.wm.pageup();
+		else if( k == "page-down")
+			sh.wm.pagedown();
 
 		if (k == "escape")
 		{

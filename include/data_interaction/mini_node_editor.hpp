@@ -335,6 +335,22 @@ public:
 	};
 
 
+	void pageup()
+	{
+		for(int i=0; i<max(1,h-2); i++)
+		{
+			basic_action("up");
+		}
+	};
+
+	void pagedown()
+	{
+		for(int i=0; i<max(1,h-2); i++)
+		{
+			basic_action("down");
+		}
+	};
+
 	//Deletion
 	bool handle_delete()
 	{

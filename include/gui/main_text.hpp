@@ -66,6 +66,8 @@ public:
 	void ctrl_r()		{ tv.ctrl_r();};
 	void home()			{ tv.home(); };
 	void end()			{ tv.end(); };
+	void pageup()			{ tv.pageup(); };
+	void pagedown()			{ tv.pagedown(); };
 	bool handle_delete(){ return tv.handle_delete();};
 	void alphanumeric(int ch){ tv.alphanumeric(ch);};
 	void backspace()	{ tv.backspace();};

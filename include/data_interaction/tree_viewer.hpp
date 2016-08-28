@@ -73,6 +73,8 @@ public:
 
 	void home(){if(mne.is_editing()) mne.home();};
 	void end(){if(mne.is_editing()) mne.end();};
+	void pageup(){if(mne.is_editing()) mne.pageup();};
+	void pagedown(){if(mne.is_editing()) mne.pagedown();};
 	void backspace(){if(mne.is_editing()) mne.backspace();};
 	void alphanumeric(int ch);
 

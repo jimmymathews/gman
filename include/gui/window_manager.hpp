@@ -191,6 +191,8 @@ public:
 	void ctrl_r(){if(focal_text_window == &mt) mt.ctrl_r();};
 	void home(){if(focal_text_window == &mt) mt.home();};
 	void end(){if(focal_text_window == &mt) mt.end();};
+	void pageup(){if(focal_text_window == &mt) mt.pageup();};
+	void pagedown(){if(focal_text_window == &mt) mt.pagedown();};
 	void handle_delete()
 	{
 		if(focal_text_window == &cb)
