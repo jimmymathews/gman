@@ -337,29 +337,59 @@ public:
 
 		//nonnumerals
 		if(c==(138-97)+'a')
-			waddstr(win,"\u2090");	//a 
+			waddstr(win,"\u2090");
 		if(c==(138-97)+'e')
-			waddstr(win,"\u2091");	//e
-		if(c==(138-97)+'o')
-			waddstr(win,"\u2092");	//o
-		if(c==(138-97)+'x')
-			waddstr(win,"\u2093");	//x
+			waddstr(win,"\u2091");
 		if(c==(138-97)+'h')
-			waddstr(win,"\u2095");	//h
+			waddstr(win,"\u2095");
+		if(c==(138-97)+'i')
+			waddstr(win,"\u1D62");
+		if(c==(138-97)+'j')
+			waddstr(win,"\u2C7C");
 		if(c==(138-97)+'k')
-			waddstr(win,"\u2096");	//k
+			waddstr(win,"\u2096");
 		if(c==(138-97)+'l')
-			waddstr(win,"\u2097");	//l
+			waddstr(win,"\u2097");
 		if(c==(138-97)+'m')
-			waddstr(win,"\u2098");	//m
+			waddstr(win,"\u2098");
 		if(c==(138-97)+'n')
-			waddstr(win,"\u2099");	//n
+			waddstr(win,"\u2099");
 		if(c==(138-97)+'p')
-			waddstr(win,"\u209A");	//p
+			waddstr(win,"\u209A");
 		if(c==(138-97)+'s')
-			waddstr(win,"\u209B");	//s
+			waddstr(win,"\u209B");
 		if(c==(138-97)+'t')
-			waddstr(win,"\u209C");	//t
+			waddstr(win,"\u209C");
+		if(c==(138-97)+'u')
+			waddstr(win,"\u1D64");
+		if(c==(138-97)+'v')
+			waddstr(win,"\u1D65");
+		if(c==(138-97)+'x')
+			waddstr(win,"\u2093");
+		// if(c==(138-97)+'a')
+		// 	waddstr(win,"\u2090");	//a 
+		// if(c==(138-97)+'e')
+		// 	waddstr(win,"\u2091");	//e
+		// if(c==(138-97)+'o')
+		// 	waddstr(win,"\u2092");	//o
+		// if(c==(138-97)+'x')
+		// 	waddstr(win,"\u2093");	//x
+		// if(c==(138-97)+'h')
+		// 	waddstr(win,"\u2095");	//h
+		// if(c==(138-97)+'k')
+		// 	waddstr(win,"\u2096");	//k
+		// if(c==(138-97)+'l')
+		// 	waddstr(win,"\u2097");	//l
+		// if(c==(138-97)+'m')
+		// 	waddstr(win,"\u2098");	//m
+		// if(c==(138-97)+'n')
+		// 	waddstr(win,"\u2099");	//n
+		// if(c==(138-97)+'p')
+		// 	waddstr(win,"\u209A");	//p
+		// if(c==(138-97)+'s')
+		// 	waddstr(win,"\u209B");	//s
+		// if(c==(138-97)+'t')
+		// 	waddstr(win,"\u209C");	//t
 
 		if(193<=c && c<=250)
 		{

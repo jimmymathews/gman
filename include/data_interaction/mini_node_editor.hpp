@@ -435,7 +435,7 @@ public:
 				bout_to_subscript = false;
 				if( (ch>=48 && ch<=57))
 					char_cache = ch + (128-48);
-				if(ch=='a' || ch=='e' || ch=='o' || ch=='x' || ch=='h' ||ch =='k' || ch=='l'|| ch=='m'|| ch=='n'|| ch=='p'|| ch=='s'|| ch=='t')
+				if(ch=='a' || ch=='e' || ch=='h' || ch=='i' || ch=='j' ||ch =='k' || ch=='l'|| ch=='m'|| ch=='n'|| ch=='p'|| ch=='s'|| ch=='t'|| ch=='u'|| ch=='v' || ch =='x')
 					char_cache = ch + (138-97);
 				if(ch == 43)
 					char_cache = 27;	//+
