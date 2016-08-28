@@ -25,25 +25,27 @@ public:
 
 		n->get_node_type().turn_on_color(nw.window());
 
-		int number_of_lines_to_show = start/print_width + nw.height()/2;
-		if(number_of_lines_to_show < nw.height())
-			number_of_lines_to_show = min(whole_lines,nw.height()-1);
+		nw.print_fancy_editing_string(content,start,end,selecting);
 
-		if( whole_lines - (start/print_width) < nw.height()/2)
-			number_of_lines_to_show = whole_lines;
+		// int number_of_lines_to_show = start/print_width + nw.height()/2;
+		// if(number_of_lines_to_show < nw.height())
+		// 	number_of_lines_to_show = min(whole_lines,nw.height()-1);
+
+		// if( whole_lines - (start/print_width) < nw.height()/2)
+		// 	number_of_lines_to_show = whole_lines;
 
 		
 
-		scrollok(nw.window(), true);
-		for(int i=0; i < number_of_lines_to_show; i++)
-		{
-			nw.print_fancy_editing_string(content.substr(i*print_width,print_width), start, end, selecting);
-		}
+		// scrollok(nw.window(), true);
+		// for(int i=0; i < number_of_lines_to_show; i++)
+		// {
+		// 	nw.print_fancy_editing_string(content.substr(i*print_width,print_width), start, end, selecting);
+		// }
 
-		if(number_of_lines_to_show == whole_lines)
-		{
-			nw.print_fancy_editing_string(content.substr(number_of_lines_to_show*print_width, contents_size - number_of_lines_to_show*print_width), start, end, selecting);
-		}
+		// if(number_of_lines_to_show == whole_lines)
+		// {
+		// 	nw.print_fancy_editing_string(content.substr(number_of_lines_to_show*print_width, contents_size - number_of_lines_to_show*print_width), start, end, selecting);
+		// }
 
 		if(start == contents_size && !selecting)
 		{

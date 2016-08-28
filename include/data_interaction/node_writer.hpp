@@ -14,6 +14,10 @@ class node_writer
 	int position_counter = 0;
 	int offset = 0;
 	bool showing_relations = true;
+	int cursor_appearance_line = -1;
+	int scroll_counter = 0;
+	// bool listening_to_scroll = false;
+	// int scroll_threshold = 0;
 
 public:
 	node_writer() {tab_size = config_p::tab_size;};
@@ -173,10 +177,56 @@ public:
 
 	void print_fancy_editing_string(string s, int start, int end, bool selecting)
 	{
+		cursor_appearance_line = -1;
+		scroll_counter = 0;
 		for(int i=0; i<s.length(); i++)
 		{
 			int c = s.at(i);
 			print_fancy_editing_character(c, start, end, selecting);
+
+			if(cursor_appearance_line == -1)
+			{
+				bool reached_cursor = position_counter>start;
+				if(selecting)
+					reached_cursor = position_counter>end;
+				if(reached_cursor)
+				{
+					cursor_appearance_line = cursor_y();
+				}
+			}
+			else
+			{
+				if(cursor_x() == 0 && cursor_y() == h-1)
+					scroll_counter++;
+				if(scroll_counter > 0)
+				{
+					// if( (cursor_appearance_line < h/2)  )
+					if( (cursor_appearance_line < h/2) ||  (cursor_appearance_line - h/2 < scroll_counter) )
+					{
+						cursor_appearance_line = -1;
+						scroll_counter = 0;
+						return;
+					}
+				}
+				
+			}
+
+
+
+
+			// if(reached_cursor && cursor_y()==h-1)
+			// 	listening_to_scroll = true;
+
+
+			// if(listening_to_scroll && c=='\n')
+			// 	scroll_threshold++;
+			// if(scroll_threshold > h/2)
+			// {
+			// 	scroll_threshold = 0;
+			// 	listening_to_scroll = false;
+			// 	return;
+			// }
+
 			position_counter++;
 		}
 	};
