@@ -59,8 +59,13 @@ public:
 	{
 		if(!linking)
 		{
+			int width; int height;
+			getmaxyx(w,height,width);
+			string bit = status;
+			if(status.size() >= width)
+				bit = status.substr(status.size()-width, width);
 			werase(w);
-			mvwaddstr(w, 0, 0, status.c_str());
+			mvwaddstr(w, 0, 0, bit.c_str());
 			wrefresh(w);
 		}
 		else
@@ -128,47 +133,7 @@ public:
 	{
 		pushed_filename = current_file;
 		linking = false;
-		werase(w);
-		string addend = "save ";
-		string buffer = addend + cwd + "/g.graphml";
-		if(current_file != "")
-			buffer = addend + current_file;
-
-		set_status(buffer);
-
-		int width; int height;
-		getmaxyx(w,height,width);
-
-		int x = addend.length() + cwd.length() + 2;
-		if(current_file != "")
-			x = addend.length() + current_file.length() -8;
-		highlight_character(x);
-		int ch = wgetch(w);
-		while(ch!=10 && ch !=13)
-		{
-			if(ch==27)
-			{
-				set_status(current_file);
-				set_temporary_status("cancelled");
-				return "";
-			}
-			if(is_alphanumeric(ch) && buffer.size() < width)
-			{
-				string addend(1,ch);
-				buffer.insert(x,addend);
-				x++;
-			}
-			else
-			if(ch == 127 && x>5)	//backspace
-			{
-				buffer.erase(x-1, 1);
-				x--;
-			}
-			set_status(buffer);
-			highlight_character(x);
-			ch = wgetch(w);
-		}
-		current_file = buffer.substr(5, buffer.size() - 5);
+		current_file = obtain_file_name("save ", "/g", ".graphml");
 		set_status(current_file);
 		return current_file;
 	};
@@ -177,15 +142,26 @@ public:
 	{
 		pushed_filename = current_file;
 		linking = false;
+		current_file = obtain_file_name("open ", "/", ".graphml");
+		set_status(current_file);
+		return current_file;
+	};
+
+	string obtain_file_name(string addend, string def, string caboose)
+	{
 		werase(w);
-		string addend = "open ";
-		string buffer = addend + cwd + "/.graphml";
+		string buffer = addend + cwd + def + caboose;
+		if(current_file != "")
+			buffer = addend + current_file;
+
 		set_status(buffer);
 
 		int width; int height;
 		getmaxyx(w,height,width);
 
-		int x = addend.length() + cwd.length() + 1;
+		int x = addend.length() + cwd.length() + def.size();
+		if(current_file != "")
+			x = addend.length() + current_file.length() - caboose.size();
 		highlight_character(x);
 		int ch = wgetch(w);
 		while(ch!=10 && ch !=13)
@@ -196,14 +172,15 @@ public:
 				set_temporary_status("cancelled");
 				return "";
 			}
-			if(is_alphanumeric(ch) && buffer.size() < width)
+			// if(is_alphanumeric(ch) && buffer.size() < width)
+			if(is_alphanumeric(ch) )
 			{
 				string addend(1,ch);
 				buffer.insert(x,addend);
 				x++;
 			}
 			else
-			if(ch == 127 && x>addend.length())	//backspace
+			if(ch == 127 && x>addend.size())	//backspace
 			{
 				buffer.erase(x-1, 1);
 				x--;
@@ -212,18 +189,22 @@ public:
 			highlight_character(x);
 			ch = wgetch(w);
 		}
-		current_file = buffer.substr(addend.length(), buffer.size()-addend.length());
-		set_status(current_file);
-		return current_file;
+		return buffer.substr(addend.size(), buffer.size() - addend.size());
 	};
 
 	bool is_alphanumeric(int ch) { return (32 <= ch && ch <= 126); };
 
 	void highlight_character(int x)
 	{
+		int width; int height;
+		getmaxyx(w,height,width);
+		int y = x;
+		if(status.size() >= width)
+			y = x - (status.size() - width);
+
 		wattron(w, A_REVERSE);
-		char local_c = mvwinch(w, 0, x);
-		mvwaddch(w, 0, x, local_c);
+		char local_c = mvwinch(w, 0, y);
+		mvwaddch(w, 0, y, local_c);
 		wattroff(w, A_REVERSE);
 	};
 
