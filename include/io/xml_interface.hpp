@@ -1,10 +1,12 @@
 #ifndef XML_INTERFACE_HPP
 #define XML_INTERFACE_HPP
 
-#include "pugixml.hpp"
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+#include "pugixml.hpp"
+
 #include "data/data_structures.hpp"
 #include "data/database_manager.hpp"
 #include "data_interaction/node_iterators.hpp"

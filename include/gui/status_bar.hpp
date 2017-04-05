@@ -1,6 +1,8 @@
 #ifndef STATUS_BAR_HPP
 #define STATUS_BAR_HPP
 
+#include <boost/regex.hpp>
+
 #include "data/data_structures.hpp"
 #include "gui/text_window.hpp"
 #include <ncurses.h>
@@ -33,8 +35,15 @@ public:
 
 	void first_time_opened(string f)
 	{
-		status = cwd + "/" + f;
-		current_file = cwd + "/" + f;
+		string g=f;
+		boost::regex tex("\\.tex$");
+		if(boost::regex_search(g,tex))
+			g = boost::regex_replace(g,tex,".graphml");
+		
+		status = cwd + "/" + g;
+		if(g!="")
+			current_file = cwd + "/" + g;
+
 	};
 
 	void restore_current_filename()
