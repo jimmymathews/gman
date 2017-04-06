@@ -1,7 +1,7 @@
 Open from (1) tex file and (2) arxiv link or id (get source).
 
 Configurables
-  1. Number of keyword phrases, num_phrases. Configurable at runtime if desired (command line argument?).
+  1. Number of keyword phrases, num_phrases. (?Configurable at runtime if desired...command line argument?).
   2. Largest word number in keyword phrase, max_words_per_phrase.
   3. Minimum frequency min_freq[n] of phrase of word number n, for n=1,2,..,max_words_per_phrase.
   4. List of weights (summing to 1) for distribution of categories by degree of keyness.
