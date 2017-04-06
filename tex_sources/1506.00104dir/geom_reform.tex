@@ -1,0 +1,260 @@
+
+ 
+\section{Geometric reformulation: a $(2,3,5)$-distribution} 
+\subsection{First integral and reduction to the 5-manifold $\Q\subset \Rtt$}\label{TwoOne}
+Let $\Rtt:=\R^3\oplus\Rts$, equipped with the quadratic form $(\q,\p)\mapsto \p\q=p^iq_i$. 
+One can easily check that  $\p\q$ is  a first integral of equations \eqns\ (a
+conserved quantity). That is,  for each $c\in\R$, a solution to \eqns\ that starts on the   level surface $$Q_c=\{(\q,\p)|\p\q=c\}$$ remains on
+$Q_c$ for all times.  
+
+Furthermore,  the map
+$(\q,\p)\mapsto (\lambda \q, \lambda^2 \p)$, $\lambda\in\R$, maps
+solutions on $Q_c$ to solutions on $Q_{\lambda^3c}$, hence it is
+enough to study solutions of the system restricted to one of the 
+(non-zero) level surfaces, say $$\Q:=\{(\q,\p)|\p\q=1\},$$ a 5-dimensional 
+%
+affine quadric
+%
+of signature
+$ (3,3).$
+
+
+\begin{rmrk} An {\em affine 
+quadric}  is the non-zero  level set of a non-degenerate quadratic form on $\R^n$; its {\em signature}   is the signature of the defining quadratic form.
+\end{rmrk}
+
+\begin{rmrk}  We leave out the less interesting case of the zero level surface $Q_0$. 
+\end{rmrk}
+
+Now  restricted to $\Q$,  the equation $\p\q'=0$ is a consequence of $\p'=\q\times\q'$, hence we can replace equations \eqns\ with 
+the somewhat simpler system 
+\begin{equation}\label{eqnss}
+\p\q=1, \quad \p'=\q\times \q'.
+\end{equation}
+
+\subsection{A rank 2 distribution $\D$ on $\Q$}\label{TwoTwo}
+A geometric reformulation of  Eqns.~\eqref{eqnss} is the following: let us introduce the three 1-forms
+$$\omega_i:=dp_i-\epsilon_{ijk}q^jdq^k\in\Omega^1(\Q),\quad i=1,2,3,$$
+or in vector notation,
+$$\o=d\p-\q\times d\q\in\Omega^1(\Q)\otimes\Rts.$$
+%
+Then the kernel of the 1-form $\o$ (the common kernel of its 3 components)  
+defines  at each point $(\q,\p)\in \Q$ a 2-dimensional linear subspace  
+$\D_{(\q,\p)}\subset T_{(\q,\p)}\Q$. Put together, these subspaces define 
+a rank 2 distribution  $\D\subset T\Q$  (a field of tangent 2-planes on $\Q$),  
+so that the solutions to our system of Eqns.~\eqref{eqnss} are precisely the 
+{\em integral curves} of $\D$: the  parametrized curves $(\q(t) , \p(t) )$ 
+whose velocity vector at each moment $t$  belongs to $\D_{(\q(t) ,\p(t) )}$.
+
+\begin{proposition} The kernel of $\o=d\p-\q\times d\q$ defines on $\Q$ a rank 2 distribution $\D\subset T\Q$, whose integral curves are given by solutions to Eqns.~\eqref{eqnss}. 
+\end{proposition}
+\begin{proof} One checks easily that the 3 components of $\o$ are  linearly independent.
+\end{proof}
+
+\subsection{$\D$ is a $(2,3,5)$-distribution}  
+We recall first   some standard terminology  from the general theory of distributions.
+A distribution $\D$ on a manifold  is {\em integrable} if $[\D,\D]\subset\D$. It  is  {\em bracket generating} if one can obtain any tangent vector on the manifold by  successive Lie brackets of vector fields tangent to $\D$. Let $r_i=rank(\D^{(i)})$, where $\D^{(i)}:= [\D, \D^{(i-1)}]$  and $\D^{(1)}:=\D$. Then $(r_1, r_2, \ldots)$,  is the {\em growth
+ vector} of $\D$. In general, the growth vector of a distribution may vary from point to point of the manifold, although not in our case, since our distribution is homogeneous, as we  shall soon see.  A distribution with constant growth vector is {\em regular}.  It can be shown that for  a regular  bracket-generating rank 2 distribution on  a 5-manifold there are only two possible growth vectors: $(2,3,4,5)$ (called {\em Goursat distributions}) or $(2,3,5)$, which is the generic case  (see \cite{BrHs}). 
+
+\begin{definition} A {\em $(2,3,5)$-distribution} is  a bracket-generating  rank 2 distribution $\D$  on a 5-manifold $\Q$ with growth vector $(2,3,5)$ everywhere. That is, $\D^{(2)}=[\D,\D]$ is a rank 3 distribution, and 
+$\D^{(3)}=[\D,\D^{(2)}]=T\Q$. 
+\end{definition}
+
+
+\begin{proposition} \label{prop235} $\D=\Ker(\o)\subset T\Q$, defined by Eqns.~\eqref{eqnss} above,  is a  $(2,3,5)$-distribution. 
+\end{proposition}
+
+
+
+ This is a calculation done most  easily  using the symmetries of the equations, so is postponed to the next subsection.
+
+
+
+\subsection{$\SLth$-symmetry} \label{TwoFour}
+A {\em symmetry} of a distribution $\D$ on a manifold $\Q$  is a diffeomorphism of $\Q$
+ which preserves $\D$. An {\em infinitesimal symmetry} of $\D$  is a  vector field on $\Q$ whose flow preserves $\D$. 
+
+
+The use of the vector and scalar product on  $\R^3$ in Eqns.~\eqref{eqnss} may give the  impression that $\D$ depends on the euclidean structure on $\R^3$, so  $(\Q,\D)$ only admits $\SO(3)$ as  an obvious  group of symmetries (a 3-dimensional group). In fact, it is quite easy to see, as we will show now, that   $(\Q,\D)$   admits $\SLth$  as a symmetry group (8-dimensional). In the next section we will show the less obvious fact that  the symmetry {\em algebra} of $(\Q,\D)$ is $\g_2$ (14-dimensional). 
+
+
+
+Fix a volume form on $\R^3$, say $$vol:=dq^1\wedge dq^2\wedge dq^3,$$ and define the associated  covector-valued ``cross-product'' $\R^3\times \R^3\to\Rts$ by 
+$$\bv\times \w:=vol(\bv,\w,\cdot),$$
+or in coordinates, 
+$$(\bv\times \w)_i=\epsilon_{ijk}v^jw^k, \quad i=1,2,3.$$ 
+
+
+
+
+
+
+
+
+
+
+
+Let $\SLth$ be the group of $3\times 3$ matrices with real entries and determinant 1, acting on  $\Rtt$ by 
+\be\label{action}
+g\cdot (\q,\p)=(g\q,\p g^{-1})
+\ee
+ (recall that $\q$ is  a column vector and $\p$ is a row vector). Clearly, this $\SLth$-action leaves the quadratic form $\p\q$ invariant and thus leaves invariant also the quadric $\Q\subset\Rtt$.
+
+Let $e_1,e_2,e_3$ (columns) be the standard basis of $\R^3$ and $e^1, e^2, e^3$ (rows) the dual basis of $\Rts$. 
+
+
+\begin{proposition} \label{prop:sym} 
+ {\em (a)} $\SLth$ acts on $\Q$ transitively and effectively. The stabilizer of $(e_3, e^3)$ is the subgroup 
+$$H_0=\left\{\left(\begin{array}{c|c}
+A&\begin{matrix} 0\\ 0\end{matrix}\\
+\hline
+\begin{matrix}0& 0\end{matrix}&1
+\end{array}
+\right)\st  A\in\SLt\right\}.$$
+
+
+\mn {\em (b)} $\SLth$ acts on $\Q$ by symmetries of  $\D$. 
+\end{proposition}
+
+\begin{proof}
+ Part (a) is an easy calculation (omitted). For part (b), note that $\SLth$ leaves $vol$ invariant, hence the vector product $\R^3\times \R^3\to\Rts$ is $\SLth$-equivariant: $(g\bv)\times (g\w)=(\bv\times\w)g^{-1}.$ It follows that $\o=d\p-\q\times d\q$ is also $\SLth$-equivariant, $g^*\o=\o g^{-1}$, hence $\D=\Ker(\o)$ is $\SLth$-invariant.\end{proof}
+
+\begin{proof}[Proof of Prop.~\ref{prop235}] Let $\h_0\subset\sl(3,\R)$ 
+be the  Lie algebra of the stabilizer  at $(e_3, e^3)\in \Q$. Pick two 
+elements $Y_1, Y_2\in\sl(3,\R)$ whose infinitesimal action at $(e_3, e^3)$ generates $\D$.  Then we need to show that 
+$$Y_1, Y_2, [Y_1,Y_2],[Y_1,[Y_1,Y_2]],  [Y_2, [Y_1,Y_2]]$$ span $\sl(3,\R)$ mod $\h_0$ (this will show that $\D$ is $(2,3,5)$ at $(e_3,e^3) $, so by homogeneity everywhere.)
+%
+Now $\h_0$ consists of matrices of the form 
+%
+$$
+\left(\begin{array}{c|c}
+A&\begin{matrix} 0\\ 0\end{matrix}\\
+\hline
+\begin{matrix}0& 0\end{matrix}&0
+\end{array}
+\right),\quad A\in\slt.
+$$
+%
+Furthermore, $Y\in\sl(3,\R)$ satisfies $Y\cdot(e_3, e^3)\in\D$ if and only if 
+$$Y=\left(\begin{array}{cc}A&\bv\\ \bv^*& 0\end{array}\right),\quad \bv={v_1\choose v_2}, \quad \bv^*=(v_2, -v_1),  \quad A\in\slt.$$ 
+We can thus take 
+%
+$$ 
+Y_1=\footnotesize{ 
+\left( 
+\begin{array}{rrr}
+0&0&1\\ 
+0&0&0\\ 
+0&-1&0
+\end{array} 
+\right), \quad
+Y_2=\left( 
+\begin{array}{rrr}
+0&0&0\\ 
+0&0&1\\ 
+1&0&0
+\end{array}
+\right)},$$
+then $[Y_1, Y_2]=Y_3,$ $[Y_1,Y_3]=Y_4$ and $[Y_2,Y_3]=Y_5,$ where 
+%
+$$ 
+Y_3=\footnotesize{ 
+\left( 
+\begin{array}{rrr}
+1&0&0\\ 
+0&1&0\\ 
+0&0&-2
+\end{array}   
+\right),  \quad
+%
+Y_4=
+\left( 
+\begin{array}{rrr}
+0&0&-3\\ 
+0&0&0\\ 
+0&-3&0
+\end{array}  
+\right), \quad
+Y_5=
+\left( 
+\begin{array}{rrr}
+0&0&0\\ 
+0&0&-3\\ 
+3&0&0
+\end{array} 
+\right),}
+$$
+which together with $Y_1, Y_2$ span $\slth/\h_0\simeq T_{(e_3, e^3)}\Q$.
+\end{proof}
+
+
+
+%\begin{rmrk} There is a  ``proof without words" of the last proposition, using only the picture of the root diagram of $\slth$. See for example \cite{BM}. 
+%\end{rmrk}
+
+%\begin{figure}[h]\centering
+%\includegraphics[width=0.4\textwidth]{g2}
+%\caption{Proof of Prop.~\ref{prop235} via the  root diagram of $\g_2$.}
+%\end{figure}
+
+\subsection{$\g_2$-symmetry via Cartan's submaximality} \label{three_five}Here we show that the symmetry {\em algebra} of our distribution $(\Q,\D)$, given by Eqns.~\eqref{eqnss}, is isomorphic to  $\g_2$, a 14-dimensional simple Lie algebra, the maximum possible for a $(2,3,5)$-distribution. We show this  as an immediate consequence of  a general theorem of Cartan (1910) on $(2,3,5)$-distributions. In the next section this ``hidden symmetry'' is explained and written down explicitly by defining an  embedding  of $(\Q,\D)$ in the standard $\G$-homogeneous model $(\tQ, \tD)$ using split-octonions. 
+
+
+
+\begin{rmrk} Of course, there is a third way, by ``brute force'', using computer algebra. We do not find it too illuminating but it does produce quickly  a  list of 14 vector fields on $\Rtt$, generating the infinitesimal $\g_2$-action, as given in Cor.~\ref{cor1}  or Cor~.\ref{cor3}  below. 
+\end{rmrk}
+
+
+
+
+In a well-known paper of 1910 (the ``5-variable paper"), Cartan proved
+the following.
+
+
+\begin{theorem}[Cartan,  \cite{C_5var}] 
+
+\sn
+
+ 
+
+\begin{enumerate}
+\item The symmetry algebra of a $(2,3,5)$-distribution on a connected 5-manifold has dimension at most 14, in which case it is isomorphic to the real split-form of
+the simple Lie algebra of type $\g_2$.
+\item  All $(2,3,5)$-distributions with 14-dimensional symmetry algebra are
+locally diffeomorphic. 
+\item If the  symmetry algebra of a $(2,3,5)$-distribution 
+has dimension $<14$ then it has  dimension at most 7.
+\end{enumerate}
+\end{theorem}
+%
+The last statement is sometimes referred to as Cartan's
+``submaximality" result for $(2,3,5)$-distribution. A $(2,3,5)$-distribution with the maximal symmetry algebra $\g_2$ is called {\em flat}. 
+
+
+
+
+ 
+
+
+Using Prop.~\ref{prop:sym} and the fact
+that $\SLth$ is $8$-dimensional we immediately conclude from Cartan's submaximality result for $(2,3,5)$-distributions  
+
+\begin{theorem} \label{sym}
+The symmetry algebra of the $(2,3,5)$-distribution defined by Eqns.~\eqref{eqnss}   is 14-dimensional,
+isomorphic to the Lie algebra $\g_2$, containing the Lie  subalgebra isomorphic $\slth$ generated by the linear $\SLth$-action given by equation (\ref{action}). 
+\end{theorem}
+
+
+
+\begin{rmrk} In fact, Cartan \cite{C1} and Engel \cite{Eng} {\em defined} in 1893 the Lie algebra
+$\g_2$ as the symmetry algebra of a certain 
+$(2,3,5)$-distribution on an open set in $\R^5$, using formulas similar to our Eqns.~\eqref{eqnss}.
+For example, Engel considers in \cite{Eng} the $(2,3,5)$-distribution obtained by restricting $ d\p-\q\times d\q$   to the linear subspace in $\Rtt$ given by $q_3=p^3$. 
+\end{rmrk}
+
+
+
+
+
+
+

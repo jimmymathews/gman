@@ -1,0 +1,398 @@
+
+%\usepackage{tikz-cd, amscd}
+
+
+%\usepackage{amscd}
+
+%\usepackage{hyperref} % this doesnt work, dont know why
+
+\usepackage{amsmath} 
+
+\theoremstyle{plain}% default
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}%[section]
+\newtheorem{cor}[theorem]{Corollary}%[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}%[section]
+\newtheorem*{example}{Example}
+
+\theoremstyle{remark}
+\newtheorem*{rmrk}{Remark}
+
+
+
+\usepackage[all]{xy}
+
+
+\usepackage{enumitem}
+
+\usepackage{float}
+\usepackage{etoolbox}
+\patchcmd{\subsection}{\bfseries}{\bf}{}{}
+\patchcmd{\subsection}{-.5em}{.5em}{}{}
+
+\patchcmd{\subsubsection}{\bfseries}{\bf}{}{}
+%\patchcmd{\subsubsection}{-.5em}{.1em}{}{}
+
+
+%\usepackage[spanish,activeacute]{babel} %\usepackage[utf8]{inputenc}
+\usepackage{graphicx} %\renewcommand{\familydefault}{ppl}
+%\textwidth=465pt\textheight=600pt\oddsidemargin=0pt\evensidemargin=0pt\topmargin=10pt\headheight=0pt\headsep=30pt
+\newcommand{\iso}{\stackrel{\sim}{\to}}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cC}{\mathcal C}
+%
+\newcommand{\cW}{\mathcal W}
+\newcommand{\BOM}{\mathbf{\Omega}}
+\newcommand{\BLA}{\mathbf{\Lambda}}
+
+\newcommand{\tH}{\widetilde{H}}
+
+\newcommand{\Span}{\mathrm{Span}}
+
+\newcommand{\ed}{x}
+\newcommand{\II}{\mathrm I}
+
+\newcommand{\lc}{locally convex}
+
+
+\newcommand{\eqns}{(\ref{eqns})}
+
+\newcommand{\eqnsss}{(\ref{eqnsss})}
+
+\newcommand{\Q}{Q^5}
+\newcommand{\M}{M^4}
+\newcommand{\N}{N^5}
+\newcommand{\zm}{\ast}
+
+\newcommand{\eto}{\xrightarrow{\sim}}
+
+%{\overset{.|\sim}{\to}}
+
+
+\newcommand{\tG}{\tilde \Gamma}
+\newcommand{\PC}{\mathcal{PC}}
+
+
+%\usepackage{amsthm} 
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition} 
+%\newtheorem{cor}{Corollary} 
+\renewcommand{\>}{\rangle}
+\newcommand{\<}{\langle} 
+\newcommand{\w}{{\mathbf w}}
+\newcommand{\bv}{{\mathbf v}} 
+\newcommand{\m}{\zeta}
+\newcommand{\x}{{\mathbf x}}
+\newcommand{\y}{{\mathbf y}}
+\newcommand{\tO}{\widetilde{\mathbb O}}
+\newcommand{\Om}{{\Omega}}
+\newcommand{\X}{\times}
+\newcommand{\G}{{\rm G}_2}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\Der}{{\rm Der}}
+%\newcommand{\rk}{\n{\em Remark. }}
+%\newcommand{\rks}{{\em Remarks. }}
+\newcommand{\fip}{\phi^\prime} 
+\newcommand{\tr}{\mbox{tr}}
+\newcommand{\alt}{\mbox{alt}} \newcommand{\interior}{\mbox{int}}
+\renewcommand{\u}{{\bf u}} 
+\newcommand{\g}{{\mathfrak{g}}}
+\newcommand{\gl}{{\mathfrak{gl}}}
+\renewcommand{\sp}{{\mathfrak{sp}}} 
+\renewcommand{\a}{{\bf a}}
+\renewcommand{\b}{{\bf b}}
+%\renewcommand{\c}{{\bf c}}
+\newcommand{\bfc}{{\bf c}}
+
+
+
+\renewcommand{\d}{{\bf d}}
+\renewcommand{\o}{ \boldsymbol{\omega}}
+\renewcommand{\O}{ \boldsymbol{\Omega}}
+%\renewcommand{\i}{{\iota}} \renewcommand{\L}{{\Lambda}}
+\renewcommand{\P}{\mathbb{P}} 
+
+\newcommand{\PT}{\P^2}
+\newcommand{\pf}{{\n\em Proof. }}
+\newcommand{\eq}{(\ref{main_eqns1}) }
+\newcommand{\eqq }{(\ref{main_eqns2}) }
+
+\newcommand{\tQ}{\overline{Q}^5}
+\newcommand{\tC}{\widetilde{C}}
+\renewcommand{\Im}{{\rm Im}}
+\renewcommand{\Re}{{\rm Re}}
+\newcommand{\uh}{ad(\u)}
+\newcommand{\vh}{ad(\v)}
+ \newcommand{\wnab}{\widetilde\nabla}
+ \newcommand{\rh}{\rho_h}
+ 
+
+ \newcommand{\Ah}{\widehat{A}}
+\newcommand{\ah}{\widehat{a}}
+\newcommand{\Bh}{\widehat{B}}
+\newcommand{\bh}{\widehat{b}}
+
+ \newcommand{\CC}{\mathcal{C}}
+ 
+\newcommand{\RP}{\R\P}
+\newcommand{\RPt}{\RP^2}
+\newcommand{\RPts}{\RP^{2*}}
+\newcommand{\Rts}{(\R^3)^*}
+\newcommand{\Rt}{\R^3}
+
+
+\newcommand{\ent}{\Longrightarrow}
+\newcommand{\st}{\, | \,}
+
+\newcommand{\PTS}{{\PT}^*} 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rtt}{\R^{3,3}} 
+
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\T}{\mathbb{T}}
+\renewcommand{\H}{\mathbb{H}}
+
+
+\newcommand{\E}{{\mathbb E}} 
+\renewcommand{\S}{{\mathbb S}}
+\newcommand{\K}{{\mathbb K}} 
+\renewcommand{\qed}{\hfill\mbox{$\Box$}}
+
+\newcommand{\D}{{\mathcal D}} 
+\newcommand{\tD}{\overline{\mathcal D}} 
+\newcommand{\SL}{\mathrm{SL}}
+
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\GLt}{\GL_2(\R)}
+\newcommand{\SLt}{{\SL_2(\R)}} 
+\newcommand{\SLth}{{\SL_3(\R)}} 
+\newcommand{\SO}{\mathrm{SO}}
+
+\newcommand{\slt}{\mathfrak{sl}_2(\R)} 
+\newcommand{\slth}{\mathfrak{sl}_3(\R)} 
+\renewcommand{\sl}{\mathfrak{sl}} 
+
+\newcommand{\glt}{\mathfrak{gl}_2(\R)} 
+\newcommand{\glf}{\mathfrak{gl}_4(\R)}
+\newcommand{\h}{{\mathfrak h}} 
+\newcommand{\I}{{\mathbb I^3}}
+\newcommand{\prop}{\mn{\bf Proposition. }}
+
+
+\newcommand{\spk}{\mathfrak{sp}_k} \newcommand{\spo}{\mathfrak{sp}_1} 
+\newcommand{\so}{\mathfrak{so}} \newcommand{\tensor}{\otimes}
+\newcommand{\End}{{\rm End}} 
+\newcommand{\Ker}{{\rm Ker}}
+\newcommand{\Ad}{{\rm Ad}} 
+\renewcommand{\mod}{\hbox{mod }}
+\newcommand{\marco}[1]{\framebox{$\displaystyle #1 $}}
+
+\newcommand{\n}{\noindent} 
+\newcommand{\bs}{\bigskip}
+\newcommand{\ms}{\medskip} 
+\newcommand{\sn}{\smallskip\n} 
+
+\newcommand{\mn}{\medskip\noindent}
+\newcommand{\bn}{\bs\n} 
+\newcommand{\bnbf}{\bs\n\bf}
+
+\newcommand{\ITEM}{\mn\item } 
+\newcommand{\p}{{\mathbf p} }
+\newcommand{\ph}{{\widehat \p} } 
+\newcommand{\tj}{{\tilde j} } 
+\newcommand{\q}{\mathbf q } 
+\newcommand{\qh}{{\widehat \q} } 
+\newcommand{\qb}{{\overline \q} } 
+%%%%%%%%%%%%%%%%%%
+\usepackage{etoolbox}
+\makeatletter
+\let\old@tocline\@tocline
+\let\section@tocline\@tocline
+% Insert a dotted ToC-line for \subsection and \subsubsection only
+\newcommand{\subsection@dotsep}{4.5}
+\newcommand{\subsubsection@dotsep}{4.5}
+\patchcmd{\@tocline}
+  {\hfil}
+  {\nobreak
+     \leaders\hbox{$\m@th
+        \mkern \subsection@dotsep mu\hbox{.}\mkern \subsection@dotsep mu$}\hfill
+     \nobreak}{}{}
+\let\subsection@tocline\@tocline
+\let\@tocline\old@tocline
+
+\patchcmd{\@tocline}
+  {\hfil}
+  {\nobreak
+     \leaders\hbox{$\m@th
+        \mkern \subsubsection@dotsep mu\hbox{.}\mkern \subsubsection@dotsep mu$}\hfill
+     \nobreak}{}{}
+\let\subsubsection@tocline\@tocline
+\let\@tocline\old@tocline
+
+\let\old@l@subsection\l@subsection
+\let\old@l@subsubsection\l@subsubsection
+
+\def\@tocwriteb#1#2#3{%
+  \begingroup
+    \@xp\def\csname #2@tocline\endcsname##1##2##3##4##5##6{%
+      \ifnum##1>\c@tocdepth
+      \else \sbox\z@{##5\let\indentlabel\@tochangmeasure##6}\fi}%
+    \csname l@#2\endcsname{#1{\csname#2name\endcsname}{\@secnumber}{}}%
+  \endgroup
+  \addcontentsline{toc}{#2}%
+    {\protect#1{\csname#2name\endcsname}{\@secnumber}{#3}}}%
+
+% Handle section-specific indentation and number width of ToC-related entries
+\newlength{\@tocsectionindent}
+\newlength{\@tocsubsectionindent}
+\newlength{\@tocsubsubsectionindent}
+\newlength{\@tocsectionnumwidth}
+\newlength{\@tocsubsectionnumwidth}
+\newlength{\@tocsubsubsectionnumwidth}
+\newcommand{\settocsectionnumwidth}[1]{\setlength{\@tocsectionnumwidth}{#1}}
+\newcommand{\settocsubsectionnumwidth}[1]{\setlength{\@tocsubsectionnumwidth}{#1}}
+\newcommand{\settocsubsubsectionnumwidth}[1]{\setlength{\@tocsubsubsectionnumwidth}{#1}}
+\newcommand{\settocsectionindent}[1]{\setlength{\@tocsectionindent}{#1}}
+\newcommand{\settocsubsectionindent}[1]{\setlength{\@tocsubsectionindent}{#1}}
+\newcommand{\settocsubsubsectionindent}[1]{\setlength{\@tocsubsubsectionindent}{#1}}
+
+% Handle section-specific formatting and vertical skip of ToC-related entries
+% \@tocline{<level>}{<vspace>}{<indent>}{<numberwidth>}{<extra>}{<text>}{<pagenum>}
+\renewcommand{\l@section}{\section@tocline{1}{\@tocsectionvskip}{\@tocsectionindent}{}{\@tocsectionformat}}%
+\renewcommand{\l@subsection}{\subsection@tocline{1}{\@tocsubsectionvskip}{\@tocsubsectionindent}{}{\@tocsubsectionformat}}%
+\renewcommand{\l@subsubsection}{\subsubsection@tocline{1}{\@tocsubsubsectionvskip}{\@tocsubsubsectionindent}{}{\@tocsubsubsectionformat}}%
+\newcommand{\@tocsectionformat}{}
+\newcommand{\@tocsubsectionformat}{}
+\newcommand{\@tocsubsubsectionformat}{}
+\expandafter\def\csname toc@1format\endcsname{\@tocsectionformat}
+\expandafter\def\csname toc@2format\endcsname{\@tocsubsectionformat}
+\expandafter\def\csname toc@3format\endcsname{\@tocsubsubsectionformat}
+\newcommand{\settocsectionformat}[1]{\renewcommand{\@tocsectionformat}{#1}}
+\newcommand{\settocsubsectionformat}[1]{\renewcommand{\@tocsubsectionformat}{#1}}
+\newcommand{\settocsubsubsectionformat}[1]{\renewcommand{\@tocsubsubsectionformat}{#1}}
+\newlength{\@tocsectionvskip}
+\newcommand{\settocsectionvskip}[1]{\setlength{\@tocsectionvskip}{#1}}
+\newlength{\@tocsubsectionvskip}
+\newcommand{\settocsubsectionvskip}[1]{\setlength{\@tocsubsectionvskip}{#1}}
+\newlength{\@tocsubsubsectionvskip}
+\newcommand{\settocsubsubsectionvskip}[1]{\setlength{\@tocsubsubsectionvskip}{#1}}
+
+% Adjust section-specific ToC-related macros to have a fixed-width numbering framework
+\patchcmd{\tocsection}{\indentlabel}{\makebox[\@tocsectionnumwidth][l]}{}{}
+\patchcmd{\tocsubsection}{\indentlabel}{\makebox[\@tocsubsectionnumwidth][l]}{}{}
+\patchcmd{\tocsubsubsection}{\indentlabel}{\makebox[\@tocsubsubsectionnumwidth][l]}{}{}
+
+% Allow for section-specific page numbering format of ToC-related entries
+\newcommand{\@sectypepnumformat}{}
+\renewcommand{\contentsline}[1]{%
+  \expandafter\let\expandafter\@sectypepnumformat\csname @toc#1pnumformat\endcsname%
+  \csname l@#1\endcsname}
+\newcommand{\@tocsectionpnumformat}{}
+\newcommand{\@tocsubsectionpnumformat}{}
+\newcommand{\@tocsubsubsectionpnumformat}{}
+\newcommand{\setsectionpnumformat}[1]{\renewcommand{\@tocsectionpnumformat}{#1}}
+\newcommand{\setsubsectionpnumformat}[1]{\renewcommand{\@tocsubsectionpnumformat}{#1}}
+\newcommand{\setsubsubsectionpnumformat}[1]{\renewcommand{\@tocsubsubsectionpnumformat}{#1}}
+\renewcommand{\@tocpagenum}[1]{%
+  \hfill {\mdseries\@sectypepnumformat #1}}
+
+% Small correction to Appendix, since it's still a \section which should be handled differently
+\let\oldappendix\appendix
+\renewcommand{\appendix}{%
+  \leavevmode\oldappendix%
+  \addtocontents{toc}{%
+    \protect\settowidth{\protect\@tocsectionnumwidth}{\protect\@tocsectionformat\sectionname\space}%
+    \protect\addtolength{\protect\@tocsectionnumwidth}{2em}}%
+}
+\makeatother
+
+% #1 (default is as required)
+
+% #2
+
+% #3
+\makeatletter
+\settocsectionnumwidth{2em}
+\settocsubsectionnumwidth{2.5em}
+\settocsubsubsectionnumwidth{3em}
+\settocsectionindent{1pc}%
+\settocsubsectionindent{\dimexpr\@tocsectionindent+\@tocsectionnumwidth}%
+\settocsubsubsectionindent{\dimexpr\@tocsubsectionindent+\@tocsubsectionnumwidth}%
+\makeatother
+
+% #4 & #5
+\settocsectionvskip{10pt}
+\settocsubsectionvskip{0pt}
+\settocsubsubsectionvskip{0pt}
+
+% #6 & #7
+% See #3
+
+% #8
+\renewcommand{\contentsnamefont}{\bfseries\Large}
+
+% #9
+\settocsectionformat{\bfseries}
+\settocsubsectionformat{\mdseries}
+\settocsubsubsectionformat{\mdseries}
+\setsectionpnumformat{\bfseries}
+\setsubsectionpnumformat{\mdseries}
+\setsubsubsectionpnumformat{\mdseries}
+
+% #10
+% Insert the following command inside your text where you want the ToC to have a page break
+\newcommand{\tocpagebreak}{\leavevmode\addtocontents{toc}{\protect\clearpage}}
+
+% #11
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{%
+  \vspace*{-\linespacing}% Default gap to top of CONTENTS is \linespacing.
+  \oldtableofcontents}
+
+\setcounter{tocdepth}{3}
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+
+\newcommand{\mm}{\mathfrak m}
+\newcommand{\wH}{\widehat H}
+\newcommand{\wG}{\widehat G}
+\newcommand{\wtheta}{\widehat\theta}
+\newcommand{\wPhi}{\theta}
+\newcommand{\wh}{\widehat\h}
+\newcommand{\weta}{\hat\eta}
+
+\newcommand{\om}[2]{\omega^{#1}_{\;#2}}
+\newcommand{\Ph}[2]{\Phi^{#1}_{\;#2}}
+
+\newcommand{\tth}[2]{\theta^{#1}_{\;#2}}
+\newcommand{\vph}[2]{\varphi^{#1}_{\;#2}}
+
+
+\newcommand{\V}{\mathcal V}
+\newcommand{\etau}{\eta^\bullet}
+\newcommand{\etad}{\eta_\bullet}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\hh}{\widehat h}
+\newcommand{\mrI}{\mathrm I}
+\newcommand{\stars}{\ms\centerline{$* \qquad * \qquad *$ }}
+\newcommand{\met}{ \mathbf{ g}}
+
+\newcommand{\da}{\downarrow}
+\newcommand{\lda}{\Bigg\downarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\wB}{\widehat B}
+
+\newcommand{\wF}{\widehat F}
+
+

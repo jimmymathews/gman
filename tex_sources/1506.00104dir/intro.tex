@@ -1,0 +1,216 @@
+%\documentclass[amsfonts]{amsart}\input{preamble}\begin{document}
+
+%\newcommand{\eqns1}{(\ref{eqns1})}
+%\newcommand{\eqns2}{(\ref{eqns2})}
+
+
+
+
+
+
+
+\section{Introduction} Let us consider the following system of 4
+ordinary differential equations for 6 unknown functions $p_1,
+p_2,p_3,$ $q^1,q^2,q^3$ of the variable $t$ 
+$$ p_i
+{dq^i\over dt}=0, \quad {dp_i\over dt}=\epsilon_{ijk}q^j{dq^k\over
+dt},\quad i=1,2,3$$
+ (we are using the summation
+convention for repeated indices and the  symbol $\epsilon_{ijk}$, equal to $1$ for an even
+permutation $ijk$ of $123$, -1 for an odd permutation, and 0
+otherwise.)
+
+
+
+It is convenient to recast these equations in  vector form by
+introducing the notation
+ $$\q=\left(\begin{matrix}q^1\\ q^2\\ q^3\end{matrix}\right)\in\R^3,\quad
+\p=(p_1, p_2, p_3)\in\Rts.$$
+Then, using the standard scalar and cross product
+of vector calculus (and omitting the dot product symbol), the above
+system can be written more compactly as
+\begin{equation}\label{eqns} 
+\p\q'=0, \quad \p'=\q\times \q'.
+\end{equation}
+
+
+
+
+This simple-looking  system of 4 ordinary differential equations for 6 unknown functions  enjoys a number of remarkable  properties and
+interpretations, linking together old and new subjects, some of which we are going to explore in this article. The main themes  are 
+\begin{itemize}
+\item  generic  rank 2 distributions on 5-manifolds and their symmetries;
+%\item  the geometry of split-octonions,
+\item  4-dimensional pseudo-riemannian conformal geometry of split-signature;
+
+\item  projective differential  geometry of plane curves. \end{itemize}
+The relation between the first theme   and last  two is the main thrust  of this article. 
+
+
+\subsection{Summary of main results}
+
+
+\subsubsection{A $(2,3,5)$-distribution  and its symmetries}\label{nonint}
+Geometrically,  Eqns.~ \eqns\ define at each point  $(\q,\p)\in\R^6$ (away from some ``small" subset)  a $2$-dimensional subspace $\D_{(\q,\p)}\subset T_{(\q,\p)}\R^6$. Put together, these subspaces define (generically) a rank 2 distribution  $\D\subset T\R^6$, a field of tangent 2-planes,  so that the solutions to our system of equations are precisely the {\em integral curves} of $\D$: the  parametrized curves $(\q(t), \p(t))$ whose velocity vector $(\q'(t), \p'(t))$   lies in  $\D_{(\q(t),\p(t))}$ at each moment $t$.
+ 
+ Furthermore,  we see readily from  Eqns.~\eqref{eqns} that the function $\p\q=p^iq_i:\R^6\to\R$
+  is a ``conserved quantity" (constant along solutions), so $\D$
+   is  tangent everywhere to the level surfaces of $\p\q$. 
+   By a simple rescaling argument (Sect.\,\ref{TwoTwo}),  
+   it suffices to consider one of its non-zero  level surfaces,  
+   say  $\Q:=\{\p\q=1\}$.  Restricted to $\Q$, the equation 
+   $\p\q'=0$ is a consequence of $\p'=\q\times\q',$ 
+   hence our system of Eqns.~\eqns\ reduces to  
+\begin{equation}\label{eqnsss}
+\p\q=1, \quad \p'=\q\times\q'.
+\end{equation}
+
+
+The system $(\Q,\D)$ given by Eqns.~\eqref{eqnsss} does not have any more conserved quantities, since  $\D$ {\em bracket-generates} $TQ$,  in two steps: $\D^{(2)}=[\D,\D]$ is a rank 3 distribution and $\D^{(3)}=[\D, \D^{(2)}]=T\Q.$ Such a distribution is called  $(2,3,5)$-distribution. 
+
+The study of  $(2,3,5)$-distributions  has a rich and fascinating history. Their local geometry was studied by \'Elie Cartan in his   celebrated ``5-variable paper" of 1910 \cite{C_5var}, where  he showed that the symmetry algebra of such a distribution (vector fields  whose flow preserves $\D$) is at most 14-dimensional. The most symmetric case  is realized, locally  uniquely, on a certain compact homogeneous 5-manifold $\tQ$ for the 14-dimensional simple exceptional non-compact Lie group $\G$ (Sect.\,\ref{Three}) equipped with a $\G$-invariant $(2,3,5)$-distribution $\tD$. This maximally-symmetric $(2,3,5)$-distribution $\tD$  is called the Cartan-Engel distribution, and was in fact  used  by \'E.~Cartan and F.~Engel  in 1893 \cite{C1, Eng} to  {\em define} $\g_2$ as the automorphism algebra of this distribution (the modern definition of  $\G$ as the automorphism group of  the octonions did not appear until 1908 \cite{Ca3}). 
+
+Using \'E. Cartan's theory of $(2,3,5)$ distributions -- in particular, his {\em submaximality} result  -- we show (Thm.~\ref{sym}) that our distribution $(\Q,\D)$, as given by Eqns.~\eqnsss, is maximally-symmetric, i.e. admits a 14-dimensional symmetry algebra isomorphic to $\g_2$, and hence is {\em locally} diffeomorphic to the  Cartan-Engel distribution $(\tQ, \tD)$. Eqns.~\eqnsss\ thus provide an explicit model, apparently new,  for the Cartan-Engel distribution.
+
+\begin{theorem} The system $(\Q,\D)$ given by  equations \eqnsss\ is  a $(2,3,5)$-distribution  with a 14-dimensional symmetry algebra, isomorphic to $\g_2$, the maximum possible for a $(2,3,5)$-distribution,  and is thus locally diffeomorphic to the Cartan-Engel $\G$-homogeneous distribution $(\tQ, \tD)$.
+\end{theorem}
+
+ Most of the symmetries of Eqns.~\eqref{eqns} implied by  this theorem are not obvious at all (``hidden"). There is however an 8-dimensional subalgebra  $\slth\subset \g_2$  of  ``obvious" symmetries, generated by 
+$$(\q,\p)\mapsto (g\q, \p g^{-1}), \quad g \in \SLth$$
+ (the cross-product  in  Eqns.~\eqnsss\ can be defined via  the standard volume form on $\R^3$,
+hence the occurrence of $\SLth$; see Sect.~\ref{TwoFour}). The group $\SLth$ then acts transitively and effectively on $\Q$, preserving $\D$, and will be our main tool for studying the system \eqns. 
+
+To explain the  appearance of  $\g_2$ as the symmetry algebra of $(\Q,\D)$ 
+we construct in Sect.~\ref{Three} an embedding of $(\Q,\D)$  in the  ``standard model'' $(\tQ, \tD)$ of  the Cartan-Engel distribution, defined in terms of the split-octonions $\tO$. Using Zorn's ``vector matrices" to represent split-octonions (usually it is done with pairs of ``split-quaternions") we get explicit formulas for the symmetry algebra of Eqns.~\eqns.    
+
+\begin{theorem} There is an embedding $\SLth\hookrightarrow \G=\Aut(\tO)$ and an $\SLth$-equivariant 
+   embedding  $\R^6\hookrightarrow \RP^6=\P(\Im(\tO))$ (an affine chart), identifying  $\Q$  with  
+   the open dense orbit  of $\SLth$ in $\tQ$ and mapping $\D$ over to $\tD$. 
+   The $\G$-action on $\tQ$ defines a Lie subalgebra of vector fields on $\Q$ isomorphic to $\g_2$ (a 14-dimensional simple Lie algebra), forming the symmetry algebra of $(\Q, \D)$. 
+\end{theorem}
+
+ 
+\begin{cor}\label{cor1}For  each  $A=(a^i_j)\in\slth$, $\b=(b^i)\in \R^3$ and $\bfc=(c_i) \in \Rts$  the vector field   on $\R^6$ 
+\begin{eqnarray*}
+X_{A,\b, \bfc}&=&[ 2b^i + a^i_jq^j + \epsilon_{ijk}p^j c^k -(p_jb^j+ c_j q^j)q^i]\partial_{q^i} 
+\\ &&
+\qquad+[2c_i-a_i^jp_j  + \epsilon^{ijk}q_j b_k- (p_j b^j +c_j q^j )p_i]\partial_{p_i }
+\end{eqnarray*}
+is tangent to $\Q$ and preserves $\D$. The collection of these vector fields defines a 14-dimensional subalgebra of the Lie algebra of vector fields on $\Q$, isomorphic to $\g_2$, and forming the symmetry algebra of the system $(\Q, \D)$ defined by Eqns.~\eqns.
+\end{cor}
+
+\subsubsection{4-dimensional conformal  geometry in split signature}
+Let $\M\subset\RPt\times\RPts$ be the (open dense) subset of {\em non-incident point-line pairs} $(q,p).$ There is a principal fibration 
+ $\R^*\to\Q\to\M$ (the ``pseudo-Hopf-fibration") defined by regarding $(\q,\p)\in\Q$ as  homogeneous coordinates  of the pair $(q,p)=([\q], [\p])\in \M$. The fibration $\Q\to\M$ defines naturally a  pseudo-riemannian metric on  $\M$  by  a  standard procedure: restrict the flat $(3,3)$-signature metric on $\R^6$ given by $\p\q$  to $\Q$, then project to $\M$, using the fact that the principal $\R^*$-action on $\Q$ is by isometries. We call the resulting metric $\met$ on $\M$  the {\em dancing metric}. A similar procedure defines an orientation on $\M$. The dancing metric is a self-dual pseudo-riemannian metric of signature $(2,2)$, non-flat, irreducible,  $\SLth$-symmetric (as well as many other remarkable properties, see Thm.~\ref{Ten}). 
+
+\begin{rmrk} Although only the conformal class $[\met]$ of the dancing metric is eventually used in this article, it is natural to consider the dancing metric $\met$ itself, as it is the unique (up to a constant)  $\SLth$-invariant metric in its class.
+\end{rmrk}
+
+ The main result in Sect.~\ref{pr} is  a correspondence between the geometries   of  $(\Q,\D)$ and $(\M,[\met])$. 
+
+\begin{theorem}
+The  above defined ``pseudo-Hopf-fibration"  $\Q\to \M$  establishes a bijection between  integral curves in   $(\Q,\D)$   and non-degenerate  null curves in $(\M,[\met])$ with   {\em parallel self-dual tangent null 2-plane}.\end{theorem}
+
+
+The   condition ``parallel  self-dual tangent null 2-plane" on a null curve in an oriented  split-signature conformal 4-manifold can be regarded as ``one-half" of  the  geodesic equations. Every null-direction  is the unique intersection of two null 2-planes, one self-dual and the other anti-self-dual. It follows that given a null-curve in such a manifold  there are  two fields of tangent null 2-planes defined along it, one self-dual and the other anti-self-dual, intersecting in the tangent line. A null  curve is a geodesic if and only if its tangent line is parallel, which  is equivalent to the two  tangent fields of null 2-planes being  parallel; for our curves, only the self-dual field   is required to be parallel, hence ``half-geodesics".  
+
+We derive various explicit formulas for the dancing metric. Perhaps the most elementary expression is the following: use the local coordinates $(x,y,a,b)$ on $\M$ where  $(x,y)$ are the Cartesian coordinates of a point $q\in\RPt$ (in some affine chart) and  $(a,b)$ the coordinates of a line $p\in\RPts$ given by $y=ax+b$. Then 
+$$\met\sim  da[(y - b)dx - xdy] + db[adx - dy],$$
+where $\sim$ denotes conformal equivalence. See 
+Sect.~\ref{simple} for a quick derivation of this formula using the {\em dancing condition} (appearing also in the abstract to this paper, after which we name  the metric $\met$). An  explicit formula for the dancing {\em metric} $\met$ in  homogeneous coordinates  is given  in  Sect.~\ref{first} (Prop.~\ref{homo}). In Sect.~\ref{ss_cr} we give another formula for $\met$ in terms of  the cross-ratio. 
+
+
+
+Following the twistor construction in  \cite{AN}, we show that  $(\Q, \D)$ can  be naturally identified with the {\em non-integrable locus} of  the  total space of the {\em self-dual twistor fibration} $\RP^1\to \T^+(\M)\to \M$ associated with $(\M,[\met])$, equipped with its twistor distribution $\D^+$. The non-integrability of $\D$ is then seen to be equivalent to the non-vanishing of the self-dual Weyl tensor of $\met$.
+
+This explains also why we do not look at the ``other-half" of the null-geodesic equations on $\M$. They correspond to integral curves of the twistor distribution $\D^-$ on the anti-self-dual twistor space $\T^-(\M)$, which turns out to be integrable, due to the vanishing of the anti-self-dual Weyl tensor of $(\M,[\met])$. The resulting ``anti-self-dual-half-geodesics" can be easily described and are rather uninteresting from the point of view of this article (see Thm.~\ref{Ten}, Sect.~\ref{proper}). 
+
+
+
+ \subsubsection{Projective geometry: dancing pairs and projective rolling.}\label{ProjGeom}
+ 
+ 
+ Every integral curve of $(\Q,\D)$ projects, via $\Q\to\M\subset \RPt\times\RPts$, to a pair of curves $q(t), p(t)$ in $\RPt, \RPts$  (resp.). We offer two  interrelated projective geometric interpretations of the class of pairs of curves thus obtained:  ``dancing pairs" and ``projective rolling".   
+
+By ``dancing" we refer to the interpretation of  $q(t), p(t)$   as the coordinated  motion of a non-incident point-line pair  in $\RPt$. We ask: what ``rules of choreography" should the  pair  follow so as to define (1) a null-curve in  $\M$ (2)  with a parallel self-dual tangent plane?  We call a pair of curves $q(t), p(t)$ satisfying these conditions a {\em dancing pair}. 
+
+ The nullity condition on the pair  turns out to have a rather simple ``dancing" description. Consider a moving point  tracing a curve $q(t)$ in $\RPt$  with an associated  tangent line along it $q^*(t)\in\RPts$, the {\em dual curve} of  $q(t)$.  Likewise, a  moving line   in $ \RPt$ traces a curve $p(t)$ in $\RPts$,  whose dual curve $p^*(t)$ is a curve in $\RPt$, the   {\em envelope} of the family of lines in $\RPt$ represented by  $p(t)$, or  the curve in $\RPt$ traced out by the ``turning points" of the moving line $p(t)$. 
+
+
+\begin{theorem}\label{intro_dancing}A   non-degenerate parametrized curve  in $(\M,[\met])$ is null if and only if the corresponding pair of curves  $(q(t), p(t))$  satisfies the ``dancing condition": {\em at each moment $t$, the point $q(t)$ is moving towards the turning  point $p^*(t)$ of  the line $p(t)$}. 
+\end{theorem}
+%
+\begin{figure}[h]\centering
+\includegraphics[width=0.5\textwidth]{dancing_pair_intro}
+ \caption{The  dancing condition}\label{fig:dance}
+\end{figure}
+In Sect.~\ref{sec:mate} we pose the following ``dancing mate" problem: fix  an arbitrary  curve $q(t)$ in $\RPt$ (with some mild non-degeneracy condition) and find its ``dancing mates" $p(t)$; that is, curves $p(t)$ in $\RPts$ such that   $(q(t),p(t))$ 
+is a null curve in $(\M, [\met])$ with parallel self-dual tangent plane.  Abstractly, it is clear that there is a 3-parameter family of dancing mates for a given $q(t)$, corresponding to ``horizontal lifts" of $q(t)$ to integral curves of $(\Q, \D)$ via $\Q\to \M\to \RPt$, followed by the projection $\Q\to \M\to \RPts$. 
+
+We study the resulting correspondence of curves $q(t)\mapsto p(t)$ from the point of view of classical projective differential geometry. We find that this correspondence preserves the natural {\em projective structures} on the curves $q(t),p(t)$,  but in general does not preserve the {\em projective arc length} nor the {\em projective curvature} (these are the basic projective invariants of a plane curve; any two of the  three invariants form a complete set of projective  invariants for  plane curves). We use the existence of a common projective parameter $t$ on $q(t),p(t)$ and the dancing condition to derive the  ``dancing mate equation":
+\begin{equation}\label{mate}
+y^{(4)}+2{y'''y'\over y}+3ry'+r'y=0.\end{equation}
+Here,  $q(t)$ is given in homogeneous coordinates by a ``lift" $A(t)\in\R^3\setminus 0$ satisfying $A'''+rA=0$ for some function $r(t)$  (this is called the Laguerre-Forsyth form of the tautological equation for a plane curve) and the dual curve to $p(t)$ is given in homogeneous coordinates by $B=-y'A+yA'$. 
+
+We study the special case  of  {\em the dancing mates of the circle}. That is, we look for dancing pairs $(q(t), p(t))$ where $q(t)$ parametrizes a fixed  circle $\CC\subset \RPt$ (or conic, projectively they are all equivalent). We show how the  above dancing mate equation  (\ref{mate}) reduces in this case to the 3rd order ODE $y'''y^2=1$. The dual dancing mates  $p^*(t)$ form a 3-parameter family of curves in the exterior of the circle $\CC$. We show here a computer generated image of a 1-parameter family of solutions (all other curves can be obtained from this family by the subgroup  $\SLt\subset\SLth$ preserving $\CC$).
+%
+\begin{figure}[h]\centering
+\includegraphics[width=0.7\textwidth]{dancing_mate_circle}
+\caption{Dancing mates around  the circle: the point-dancer moves along  the central circle, starting at its ``north pole", moving clockwise. 
+The line-dancer starts in the vertical position (``$y$-axis''), keeping always tangent to one of the curves that spiral around the circle (the envelope of the line's motion). At all moments they  comply with the dancing condition; the figure shows the tangent direction of the point-dancer at the moment it passes through the north pole (horizontal line segment)  and its incidence  with the ``turning point" of the line-dancer at that moment.}\label{circ}
+\end{figure}
+%
+
+\sn 
+
+ As another illustration we give in Sect.~\ref{const}  examples of dancing pairs with {\em constant projective curvature} (logarithmic spirals, ``generalized parabolas", and exponential curves).  
+
+Finally, in  Sect.~\ref{RT} we turn to   the  ``projective rolling" interpretation of Eqns.~\eqref{eqns}: imagine the curves $q(t)$ and $p(t)$ as the contact points of the two projective planes $ \RPt ,  \RPts$ as they ``roll" along each other. When rolling two surfaces along each other, one needs to pick at each moment, in addition to a pair of contact points $(q,p)$ on the two surfaces, an identification of   the tangent spaces $T_q\RPt$, $T_p\RPts$ at these points. 
+In the case of usual rolling of riemannian surfaces, the identification is required to be an {\em isometry}. 
+Here, we introduce the notion of ``projective contact" between the corresponding tangent spaces: 
+it is an identification $\psi:T_q\RPt\to T_p\RPts$ (linear isomorphism) which  sends each line through 
+$q$ to its intersection point with the line $p$ (thought of as a line in the tangent space to $\RPts$ at $p$).
+ 
+ 
+ Now a simple calculation shows that this ``projective contact" condition is equivalent   to the condition that the 
+ {\em graph of $\psi$  is a self-dual null 2-plane} in $T_q\RPt\oplus T_q\RPts\simeq T_{(q,p)}M.$ 
+ The configuration space for projective rolling is thus the space $\PC$ of such projective contact 
+ elements  $(q,p,\psi)$. Continuing the 
+ analogy with the rolling of riemannian surfaces, we define {\em projective rolling without slipping} 
+ as a curve    $(q(t), p(t), \psi(t))$ in $\PC$ satisfying $\psi(t)q'(t)=p'(t)$ for all $t$. 
+\begin{theorem}
+A curve $(q(t),p(t),\psi(t))$ in $\PC$ satisfies the no-slip condition $\psi(t)q'(t)=p'(t)$ if and only if $(q(t),p(t))$ is  a null curve in $(\M,[\met])$ (equivalently, it satisfies the dancing condition of Thm.~\ref{intro_dancing}). 
+\end{theorem} 
+
+Our next task is to  translate the ``half-geodesic" condition (parallel self-dual tangent plane) to rolling language. We use a notion of parallel transport of lines along (non-degenerate) curves in the projective plane, formulated in terms of Cartan's {\em development of the osculating conic along the curve}  (the unique  conic that touches a given point on the curve to 4th order; see Sect. \ref{osc}). We then define the ``no-twist" condition on a curve of projective contact elements  $(q(t),p(t),\psi(t))$ as follows: if  $\ell(t)$ is a parallel family of lines along $q(t)$ then $\psi(t)\ell(t)$ is a parallel family along $p(t)$. 
+
+\begin{theorem}
+A projective rolling curve $(q(t),p(t),\psi(t))$ satisfies the no-slip and no-twist condition if and only if  $(q(t),p(t))$ is a null-curve in $\M$ with parallel self-dual tangent plane. Equivalently, $(q(t),p(t))$ is the projection via $\Q\to \M$ of an integral curve of $(\Q,\D)$. 
+\end{theorem}
+
+The no-twist condition can be thought of as a  ``2nd dancing condition" for the dancing pair $(q(t),p(t))$; admittedly, it is a rather demanding  one: the dancers should be aware of the 5th order derivative of their motion in order to comply with  it\dots We believe there should be a simpler dancing rule that captures the no-twist condition but could not find it. 
+
+
+%This is an $\SLt$-invariant family of curves so, presumably, has  a characterization in terms of the geometry of the AdS plane. 
+ 
+ %\end{document}
+
+
+
+
+
+
+  \subsection{Background}
+ Our original motivation for this article stems from  the article of the third author  with Daniel An
+ \cite{AN}, where the twistor construction for split-signature 4-dimensional conformal metrics was introduced, raising  the following natural question: for which split-signature conformal 4-manifolds  $\M$ the associated twistor distribution $\D^+$ on $\T^+\M$ is a {\em flat}  $(2,3,5)$-distribution? (That is, with  $\g_2$-symmetry, the maximum possible). 
+
+This is a hard problem, even when $\M$ is a product of riemannian surfaces $(\Sigma_i, g_i)$, $i=1,2,$  equipped with the difference metric   $g=g_1\ominus g_2.$
+ In this case, the integral curves of the twistor distribution  can be interpreted as modeling rolling without slipping or twisting of the two surfaces along each other. It was known for a while to  R. Bryant (communicated in various places, like \cite{BM,Zel}) that the only case of pairs of {\em constant curvature}   surfaces that gives rises  to a flat $(2,3,5)$-distribution is that of curvature ratio 9:1 (or spheres of radius ratio 3:1, in the positive curvature case), but An-Nurowski found  in \cite{AN} a   new family of  examples, and it is still unknown if more examples exist. 
+
+These new examples   of An-Nurowski motivated us looking for {\em irreducible} split signature 4-dimensional conformal metrics with flat twistor distribution. A natural place to start are homogeneous manifolds $\M=G/H$, with $G\subset \G$. We know of a few such examples, but we found the case of  $\SL_3(\R)/\GL_2(\R)$ studied in this article  the most attractive, due to its  projective geometric flavor (``dancing"  and ``projective rolling" interpretations), so we decided to dedicate an article to this example alone. 
+
+\bn{\bf Acknowledgments.}  We are indebted to Richard Montgomery for many useful discussions,  revising  part of this work and making useful suggestions. We thank Serge Tabachnikov for suggesting we look for the formula appearing in Prop.~\ref{cr}. The first two authors   acknowledge support from grant 222870 of CONACyT. The third author acknowledges partial support from the Polish National Science Center (NCN) via DEC-2013/09/B/ ST1/01799. 
+ 
+
+
+

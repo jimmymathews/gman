@@ -1,0 +1,275 @@
+
+\section{$\G$-symmetry via split-octonions} \label{Three}In this section we describe  the relation between  the algebra of split-octonions $\tO$ and our equations \eqnsss, thus  explaining  the appearance of the ``hidden symmetries" as in Theorem \ref{sym} of the previous section.  We first review  some well-known facts concerning the algebra of split-octonions $\tO$ and its  automorphism group $\G$.  We then  define the ``standard model"   for the flat   $(2,3,5)$-distribution, 
+a compact hypersurface   $\tQ\subset \RP^6$,  the projectivized null cone of imaginary split-octonions,  equipped with a $(2,3,5)$-distribution $\tD\subset T\tQ$. The group  $\G=\Aut(\tO)$  acts naturally on all objects defined in terms  of  the split-octonions, such as $\tQ$ and $\tD$. 
+%Then $\RP^6$ is the projectivization of $\Im(\tO)$ (imaginary octonions). The octonion structure defines a quadratic form on $\Im(\tO)$ of signature $(3,4)$, hence a projectiveized null cone $\tQ\subset \RP^6$, as well as a $(2,3,5)$ -distribution $\tD\subset T\tQ$. Since everything is defined in terms split-option multipliction, $\tD$ is $\G$ invariant. 
+
+The relation of $(\tQ,\tD)$ with our system $(\Q,\D)$ is seen by finding an  embedding of groups $\SLth\hookrightarrow \G$ and an  $\SLth$-equivariant embedding  $(Q, \D)\hookrightarrow (\tQ, \tD)$. In this way we obtain  an  explicit realization of $\g_2$ as   the 14-dimensional symmetry algebra of $(Q,\D)$, containing the 8-dimensional subalgebra of ``obvious'' $\slth$-symmetries, as defined in  Eqn. (\ref{action})  of Sect. \ref{TwoFour}.  This  construction  explains  also why the infinitesimal $\g_2$-symmetry of $(\Q, \D)$ does not extend to a global $\G$-symmetry. 
+
+
+
+
+
+
+\subsection{Split-octonions via Zorn's vector matrices}
+We begin with a brief review of the algebra of split-octonions, using a somewhat unfamiliar notation due to Max Zorn (of Zorn's Lemma fame in set theory), which we found quite useful in our context. See \cite{Katja} for a similar presentation. 
+
+
+The split-octonions $\tO$ is an $8$-dimensional non-commutative and non-associative real algebra, whose elements can be written  as ``vector matrices"
+$$\m=\left(\begin{matrix}x&\q \\ \p&y\end{matrix}\right),\quad x,y\in\R,\quad \q\in\R^3, \quad \p\in\Rts,$$
+with the ``vector-matrix-multiplication", denoted here by $\zm$, 
+$$\m\zm \m'=\left(\begin{matrix}x&\q \\ \p&y\end{matrix}\right)\zm\left(\begin{matrix}x'&\q' \\ \p'&y'\end{matrix}\right):=
+\left(\begin{array}{lr}xx'-\p'\q& x\q'+ y'\q+ \p\times\p'\\ x'\p+ y\p'+ \q\times\q'&yy'-\p\q'\end{array}\right), $$
+%
+where, as before,  we use the vector products $\Rt\times\Rt\to\Rts$ and $\Rts\times\Rts\to\Rt$, given by
+$$\q\times\q':=vol(\q,\q', \cdot),\quad \p\times\p':=vol^*(\p,\p', \cdot),$$
+$vol$ is the standard  volume form on $\R^3,$
+$$vol=dq^1\wedge dq^2\wedge dq^3$$
+and $vol^*$ is the dual volume form on $\Rts$, 
+$$vol^*=dp_1\wedge dp_2\wedge dp_3.$$
+In coordinates, 
+$$(\q\times\q')_i=\epsilon_{ijk}q^jq'^k,\quad (\p\times\p')^i=\epsilon^{ijk}p_jp'_k.$$
+
+\begin{rmrk}  These ``vector matrices" were  introduced   by Max Zorn in \cite{Z} (p.~144).   There are some minor variations  in the literature in the signs in the multiplication formula, but they are all equivalent to ours  by some simple change of variables (we are using Zorn's original formulas). For example, the formula in Wikipedia's article ``Split-octonion" is 
+obtained from  ours by  the change of variable $\p\mapsto -\p.$
+A better-known formula for octonion  multiplication uses pairs of quaternions, but we found the above formulas of Zorn more suitable (and it  fits also nicely with the original Cartan and Engel 1894 formulas). 
+\end{rmrk}
+
+
+Conjugation in $\tO$ is given by 
+$$\m=\left(\begin{matrix}x&\q \\ \p&y\end{matrix}\right)\mapsto \overline{\m}=\left(\begin{array}{rr}y&-\q \\ -\p&x\end{array}\right),$$
+satisfying  
+$$\overline{\overline{\m}}=\m, \quad \overline{\m\zm\m'}=\overline{\m'}\zm\overline{\m},
+\quad \m\zm\overline{\m}=\<\m,\m\>\rm I,$$
+where $\rm I=\left(\begin{smallmatrix}1&0 \\ 0&1\end{smallmatrix}\right)$ and
+$$\<\m,\m\>= xy+\p\q$$
+is a quadratic form  of signature $(4,4)$ on $\tO$. 
+
+Define as usual $$\Re(\m)=(\m+\overline\m)/2, \quad \Im(\m)=(\m-\overline\m)/2, $$
+so that $$\tO=\Re(\tO)\oplus\Im(\tO),$$ where 
+$\Re(\tO)=\R\rm I$ and $\Im(\tO)$ are vector matrices of the form $\m=\left(\begin{smallmatrix}x&\q \\ \p&-x\end{smallmatrix}\right)$. 
+
+%Let $\Aut(\tO)$ be the automorphism group of $\tO$. It is clear from these formulas that $\SLth$ acts on $\tO$ by automorphisms, $(\q,\p, x,y)\mapsto (g\q, \p g^{-1},x,y)$.  
+
+\subsection{About $\G$}
+
+
+
+
+\begin{definition} $\G$  is the subgroup of $\GL(\tO)\simeq \GL_8(\R)$ satisfying
+ $g(\m\zm\m')=g(\m)\zm g(\m')$ for all $\m, \m'\in\tO$. 
+ \end{definition}
+ 
+ 
+ 
+ \begin{rmrk} There are in fact three essentially distinct groups denoted by $\G$ in the literature: the  complex  Lie group $\G^\C$
+  and its two real forms: the  compact form %$\G^{comp}$ 
+ and the  non-compact form, ``our" $\G$. See for example \cite{KN}. 
+ \end{rmrk}
+ \begin{proposition} Every  $g\in\G$ preserves the splitting $\tO=\Re(\tO)\oplus\Im(\tO)$. The action of $\G$ on $\Re(\tO)$ is trivial. Thus  $\G$ embeds naturally  in $\GL(\Im(\tO))\simeq \GL_7(\R)$. 
+ 
+ \end{proposition}
+ 
+\begin{proof} Let $g\in\G$. Since $\rm I$ is invertible so is $g(\rm I)$. 
+ Now $g({\rm I})=g({\rm I}\zm{\rm I} )=g({\rm I})\zm g({\rm I})$, hence $g({\rm I})={\rm I}$. 
+ It follows that $g$ acts trivially on $\Re(\tO)=\R\rm I$. 
+ 
+  
+Next,  to show that $\Im(\tO)$ is $g$-invariant, define $S:= \{\m\in\tO|\m\zm\m=-\rm I\}$.
+ Then it is enough to show that  (1) $S$ is $g$-invariant, 
+ (2)  $S\subset \Im(\tO)$, 
+ (3) $S$ spans $\Im(\tO)$. 
+
+(1) is immediate from $g(-\mathrm I)=-\mathrm I.$ For (2),  let  $\m=\left(\begin{smallmatrix}x&\q \\ \p&-y\end{smallmatrix}\right)\in S,$ 
+then $\m*\m=-{\rm I}\ent x^2-\p\q=y^2-\p\q=-1,  (x+y)\q=(x+y)\p=0\ent x+y=0\ent \m\in\Im(\tO)$. For (3), it is easy to find a basis of $\Im(\tO)$ in $S$.
+\end{proof}
+
+ 
+ 
+ 
+ 
+
+ 
+
+
+  
+  
+  The Lie algebra of $\G$ is the  sub-algebra  $\g_2\subset\End(\tO)$ of {\em derivations} of $\tO$: the elements  $X\in \End(\tO)$ such that $ X (\m\zm\m')= (X \m)\zm\m'+\m\zm (X \m')$ for all $\m, \m'\in \tO.$ It follows from the last proposition that $\g_2$ embeds as a sub-algebra of $\End(\Im(\tO))$.  \'E.  Cartan gave in his  1894 thesis  explicit  formulas for the image of this embedding, as follows.
+
+
+
+
+For  each  $(A,\b, \bfc)\in \sl_3\oplus \R^3\oplus\Rts$   define  $\rho(A,\b,\bfc)\in\End(\Im(\tO))$, written  as a block matrix, corresponding to the decomposition  $\Im(\tO)\simeq\R^3\oplus\Rts\oplus\R$, 
+$\left(\begin{smallmatrix}x&\q \\ \p&-x\end{smallmatrix}\right)\mapsto (\q,\p,x)$, 
+by 
+$$\rho(A,\b,\bfc)=
+    \left(
+        \begin{array}{ccc}
+           A& R_\bfc &2\b\\
+           L_\b &-A^t\,\,\,&2\bfc\\
+           \bfc^t &\b^t& 0 
+        \end{array}
+    \right),$$
+where   $L_\b:\Rt\to\Rts$ is given by $\q\mapsto \b\times \q$ and  $R_\bfc:\Rts \to\Rt$ is given by $\p\mapsto\p\times \bfc$. 
+
+
+
+
+Now define $\tilde\rho: \sl_3\oplus \R^3\oplus\Rts\to \End(\tO)$ by $$\tilde\rho(A,\b, \bfc)\m=\rho(A,\b, \bfc)\Im(\m).$$
+
+Explicitly, we find
+$$\tilde\rho(A,\b, \bfc) \left(\begin{matrix}x&\q \\ \p&y\end{matrix}\right)=
+\left(\begin{matrix}\p\b+\bfc\q&A\q +(x-y)\b+\p\times\bfc\\ -\p A+\b\times\q+(x-y)\bfc&-\p\b-\bfc\q\end{matrix}\right)
+.$$
+
+
+\begin{proposition} The image of $\tilde\rho$ in $\End(\tO)$ is  $\g_2$.  That is, for all $(A,\b,\bfc)\in\sl_3\oplus  \R^3\oplus\Rts$,  $\tilde\rho(A,\b,\bfc)$ is a derivation of $\tO$  and all derivations of $\tO$ arise in this way. Thus  $\G$ is a 14-dimensional Lie group. It is a simple Lie group  of type $\g_2$ (the non-compact real form). 
+
+
+\end{proposition}
+
+\begin{proof} (This is a sketch; for more details see for example \cite{Katja}). One  shows first  that $\tilde\rho(A,\a,\b)$ is a derivation by direct calculation. In the other direction, if $X\in\g_2,$ i.e. is a derivation, then its restriction to $\Im(\tO)$ is antisymmetric with respect to  the quadratic form ${\mathrm J}=x^2-\p\q$, i.e. is in the 21-dimensional Lie algebra $\so(4,3)$ of the orthogonal group corresponding to ${\mathrm J}$. One than needs  to show the vanishing of the  projection of $X$ to $\so(4,3)/\Im(\rho)$ (a 21-14=7 dimensional space). The latter  decomposes under $\SLth$ as $\R^3\oplus\Rts\oplus\R$, so by Schur Lemma it is enough to check the claim for one $X$  in each of the three irreducible summands. 
+
+Now one can pick a Cartan subalgebra and root vectors showing that this algebra is of type $\g_2$ (see Cartan's thesis \cite{C_thesis}, p.  146).  
+\end{proof}
+
+\begin{rmrk}
+Cartan gave the above representation of $\g_2$ in his 1894 thesis \cite{C_thesis} with no reference to octonions (the relation with octonions was published by him later in 1908 \cite{Ca3}). He presented $\g_2$ as the symmetry algebra of a rank 3 distribution on the null cone in $\Im(\tO)$.
+ \end{rmrk}
+
+\subsection{The distribution  $(\tQ,\tD)$}\label{dist} 
+
+%\footnote{A {\em projective quadric} in $\RP^n$ is a smooth hypersurface given in homogeneous coordinates by  a non-degenerate quadratic form on $\R^{n+1}.$ The {\em signature} of the quadric is the signature of the defining quadratic form.}
+%
+%$\tQ\subset \RP^6$ of signature $(4,3)$, equipped with a $(2,3,5)$-distribution $\tD$,  defined in terms of the split-octonions algebra $\tO$. This is  an 8-dimensional  real algebra, a split-signature version  of the ordinary algebra of octonions (both algebras have a common complexification).
+
+
+
+
+
+Imaginary split-octonions $\Im(\tO)$ satisfy  $\m=-\overline{\m}$ and are given by vector-matrices of the form 
+$$\m=\left(\begin{matrix}x&\q \\ \p&-x\end{matrix}\right)$$ 
+where $ (\q,\p,x)\in\Rt\oplus\Rts\oplus\R.$
+
+\begin{definition} Let $\O:=\m \zm d \m$ (an $\tO$-valued 1-form on $\Im(\tO)$).  Explicitly, 
+$$\O:=
+\left(\begin{matrix}
+x\,dx-\q \,d\p & 
+x\,d\q - \q \,dx+\p\times d\p\\  
+ \p\, dx- x\,d\p +
+ \q\times d\q&
+x\,dx-\p \,d\q\end{matrix}\right).$$
+\end{definition}
+
+
+
+\begin{proposition}  Let  $\Ker(\O)$ be the distribution  (with variable rank) on $\Im(\tO)$ annihilated by $\O$ and  let $  C\subset \Im(\tO)$ be the null cone, $C=\{\m\in\Im(\tO)|x^2-\p\q=0 \}$. Then 
+$\Ker(\O)$  is
+\begin{enumerate}
+\item  $\G$-invariant,
+\item  $\R^*$-invariant,  under     $\m\mapsto \lambda\m$, $\lambda\in\R^*,$ 
+\item tangent to  $C\setminus 0$,
+\item a rank 3 distribution when restricted to $C\setminus 0$,
+\item the $\R^*$-orbits on $C$ are tangent to $\Ker(\O)$.
+
+
+\end{enumerate}
+\end{proposition} 
+
+
+\begin{proof} 
+
+\sn 
+
+
+\begin{enumerate}
+\item $\O$ is $\G$-equivariant, i.e. $g^*\O=g\O$ for all $g\in \G$,  hence $\Ker(\O)$ is 
+$g$-invariant. Details: $g^*(\m \zm d\m)=(g\m)\zm d(g\m)=(g\m)\zm [g(d\m)]=g(\m\zm d\m)=g\O.$
+\item $\lambda^*\O=\lambda^2\O\ent \Ker(g^*\O)=\Ker(\lambda^2\O)=\Ker(\O).$
+\item $C$ is the 0 level set of $f(\m)=\m\zm \bar\m=-\m\zm \m,$ hence the tangent bundle to $C\setminus 0$ is the kernel of $df=-(d\m)\zm\m-\m \zm d \m=-\O-\overline{\O}=-2\Re(\O),$ hence 
+$\Ker(\O)\subset\Ker(df).$
+
+
+\item  Use the fact that $\G\X\R^*$ acts transitively on  $C\setminus 0$, so it is enough to check at say  $\q=e_1,$ $\p=0$,   $x=0$. Then $\Ker(\O)$ at this point is given by $dp_1=dq^2=dq^3=dx=0,$ which define a 3-dimensional subspace of $\Im(\tO))$. 
+\item The $\R^*$-action is generated by the Euler vector field 
+$$E=%\m\partial_\m=
+p_i{\partial\over\partial_{p_i}}+q^i{\partial\over\partial_{q^i}}+
+x{\partial\over\partial_{x}},$$ hence
+$\O(E)=\m \zm d\m(E)=\m\zm\m=0,$ for $\m\in C$. 
+\end{enumerate}
+\end{proof} 
+
+
+
+\begin{cor} $\Ker(\O)$ descends to a $\G$-invariant rank-2  distribution $\tD$ on the projectivized null cone $\tQ=(C\setminus 0)/\R^*\subset \P( \Im(\tO))\cong\RP^6.$ 
+\end{cor}
+
+
+Now define an  embedding  $\iota:\Rtt\to \Im(\tO)$ by $(\q,\p)\mapsto (\q,\p,1).$ The pull-back of $\O$ by this map is easily seen to be
+\begin{equation}\label{oct}
+\iota^*\O=\left(\begin{array}{lr}
+-\q \,d\p & 
+d\q +\p\times d\p\\  
+-d\p+
+ \q\times d\q&
+-\p \,d\q\end{array}
+\right).
+\end{equation}
+
+Let $\SLth$ act on $\tO$ by 
+$$ \left(\begin{matrix}x&\q \\ \p&y\end{matrix}\right)\mapsto
+ \left(\begin{matrix}x&g\q \\ \p g^{-1}&y\end{matrix}\right), \quad g\in\SLth.$$
+%
+ This defines an embedding $\SLth\hookrightarrow \Aut(\tO).$  
+\begin{theorem} Let $Q=\{\p\q=1\}\subset\Rtt$. Then 
+\begin{enumerate}[leftmargin=18pt,label=(\alph*)]\setlength\itemsep{5pt}
+\item the composition $$Q\stackrel{\iota}{\longrightarrow} C\setminus 0\stackrel{\R^*}{\longrightarrow}  \tQ,\quad (\q,\p)\mapsto [(\q,\p,1)]\in\tQ\subset \P(\Im(\tO))\cong\RP^6,$$
+is an $\SLth$-equivariant embedding of  $(Q,\D)$ in $(\tQ,\tD).$ 
+
+\item The image of $\Q\to\tQ$ is the  open-dense orbit of the $\SLth$-action on the projectivized null cone $\tQ\subset \P(\Im(\tO))\cong\RP^6$; its complement is a closed 4-dimensional  submanifold. 
+\end{enumerate}
+
+\end{theorem}
+
+\sn\pf
+(a) \,  Under $\SLth$, $\Im(\tO)$ decomposes as $\Rtt\oplus \R$, hence $\Rtt\to\Im(\tO)$, $(\q,\p)\mapsto [\q,\p,1]$, is an $\SLth$-equivariant embedding. Formula (\ref{oct}) for $i^*\O$ shows that $\D$ is mapped to $\tD$. 
+
+\sn (b) \,  From the previous item, the image of $\Q$ in $\tQ$ is a single $\SLth$-orbit,  5-dimensional, hence open. It is dense, since the complement is a  4-dimensional submanifold in $\tQ$, given (in homogeneous coordinates) by the intersection of the hyperplane $x=0$ with the quadric $\p\q-x^2=0$. Restricted to $x=0$ (a 5-dimensional projective subspace in $\RP^6$) the equation $\p\q=0$ defines a smooth 4-dimensional   hypersurface, a projective quadric of signature $(3,3)$. 
+\qed
+
+\sn
+
+
+ 
+
+Now if we consider  the projectivized $\g_2$-action on $[\Im(\tO)\setminus 0]/\R^*$ and pull it back to $\Rtt$ via $(\q,\p)\mapsto [(\q,\p, 1)]$, we obtain a realization of $\g_2$ as a Lie algebra of vector fields on $\Rtt$ tangent to $Q$, whose restriction to $Q$ forms the  symmetry algebra of $(Q,\D)$. 
+
+\begin{cor}\label{cor3} For  each  $(A,\b, \bfc)\in\sl_3\oplus  \R^3\oplus\Rts$  the vector field   on $\Rtt$  
+\begin{eqnarray*}
+X_{A,\b, \bfc}&=&[ 2\b + A\q  + \p\times\bfc-(\p\b+\bfc \q)\q]\partial_\q 
+\\ &&
++[2\bfc-\p A  + \q\times\b-(\p\b+\bfc\q)\p]\partial_{\p }
+\end{eqnarray*}
+is tangent to $Q\subset\Rtt$. The resulting 14-dimensional vector space of vector fields on  $Q$  forms the  symmetry algebra of $(Q,\D)$. 
+\end{cor}
+
+Explicitly, if  $A=(a^i_j), $ $\b=(b^i),$  $\bfc=(c_i), $ then 
+\begin{eqnarray*}
+X_{A,\b, \bfc}&=&[ 2b^i + a^i_jq^j + \epsilon_{ijk}p^j c^k -(p_jb^j+ c_j q^j)q^i]\partial_{q^i} 
+\\ &&
++[2c_i-a_i^jp_j  + \epsilon^{ijk}q_j b_k- (p_j b^j +c_j q^j )p_i]\partial_{p_i }.
+\end{eqnarray*}
+
+\begin{proof} Let $\u=(\q,\p)\in\Rtt$, then $\iota(\u)=(\u,1)\in\Im(\tO)$. Any  linear vector field $X$ on $\Im(\tO)$ can be block decomposed as $$(X_{11}\u+ X_{12}x)\partial_\u + (X_{21}\u+ X_{22}x)\partial_x,$$ with 
+$$X_{11}\in\End(\Rtt), \quad X_{12}\in\Rt, \quad X_{21}\in(\Rtt)^*, \quad X_{22}\in\R.$$
+The induced vector field on $\Rtt$, obtained by  projectivization and pulling-back via $\iota$, is the quadratic vector field 
+$$[X_{12} + (X_{11}-X_{22}x)\u-(X_{21}\u)\u]\partial_\u.$$
+%
+Now plug-in the formula for $X$ from last corollary. 
+\end{proof}
+
+
+
+
+
+
+

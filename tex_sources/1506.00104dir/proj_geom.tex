@@ -1,0 +1,920 @@
+
+%\documentclass[amsfonts]{amsart}\input{preamble}\begin{document}
+
+
+
+
+\section{Projective geometry:  dancing pairs and projective rolling}
+
+We give here two related projective geometric interpretations of the Cartan-Engel distribution $(\Q,\D)$: ``dancing pairs" and ``projective rolling".   We start in Sect.~\ref{sec_danc} with the {\em dancing condition},  characterizing   null curves in $(\M, [\met])$. Next  in Sect.~\ref{simple} we use this characterization for an elementary derivation of an explicit  coordinate formula for $[\met]$. In Sect.~\ref{ss_cr} we give yet another formula for the dancing metric $\met$, this time in terms of the {\em cross-ratio} (a classical projective invariant of 4 colinear points). This is followed in Sect.~\ref{pj} by a study of the relation between the {\em projective structures} of the members of a dancing pair (the structures  happily match up), which we use in Sect.~\ref{sec:mate} for deriving the ``dancing mate equation". 
+To illustrate all these concepts we study two examples: the  ``dancing mates of the circle" (Sect.~\ref{sec:circle}) and ``dancing pairs with constant projective curvature"  (Sect.~\ref{const}). 
+
+We mention also in Sect.~\ref{sec:centro} a curious geometric interpretation for Eqns.~\eqref{eqns} that we found  during the proof of Prop.~\ref{TwentyOne}: curves in $\R^3$ with constant ``centro-affine torsion''. 
+
+
+
+The rest of the section (Sect.~\ref{RT}) is dedicated to {\em projective rolling}. Our motivation comes from the intrinsic geometric formulation of ordinary (riemannian) rolling, as appears in \cite{BrHs}. After making the appropriate definitions,  the nullity condition for curves on $(\M, [\met])$ becomes  the ``no-slip" condition for the projective rolling of $\RPt$ along $\RPts$, self-dual null 2-planes become ``projective contact elements" of the two surfaces and the condition of ``parallel self-dual tangent 2-plane" is the ``no-twist" condition of projective rolling, expressed in terms of the osculating conic of a plane curve and its developments, as appear in \'E.~Cartan's book \cite{Cbook}. 
+
+
+\subsection{Projective duality and the dancing condition}\label{sec_danc}
+
+Let $\RP^2:=\P(\R^3)$ be the  {\em  real projective plane}, i.e. the space of 1-dimensional linear subspaces in $\R^3$,  with   $$\pi:\R^3\setminus\{ 0\}\to \RP^2,\quad \q\mapsto \R\q,$$
+the canonical projection. If $q=\pi(\q)\in\RPt$, where $\q=(q^1,q^2,q^3)^t\in\R^3\setminus\{0\}$, we write $q=[\q]$ and say that  $q^1,q^2,q^3$ are the {\em homogeneous coordinates} of $q$. 
+Similarly, $\RPts:=\P(\Rts)$ is the {\em dual projective plane}, with $$ \quad \bar\pi:\Rts\setminus 0\to \RPts, \quad \p\mapsto \R\p,$$ the canonical projection,  $\bar\pi(\p)=[\p]$. 
+
+ A {\em projective line} in $\RPt$ is the projectivization of a 2-dimensional linear subspace in $\R^3$, 
+i.e.~the set of 1-dimensional subspaces of $\R^3$ contained in a fixed 2-dimensional linear 
+subspace of $\R^3$. The space of  projective lines in $\RPt$ is 
+naturally identified with $\RPts$;
+to each $p=[\p]\in\RPts$ corresponds the {\em dual projective line}
+ $\hat p\subset \RP^2$, the projectivization of  
+$\p^0=\{\q\in\R^3|\p\q=0\}$, and each projective line in 
+$\RPt$ is of this form. 
+Similarly, $\RPt$ is 
+naturally identified with the space of projective lines in $\RPts$; to each 
+point $q=[\q]\in\RPt$ corresponds the dual  projective line $\hat q\subset \RPts$, 
+the projectivization of the 2-dimensional subspace $\q^0=\{\p\in\Rts|\p\q=0\}$. 
+
+We say that $(q,p)\in \RPt\times\RPts$ 
+are {\em incident} if $q\in\hat p$ (same as $p\in \hat q).$ We  also write this condition as $q\in p$. 
+In homogeneous coordinates this is simply $\p\q=0$. 
+
+
+
+ Given a smooth  curve $\gamma\subset \RP^2$ (a 1-dimensional submanifold), the {\em duality map}  $*:\gamma\to \RPts$ assigns to each point $q\in \gamma$ its tangent line $q^*\in\RPts$. The image of $\gamma$ under the duality map is the {\em  dual curve}  $\gamma^*\subset \RPts$. In homogeneous coordinates, if $\gamma$ is parametrized by $q(t)=[\q(t)]$, where  $\q(t)\in\R^3\setminus \{0\}$, then $\gamma^*$ is parametrized by $q^*(t)=[\q^*(t)]$, where $\q^*(t):=\q(t)\times \q'(t)\in\Rts\setminus \{0\}.$ If $\gamma$ is a smooth curve without inflection points (points where $q''\equiv 0 \, \mod q'$, see  Def.~\ref{def:inflect} below) then $\gamma^*$ is smooth as well. More generally,  inflection points of $\gamma$  map to singular (or ``cusp") points 
+of $\gamma^*$, where $(q^*)'=0$. 
+
+ Similarly, given a curve $\bar \gamma\subset \RPts$, the duality map $\bar \gamma\to \RP^2$
+ assigns to each line $p\in\bar \gamma$  its {\em turning point} $p^*$.
+ In homogeneous coordinates:  if $\bar \gamma$ is parametrized by $p(t)=[\p(t)]$, 
+then its dual   $\bar \gamma^*\subset \RPt$ is parametrized by $p^*(t)=[\p^*(t)]$, 
+where $\p^*(t)=\p(t)\times\p'(t).$ 
+
+
+Geometrically, $\bar \gamma$ is a 1-parameter
+ family of lines  in $\RPt$, and its dual $\bar \gamma^*$ is the {\em envelope} of the family. Using the above formulas 
+ for the duality map,  it is easy to verify that, away from inflection points, $(\gamma^*)^*=\gamma$ ; that is, $p(t)$ is the tangent line to $\bar \gamma^*$ at $p^*(t)$. 
+ 
+
+\begin{figure}[h!]\centering
+\includegraphics[width=0.5\textwidth]{envelope2}
+\caption{The envelope  of a family  of lines}
+\end{figure}
+
+
+
+ 
+
+
+\begin{definition}\label{def_danc} A pair of  parametrized curves $q(t), p(t)$ in $ \RPt,  \RPts$ (resp.) satisfies the {\em  dancing condition}  if for each $t$ 
+
+\begin{enumerate}
+\item $(q(t), p(t))$ is non-incident;  
+
+\item  if $q'(t)\neq 0$ and $p'(t)\neq 0$ then the tangent line $q^*(t)$ at $q(t)$  is incident to the turning point $p^*(t)$ of $p(t)$.
+
+ \end{enumerate}
+
+\end{definition}
+See Fig.~\ref{fig:dance} of Sect.~\ref{ProjGeom}. 
+
+\begin{rmrk} In condition (2), if either $q'$ or $p'$ vanish, then $q^*$ or $p^*$ is not well-defined, in which case, by definition, the curves satisfy the dancing condition. 
+ \end{rmrk}
+
+
+
+\begin{proposition}\label{prop_danc} The following conditions on a parametrized curve $\Gamma(t)=(q(t), p(t))$ in $\M$ are equivalent:
+
+\begin{enumerate}
+\item  $\Gamma(t)$ is a null curve in $(\M,[\met])$;
+
+\item  the pair of curves $q(t), p(t)$ satisfies the dancing condition.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} We use the notation of the proof of Prop.~\ref{all}d. Let  $\sigma$ be a lift of $\Gamma$ to $G=\SLth$ (see diagram~(\ref{principal}) of  Sect.~\ref{proofs}). Then 
+$(\q(t),\p(t)):=(E_3(\sigma(t)), E^3(\sigma(t))$, $\sigma^*\eta^a=s^adt,$ $\sigma^*\eta_b=s_b dt.$
+%Then $q(t)=[\q(t)],$ $p(t)=[\p(t)]$,  $\q(t)=E_3(\sigma(t))$, $\p(t)=E^3(\sigma(t))$. 
+If  either $q'$ or $p'$ vanish, then either $(s^1, s^2)=(0,0)$ or $(s_1, s_2)=(0,0)$, hence, by Prop.~\ref{all}a,  $\met(\Gamma', \Gamma')=2s_as^a=0$ so  (1) and (2) are both satisfied. If  neither $q'$ nor $p'$ vanish then  $q^*=[\q^*],$ $p^*=[\p^*]$,
+where  
+%
+$$\begin{array}{l}
+\q^*=\q\times \q'=E_3\times E_3'
+=E_3\times E_a s^a
+=s^1E^2-s^2 E^1,\\
+\p^*=\p\times \p'=E^3\times (E^3)'
+ =-E^3\times E^bs_b=
+-s_1E_2+s_2E_1.
+\end{array}
+$$
+The dancing condition is  then $\q^*\p^*=0$, i.e. 
+ $(s^1E^2-s^2 E^1)(-s_1E_2+s_2E_1)=-s_as^a=0,$
+ which is the  nullity condition on $\Gamma$.\end{proof}
+ 
+ \begin{rmrk} It is clear  that both the dancing metric and the dancing condition are $\SLth$-invariant and homogeneous in the velocity   $\Gamma'$ of a parametrized curve $\Gamma$ in $\M$, thus defining each a field of tangent cones on $\M$. It is also clear from the formula of the isotropy representation (Eqn.~\eqref{isotropy}) that $\M$ admits a unique $\SLth$-invariant  conformal metric (of whatever signature). The main point of the last proposition, perhaps less obvious, is then  that the dancing condition  is {\em quadratic} in the velocities $\Gamma'$,  thus defining {\em some} conformal metric on $\M$. This point can be proved   in an elementary fashion, as we now proceed to show, and thus gives an alternative  proof of the last proposition. 
+  \end{rmrk}
+  
+\subsection{A coordinate formula for the   conformal class of the dancing metric} \label{simple}
+Let us use Cartesian coordinates $(x,y)$  for  a point   $q\in\RPt$ (in some affine chart) and the coordinates $(a,b)$ for a  line 
+$y=ax+b$ (a point  $p\in\RPts$). If $q(t)$ is given by $(x(t), y(t))$ then its tangent line $y=Ax+B$ at time $t$ satisfies 
+\be\label{d1}
+y(t)=Ax(t)+B, \quad y'(t)=Ax'(t).
+\ee 
+Likewise, if $p(t)$ is  a curve in $\RPts$ given by $y=a(t)x+b(t)$ then its  ``turning point"    $(X,Y)$ at time $t$  satisfies
+\be\label{d2}
+Y=a(t)X+b(t), \quad 0=a'(t)X+b'(t).
+\ee 
+
+The dancing condition (``the turning point  lies on the tangent line") is then 
+$$
+Y=AX+B.
+$$
+Expressing $A,B, X,Y$ in the last equation in terms of $x,y,a,b$ and their derivatives via Eqns.~(\ref{d1})-(\ref{d2}), we obtain $a'[(y - b)x' - xy'] + b'[ax' - y']=0.$
+Combining this calculation with Prop.~\ref{prop_danc},  we have shown
+\begin{proposition}
+The dancing metric $\met$ on  $M$ is given in the above local coordinates $x,y,a, b$ by 
+$$\met\sim da[(y - b)dx - xdy] + db[adx - dy],$$
+where $\sim$ denotes conformal equivalence (equality up to multiplication by some  non-vanishing function on $M$). 
+
+\end{proposition}
+
+\begin{rmrk} In fact, although somewhat less elementary, it is not hard   to show that the missing conformal factor on the right hand side of   the above formula  is  of the form $const./(y-ax-b)^2.$ 
+ \end{rmrk}
+
+
+\subsection{A cross-ratio  formula for the dancing metric}\label{ss_cr}
+\newcommand{\tq}{\bar q}
+
+\begin{definition} The cross-ratio of 4 distinct points $a_1,a_2,a_3,a_4$ on a line $\ell\subset \RPt$  is  $$ [a_1,a_2,a_3,a_4]:= \frac {x_1-x_3 }{x_1-x_4 }\cdot\frac{x_4-x_2} {x_3-x_2},$$ where $x_i$ is the coordinate of $a_i$ with respect   to some affine coordinate  $x$ on  $\ell$.\end{definition} 
+
+
+It is well-known (and not hard  to verify) that this definition is independent of the affine coordinate chosen on $\ell$  and that it is $\SLth$-invariant. 
+
+\sn 
+
+Now consider a non-degenerate parametrized curve $\Gamma$  in $\M$ and two points on it, $\Gamma(t)=(q(t), p(t))$ and $ \Gamma(t+\epsilon)=(q(t+\epsilon), p(t+\epsilon))$. These determine 4 colinear points 
+$q,  q_\epsilon,  \tq,  \tq_\epsilon,$
+ where  $q:=q(t),$ $q_\epsilon=q(t+\epsilon),$ and $ \tq,   \tq_\epsilon$   are the intersection points of the two lines $p:=p(t), p_\epsilon:=p(t+\epsilon)$ with the line $\ell$ through $q, q_\epsilon$ (resp.), as  in the picture. (The line $\ell$ is well-defined, for small enough $\epsilon$, by the non-degeneracy assumption on $\Gamma$). 
+\begin{figure}[h]\centering
+\includegraphics[width=0.35\textwidth]{cross_ratio}
+\caption{\small The cross-ratio definition  of the dancing metric }
+\end{figure}
+
+
+
+
+
+
+\sn 
+%
+
+Let us expand the cross-ratio  of $q, q_\epsilon, \tq, \tq_\epsilon$ in powers of $\epsilon$. 
+
+\begin{proposition}\label{cr} Let $\Gamma(t)$ be a non-degenerate parametrized curve in $\M$, $q_0, q_\epsilon, \tq_0, \tq_\epsilon$ as defined above and  $v=\Gamma'(t)$. Then 
+$$[q, q_\epsilon, \tq, \tq_\epsilon]={1\over 2}\epsilon^2\met (v, v)+O(\epsilon^3),$$
+where $\met$ is the dancing metric on $M$, as defined in Prop.~\ref{dancing}. 
+\end{proposition}
+
+%\begin{rmrk} We thank  Serge Tabachnikov for the suggestion to look for  such a formula. 
+%\end{rmrk}
+
+\begin{proof}  Lift $\Gamma(t)$ to a curve $\tG(t)=(\q(t), \p(t))$ in $Q$. Then $\ell=[\q\times\q_\epsilon]$, 
+$\tq=[\mathbf\tq]$ and  $\tq_\epsilon=[\mathbf\tq_\epsilon],$ where 
+%
+\begin{align*}
+&\mathbf\tq=( \q\times\q_\epsilon)\times \p=\q_\epsilon-(\p\q_\epsilon)\q,\\ 
+&\mathbf\tq_\epsilon=(\q\times\q_\epsilon)\times \p_\epsilon=(\p_\epsilon\q)\q_\epsilon-\q.
+\end{align*}
+
+
+Now  it easy to show that if 4 colinear points $a_1,\ldots, a_4\in\RP^2$ are given by  homogeneous coordinates  $\a_i\in\R^3\setminus 0$, such that  $\a_3=\a_1+\a_2,$ $\a_4=k\a_1+\a_2,$ then 
+  $ [a_1,a_2,a_3,a_4]=k$ (see for example \cite{K}). 
+ Using this  formula and the above expressions for $\mathbf\tq, \mathbf\tq_\epsilon$, we obtain, after some manipulations, 
+$$[q,q_\epsilon, \tq, \tq_\epsilon]=1-{1\over(\p\q_\epsilon)(\p_\epsilon\q)}=
+-\epsilon^2(\q\times\q')(\p\times\p')+O(\epsilon^3).$$
+Now we use  the expression for $\met$ of Prop.~\ref{homo}.
+\end{proof}
+
+
+\subsection{Dancing pairs and their projective structure}\label{pj}
+\begin{definition}A  {\em dancing pair} is a pair of parametrized curves $q(t), p(t)$ in  $ \RP^2, \RPts$ (resp.)  
+obtained from the projections $q(t)=[\q(t)], p(t)=[\p(t)]$ of an integral curve $(\q(t), \p(t))$ of $(\Q,\D)$. If $q(t), p(t)$ is a dancing pair we say that $p(t)$ is a {\em dancing mate} of $q(t)$. 
+\end{definition}
+Equivalently, by Thm.~\ref{eleven}, this is the pair of curves one obtains from a non-degenerate  null curve in $\M$ with parallel self-dual tangent plane, when projecting it to $\RPt$ and $\RPts$. 
+
+We already know that dancing pairs  satisfy the dancing condition.  
+ We now want to study further the projective geometry of 
+such pairs of curves, using the classical notions of projective differential geometry, such as the projective 
+structure of a plane curve, projective curvature and projective arc length. We will  derive a 4th 
+order ODE whose solutions give the {\em dancing mates} $p(t)$ of a given 
+(\lc) curve $q(t)$.  We will give several  examples of dancing pairs, including the surprisingly non-trivial  case of the  dancing mates  
+associated with a point moving on a circle. 
+
+
+ Differential projective geometry  is not so well-known nowadays, so  we  begin with a brief review of the pertinent notions. Our favorite   references are \'E.~Cartan's book \cite{Cbook} and the more modern references of Ovsienko-Tabachnikov \cite{OT} and Konovenko-Lychagin \cite{KL}. 
+%(Although we should warn the reader about a confusing definition of projective curvature in [Ovsienko-Tabachnikov]).
+
+
+
+A {\em projective structure} on a curve $\gamma$ (a 1-dimensional manifold) is an atlas of charts $(U_\alpha, f_\alpha)$, where $\{U_\alpha\}$ is an open cover of $\gamma$ and the $f_\alpha:U_\alpha\to \RP^1$, called projective coordinates, are embeddings whose transitions functions $f_\alpha\circ f_\beta^{-1}$ are given by (restrictions of) M\"obius transformation in $\rm PGL_2(\R)$. 
+
+For example, stereographic projection from any point $q$ on a conic $\CC\subset \RPt$ to some line $\ell$ (non-incident to $q$) gives $\CC$ a projective structure, independent of the point $q$ and line $\ell$ chosen (a theorem attributed to  Steiner, see  \cite[p.~7]{OT}). 
+
+
+ An embedded  curve $\gamma\subset\RPt$  is {\em\lc} if it has no inflection points (points where the tangent line has a 2nd order contact with the curve). Every \lc\  curve $\gamma\subset\RPt$ inherits a canonical projective structure. There are various equivalent ways to define this projective structure, but we will give the most classical one, using the {\em tautological ODE} associated with a plane curve (we follow here closely  Cartan's book \cite{Cbook}). 
+
+Let $q(t)$ be a regular parametrization of $\gamma$, i.e. $q'\neq 0$, and $\q(t)$ a lift of $q(t)$ to $\R^3\setminus \{0\},$ i.e. $q(t)=[\q(t)].$ Then local-convexity (absence of inflection points) is equivalent to  $\det(\q(t),\q'(t),\q''(t))\neq 0$, so there are unique   $a_0,  a_1, a_2$ 
+ (functions of $t$) such that  
+%
+\be\label{taut}
+ \q'''+a_2\q''+a_1\q'+a_0\q=0.
+ \ee
+ %
+The last equation is  called the {\em tautological ODE} associated with $\gamma$ (or rather  its parametrized lift $\q(t)$). Solving   for  the unknowns $a_0,  a_1, a_2$ (by Kramer's rule), we get  
+$$
+a_0=-{J\over I},\quad
+a_1={K\over I},\quad
+a_2=-{I'\over I},
+$$
+where
+$$I=\det(\q,\q', \q''), \quad J=\det(\q',\q'',\q'''), \quad 
+K=\det(\q, \q'', \q''') .
+$$
+
+The tautological ODE Eqn.~\eqref{taut} depends on the  choice of parametrized lift  $\q(t)$. One can modify  $\q(t) $ in two ways:
+\begin{itemize}
+
+\item {\em Re-scaling}:  $\q(t) \mapsto \bar\q(t)=\lambda(t) \q(t) ,$ where $ \lambda(t) \in \R^*.$ This changes 
+$I\mapsto\lambda^3I,$ so if $I\neq 0$ (no inflection points) one  can rescale (uniquely)  to say $I=1$, 
+then obtain $a_2= 0$.  
+\item {\em Re-parametrization}: $ t\mapsto \bar  t=f(t),$ for some diffeomorphism  $f$. This changes $I\mapsto (f')^3I,$ so again, if $I\neq 0$ then one can reparametrize (uniquely up to an additive constant) to $I=1$, so as to obtain $a_2=0$. 
+
+ \end{itemize}
+ %
+ So one can achieve a tautological ODE for $\gamma$ with $a_2=0$ by either rescaling or reparametrization. 
+Can we combine reparametrization and rescaling so as to reduce the tautological ODE to  $\q'''+a_0\q=0$?
+
+
+The answer is ``yes" and the resulting OED is called  the  {\em Laguerre-Forsyth  form}   (LF) of the tautological 
+ODE for $\gamma$. A straightforward calculation (\cite{Cbook}, p.~48) 
+shows 
+
+\begin{proposition}\label{TwentyOne} Given a \lc\ curve $\gamma\subset\RPt$ with  a parametrized lift $\q(t)$ satisfying $\q'''+a_1\q'+a_0\q=0$,
+
+\sn\begin{enumerate}[leftmargin=30pt,label=(\arabic*)]\setlength\itemsep{5pt}
+
+\item one  can achieve the LF form by modifying  $\q(t)$ to  $\bar \q(\bar  t)= f'(t)\q(t),$ where $\bar  t=f(t)$ solves
+ $$S(f)={a_1\over 4},$$
+and  where $$S(f)={1\over 2}{f'''\over f'}-{3\over 4}\left({f''\over f'}\right)^2$$
+ is the {\em Schwarzian derivative} of $f$. 
+ 
+\item The LF form is unique  up to the  change $\q(t)\mapsto \bar \q(\bar  t)= f'(t)\q(t),$ where $\bar  t=f(t)$ is a M\"obius transformation. 
+
+\item Given an LF form $\q'''+a_0\q=0$  for $\gamma$, the  one form $d\sigma=(a_0)^{1/3}dt$ is a well-defined 1-form on $\gamma$ (independent of the particular LF form chosen), called the {\em projective arc length} \cite[p.~50]{Cbook}.
+
+\end{enumerate} 
+
+\end{proposition}
+%
+It follows from  item (2) that the LF form defines a local coordinate $t$ on $\gamma$, well-defined up to a M\"obius transformation, hence a {\em projective structure}  on  $\gamma$.
+
+\begin{rmrk} It is possible to extend the definition of the projective structure  to all curves, not necessarily \lc\ (see  \cite{DZ}). 
+\end{rmrk}
+
+\begin{example} A classical application of the last proposition is to show that 
+{\em  the duality map $\gamma\to \gamma^*$ preserves the projective structure but reverses the projective arc length} 
+(provided both $\gamma$ and $\gamma^*$ are \lc): 
+parametrize $\gamma$ by $[\q(t)]$ in the LF form, i.e. $\q'''+a_0\q=0$, 
+then $\gamma^*$ is parametrized by $[\p(t)]$, where $\p(t)=\q(t)\times \q'(t)$. 
+Then one can calculate easily that $\p(t)$ satisfies $\p'''-a_0\p=0,$ which is also in the LF form, hence 
+$t$ is a common projective parameter on $\gamma,\gamma^*$, so 
+$[\q(t)]\mapsto [\p(t)]$ preserves the projective structure, but reverses the projective arc length.
+\end{example}
+
+\begin{proposition}\label{TwentyOne}
+Let $\gamma, \bar \gamma$ be a pair of non-degenerate curves in $\RPt,\RPts$ (resp.), parametrized by a dancing pair $q(t), p(t)$ (i.e.~$q(t)=[\q(t)], p(t)=[\p(t)]$, where $\p'=\q\times \q'$). Then the map $\gamma\to\bar \gamma$, $q(t)\mapsto p(t)$, is projective, i.e. preserves the natural projective structures on $\gamma, \bar \gamma$ induced by their embedding in $\RPt, \RPts$ (resp.). 
+\end{proposition}
+
+\begin{proof} According to the last proposition, it is enough to show that $(\q(t), \p(t))$ can be reparametrized in such a way that    $\q(t), \p(t)$ satisfy each a tautological ODE with $a_2=0$ and the same $a_1$. 
+
+ \begin{lemma}\label{mucho} Let $(\q(t),\p(t))\in\Rtt$ be a solution of $\p'=\q\times\q',$ $   \p\q=1,$ with $I(\q)=\det(\q,\q', \q'')\neq 0$ and $ I(\p)=\det(\p,\p', \p'')\neq 0$. Let $I=I(\q), \bar  I=I(\p), J=J(\q), \bar J=J(\p),$ etc. Then 
+\begin{enumerate}
+\item $\p'\q=\p\q'=\p'\q'=\p\q''=\p''\q=0.$
+\item $I\p=\q'\times\q'',$ $\bar I\q=\p'\times\p''.$
+\item $\q'=-\p\times\p'.$
+
+\item $I^2+J=\bar I^2- \bar J=0$. 
+\item $\bar I=I,$ $\bar J=-J,$ $\bar  K=K.$
+\item  $\bar a_2=a_2,$  $\bar a_1=a_1, $  $\bar a_0=-a_0$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\begin{enumerate}[leftmargin=18pt,label=(\arabic*)]\setlength\itemsep{5pt}
+\item From $\p'=\q\times \q'\ent \p'\q=\p'\q'=0.$ From $\p\q=1\ent \p'\q+\p\q'=0\ent \p\q'=0\ent 0=(\p\q')'=\p'\q'+ \p\q''=\p\q''.$ Similarly, $0=(\p'\q)'=\p''\q+\p'\q'=\p''\q.$
+
+\item From (1),  $\p\q'=\p\q''=0\ent c\p=\q'\times\q''$ for some function $c$ (we assume $I\neq 0$, hence $\q'\times\q''\neq 0$). Taking dot product of last equation with $\q$ and using $\p\q=1$ we get $c=I\ent I\p=\q'\times\q''.$
+
+
+ 
+ Next, from (1), $ \p'\q=\p''\q=0\ent \bar c\q=\p'\times\p''$
+  for some function $\bar c$ (here we assume 
+  $\bar I\neq 0$). Take dot product with $\p$ and get $\bar c=\bar I \ent \bar I\q=\p'\times \p''.$
+ 
+ \item (This was already shown in Lemma~\ref{dual} but we give another proof here). From (1), $\p\q'=\p'\q'=0\ent \q'=f\p\times\p'$ for some function $f$. Cross product with $\q$, use the vector identity $$(\p_1\times\p_2)\times \q =(\p_1\q)\p_2 - (\p_2\q)\p_1,$$  and get $-\p'=\q'\times \q=f(\p\times\p')\times \q=f[(\p\q)\p'-(\p'\q)\p]=f\p'\ent f=-1\ent \q'=-\p\times\p'.$
+   
+ \item  $I\p=\q'\times\q'', \p'=\q\times \q'\ent I'\p+I(\q\times\q')=\q'\times\q'''.$ Now dot product with $\q''$, use $\p\q''=0$ and get $I^2+J=0.$
+   Very similarly, get
+   $(\bar I)^2-\bar J=0.$
+   
+   \item Use the vector identity
+   $$\det(\q_1\times\q_2, \q_2\times \q_3,\q_3\times \q_1)=[\det(\q_1,\q_2, \q_3)]^2,$$ to get 
+   $I\bar I=\det(I\p, \p',\p'')=\det(\q'\times\q'', \q\times\q', \q\times\q'')=I^2,$ hence
+   $I=\bar I.$ 
+   
+   \mn From (4), $\bar J=\bar I^2=I^2=-J.$
+   
+   \mn From $\p'=\q\times \q\ent \p''=\q\times \q''\ent \p''\q''=0\ent \p'''\q''+\p''\q'''=0.$
+   Now $K=\det(\q, \q'', \q''')=(\q\times \q'')\q'''=\p''\q''',$ $\bar K=\det(\p,\p'', \p''')=-\p'''\q'',$ hence 
+   $K-\bar K=\p''\q'''+\p'''\q''=(\p''\q'')'=0.$
+   
+   \item Immediate from item  (5) and the definition of $a_0, a_1, a_2$. \qedhere 
+  \end{enumerate}
+\end{proof}
+
+Now $\gamma$ is \lc\ so we can reparametrize $\q(t)$ to achieve $I(\q)=1.$ The equation $\p'=\q\times\q'$ is reparametrization invariant so it still holds. It follows from item (5) of the lemma that $I(\p)=1$ as well, hence both $a_2=\bar a_2=0.$ From item (6) of the lemma we have that $a_1=\bar a_1$. Hence the  equation for projective parameter    $S(f)=a_1/4$ is the same equation for both curves $\q(t)$ and $\p(t)$. \end{proof}
+
+ \subsection{An aside: space curves with constant ``centro-affine torsion"}\label{sec:centro}
+We mention here in passing a curious geometric interpretation of a formula that appeared  
+during the proof of Prop.~\ref{TwentyOne} (see part (4) of Lemma~\ref{mucho}):
+\begin{equation}\label{peqn}
+ J(\q)+I^2(\q)=0,
+ \end{equation} 
+where $$I(\q)=\det(\q,\q',\q''),\quad J(\q)=\det(\q,\q'', \q''').$$  
+
+
+\newcommand{\peqn}{(\ref{peqn})}
+
+
+Effectively, this formula means that it is possible to eliminate the $\p$ variable from our system of Eqns.~   \eqref{eqnsss}, reducing them  to  a {\em single}  3rd order ODE   for a  space curve $\q(t)$. 
+ 
+
+
+In fact, it is not hard to show that Eqn.~\peqn\ is {\em equivalent} to Eqns.~\eqnsss; given a nondegenerate ($I(\q)\neq 0$)
+solution  $\q(t)$ to Eqn.~\peqn, use the ``moving  frame"  $\q(t), \q'(t), \q''(t)$ to define $\p(t)$ by  
+\begin{equation}\label{peq}
+\p(t)\q(t)=1, \;\p(t)\q'(t)=0, \;\p(t)\q''(t)=0,
+\end{equation}
+then check that Eqn.~\peqn\ implies  that 
+ $(\q(t), \p(t))$ is a solution to Eqns.~\eqnsss. 
+ 
+The curve $\p(t)$ associated to a non-degenerate curve $\q(t)$ via Eqns.~(\ref{peq}) represents the   
+  {\em osculating plane} $H_t$ along   $\q(t)$,  via the formula $H_t=\{\q|\p(t)\q=1\}.$
+  
+For any space curve (with $I\neq 0$) the quantity $\mathcal J=J/I^2$ is parametrization-independent  and $\SLth$-invariant, called by some authors  the {\em (unimodular) centro-affine torsion} \cite{O}. Hence Eqns.~\eqnsss\  can be also interpreted as the equations  for space curves with $\mathcal J=-1$.
+
+
+
+
+
+\subsection{Projective involutes and the  dancing mate equation}\label{sec:mate} The reader may suspect now  that the necessary condition of Prop.~\ref{TwentyOne} is also sufficient for a pair of curves to be a dancing pair. This is not so, as the following example shows. 
+
+
+\begin{example} Let $\gamma, \bar \gamma$ be the pair consisting of a  circle $q(t)=[\cos(t), \sin(t), 1]$ 
+ and the dual of the concentric circle 
+$p^*(t)=[\sqrt{2}\cos(t+\pi/4), \sqrt{2}\sin(t+\pi/4), 1].$ 
+One can check easily that $(q(t), p(t))$ satisfies the dancing condition (i.e. defines  a null curve in $\M$) and that the map $q(t)\mapsto p(t)$ is projective (as the restriction to $\gamma$ of an element in $\SLth$: a  dilation followed by a rotation). Nevertheless,  the pair of curves  $q(t), p(t)$ is not a dancing pair  
+(there is no way to lift $(q(t), p(t))$ to a solution $(\q(t), \p(t))$ of $\p\q=1, \p'=\q\times \q'$). 
+\end{example}
+
+
+\begin{figure}[h!]\centering
+\includegraphics[width=0.4\textwidth]{example}
+\caption{A  projective involute which is not a dancing pair}
+\end{figure}
+
+ We are going to study carefully the situation now and find an extra condition that the map $q(t)\mapsto p(t)$ should satisfy, for the pair of curves $q(t), p(t)$ to be  a dancing pair. 
+
+
+
+ 
+\begin{definition}  Let $\gamma\subset\RPt$ be a \lc\ curve.   A {\em projective  involute}  of $\gamma$ is a smooth map  $i:\gamma\to \RP^2$ such that  
+
+\begin{itemize}\item  for all $q\in \gamma$,   $i(q)\in q^*$ (the tangent line to $\gamma$ at $q$). 
+
+
+
+\item  $i$ is a projective immersion. 
+\end{itemize}
+\end{definition}
+
+The last phrase means that $i$ is an immersion and  the resulting  local diffeomorphism between $\gamma$ and its image  is projective with respect to the natural projective structures on $\gamma$ and  $i(\gamma)$, defined by their embedding in $\RPt$.
+
+
+
+
+
+ \begin{proposition} Near a non-inflection point  of a curve $\gamma\subset \RPt$ there is a 4-parameter family of
+   projective involutes, given by the solutions of the following 4th order ODE:
+ if $\gamma$ is given by a tautological ODE in the  LF form $A'''+rA=0,$ then its projective involutes  are  given  by $[A(t) ]\mapsto [B(t) ], $ where  $B(t) =(C-y'(t) )A(t) +y(t) A'(t) $, 
+$C$ is an  arbitrary  constant and  $y(t) $ is a solution of  the  ODE 
+      $$y^{(4)}+2{y'''(y'-C)\over y}+3ry'+r'y=0.$$
+          \end{proposition}
+
+ \begin{proof}  Calculate, using $A'''+rA=0$: 
+ \begin{eqnarray*} 
+B&=&xA+ yA'\\
+B'&=&x'A+ (x+y')A' + yA''\\
+B''&=&(x''-ry)A+ (2x'+y'')A'+ (x+2y')A''\\
+B'''&=&(x'''-r'y-r(x+3y'))A+ (3x''-ry+y''')A'+ 3(x'+y'')A''
+ \end{eqnarray*}
+Hence $B\times B'''=0\ent y(x'+y'')=x(x'+y'')=x(3x''+y''')-y(x'''-3ry'-r'y)=0,$ then $y\neq 0\ent x'+y''=0\ent x+y'=C, $ for some constant $C$, hence  
+ $$y^{(4)}= 2{y'''(C-y')\over y}-3ry'-r'y.$$
+This gives a 5 parameter family of solutions. Then imposing say $\det(B,B',B'')=1$ reduces it to a 4 parameter family (removing the scaling ambiguity on $B$). \end{proof}
+
+
+
+ Now given a nondegenerate $\gamma\subset \RPt$, parametrized by $q(t)$, we 
+know, by Prop.~\ref{TwentyOne} and the preceding example, that each of its  dancing mates $p(t)$ gives rise to a projective involute
+$q(t)\mapsto p(t)\mapsto p^*(t)$. The dancing mates of $\gamma$ form a  3 parameter sub-family of 
+the projective involutes,  as they are obtained by lifting 
+$\gamma$ horizontally via $\Q\to \RP^2$, followed by the projection $\Q\to\RPts$. 
+We are thus looking for a single equation characterizing projective involutes of $\gamma$ that correspond to dancing mates. 
+\begin{proposition}\label{TwentyThree} 
+Let  $\gamma\subset \RPt$ be a nondegenerate curve with a tautological ODE in LF form $A'''+rA=0$. Let $i:\gamma\to\RPt$ be a projective involute given in homogeneous coordinates by $B=xA+yA'.$ Then $b=B\times B'$ is a dancing mate of $A$  if and only if $x+y'=0$. That is, $C=0$ in the previous proposition so  $y$ satisfies the ODE
+$$y^{(4)}+2{y'''y'\over y}+3ry'+r'y=0.$$ 
+%In other words,  $C=x+y'=0$ in  the previous proposition. 
+\end{proposition}
+
+\begin{proof} Let $(\q(t), \p(t))$ be an integral curve of $(\Q,\D)$. Then $\p^*=\p\times \p'=-\q'$. Then, to bring both $\q,\p^*$ to LF form we
+  need the same projective parameter $\bar t=f(t)$,  so that $A(\bar t)=f'(t)\q(t) ,$ $B(\bar t)=f'(t)\p^*(t)=-f'(t)\q'(t).$ 
+  Taking derivative of $A(\bar t)=f'(t)\q(t)$  with respect $t$, get $f'(dA/d\bar t)=f''\q+f'\q'=(f''/f')A-B$, 
+  hence $B=xA+y(dA/d\bar t),$ with $x=f''/f',$ $y=-f'\ent x+dy/d\bar t=f''/f'-f''/f'=0.$\end{proof}
+  
+\begin{rmrk}  The geometric meaning of the condition $x+y'=0$ is the following.  Since $B=xA+yA'$ then $B'=x'A+(x+y')A'+yA''$. Hence the condition $x+y'=0$ means that $B'$ is the intersection point of the line $b$ and the line $a'=A\times A''$ (the line connecting $A$ and $A''$). In Sect.~\ref{RT} below, we will further interpret this condition in terms of the osculating conic and Cartan's developments. 
+ \end{rmrk}
+    
+
+\subsection{Example: dancing around a circle}\label{sec:circle}Take $\gamma$ to be a conic, e.g. a circle, $A=(1+t^2,2t,1-t^2)$. Then $A'''=0$, so $A(t) $ is in the LF form with 
+ $r=0$. Then the dancing mate equation in this case is $$y^{(4)}+2{y'''y'\over y}=0.$$
+  Any quadratic polynomial solves this (since  $y'''=0$),  and the corresponding involute $B=-y'A+yA$ is a straight line. To show this, take $y=at^2+bt+c,$ then 
+   $$B=( bt^2+2(c-a)t-b,-2at^2+2c, -bt^2-2(a+c)t-b),$$ which  is contained in the 2-plane 
+   $$(a+c)x+by+(c-a)z=0,$$ so projects into a straight line in $\RPt$. 
+
+   
+   
+   
+   
+   
+   If $y$ is not a quadratic polynomial, then  in a neighborhood of $t$ where $y'''(t) \neq 0$,
+  $$0={y^{(4)}\over y'''}+2{y'\over y}=[\log (y''' y^2)]'=0\ent y''' y^2=const.$$
+  
+ Now we can assume, without loss of generality, that $const.=1$ (multiplying $y$ by a constant does not affect $[B(t)]$, so we end up with the ODE
+$$y'''y^2=1.$$ 
+
+We do not know how to solve this equation explicitly, so we do it numerically. The result is Fig. 2 of Sect. \ref{ProjGeom} above.  
+
+ A few words about this drawing: we make the drawing in the $XY$ plane, where the circle is $X^2+Y^2=1$ and dancing curves around it  are obtained from solutions of $y'''y^2=1 $ via the formulas
+\begin{eqnarray*}
+B&=&-y'A+yA'-y'\left(1+t^2-2tz,2(t-z), 1-t^2-2tz\right),\\
+(X,Y)&=&\left({B_2\over B_1}, {B_3\over B_1}\right)={(2(t-z), 1-t^2-2tz)\over 1-t^2-2tz}, \quad z=y/y'.
+\end{eqnarray*}
+
+
+The projective coordinate $t$ on a conic  $\CC$ misses a point (the point at ``infinity"), so when integrating this equation  numerically, one needs a second coordinate, $\bar  t=f(t) =1/t,$ and the transformation formulas $\bar  y=f'y$, etc. 
+
+
+\subsection{Example: dancing  pairs of constant projective curvature}\label{const}
+ 
+\n{\bf The idea:}  fix a point 
+$(\q_0,\p_0)\in Q$ and an element $Y\in\mathfrak{sl}(3,\R)$  such that $Y\cdot(\q_0,\p_0)$ 
+is $\D$-horizontal. That is, $\p_0d\q$ and $d\p-\q_0\times d\q$ both vanish on $Y\cdot (\q_0, \p_0)=(Y\q_0, -\p_0Y).$  The subspace of such $Y$ has codimension 3 in $\mathfrak{sl}(3,\R)$, i.e.~is 5-dimensional, since $\SL(3,\R)$ acts transitively on $Q$ and $\D$ has corank 3. 
+
+
+Then the orbit of $(\q_0, \p_0)$ under the flow of $Y$, 
+ $$(\q(t), \p(t))=exp(tY)\cdot(\q_0, \p_0)=(exp(tY)\q_0, \p_0exp(-tY))$$ 
+ is an integral curve of $\D$
+ (this follows from the $\SL(3,\R)$-invariance of $\D$). The projected curves $q(t)=[\q(t)], p(t)=[\p(t)]$ are then a dancing pair. Each of the curves is an orbit of the 1-parameter subgroup $exp(tY)$ of $\SLth$. Such curves are called $W$-curves or ``pathcurves".  They are very interesting curves, studied by Klein and Lie in 1871 \cite{KLie}. They are: straight lines and conics,   exponential curves, logarithmic spirals  and ``generalized parabolas" (see below for explicit formulas).  This class of curves (except lines and conics, considered degenerate) coincides with the class of curves with {\em constant projective curvature} $\kappa$. 
+ 
+\sn {\bf About the projective curvature.} The projective curvature $\kappa$ of a curve $\gamma\subset \RPt$ is a function defined along $\gamma$, away from {\em sextactic}  points,  where the osculating conic has order of contact with $\gamma$  higher then expected (5th or higher).  
+The  sextactic points are also given by the vanishing of the {\em projective arc length}  element $d\sigma$, so away from such points one can use $\sigma$ as a natural parameter on $\gamma$ and compare it to a projective parameter $t$, given by the projective structure (see Prop.~\ref{TwentyOne}).  More precisely, when $d\sigma\neq 0$, it defines a local diffeomorphism $\RP^1\to \gamma$, whose  Schwarzian derivative is  the  quadratic form $\kappa(\sigma)(d\sigma)^2$. The pair $\{ d\sigma, \kappa\}$  forms a complete set of projective invariants for curves in $\RPt$ (analogues to the arc length element and curvature for regular curves in the euclidean plane). For  curves with constant projective curvature, the constant $\kappa$ by  itself is a complete invariant (also same as in the euclidean case). Along a conic $d\sigma\equiv 0$ and so $\kappa$ is not defined.
+
+ 
+ \begin{rmrk}  In the book of Ovsienko-Tabachnikov \cite{OT} (a beautiful book, we highly recommend it) the  term ``projective curvature" is used to denote what we call here the projective structure and it is stated  that ``the projective curvature is, by no means, a function on the curve" (\cite[p.~14]{OT},  the online version). This can be somewhat   confusing if one does not realize the difference in usage of terminology. We adhere to the classical terminology, as in  Cartan's book \cite{Cbook}. 
+ \end{rmrk}
+
+The classification of curves with constant projective curvature $\kappa$, up to projective equivalence,  is as follows. There are two generic cases, divided (strangely enough) by the borderline value $\kappa_0=-3(32)^{-1/3}\approx-0.94$: 
+\begin{itemize}
+\item $\kappa>\kappa_0$: logarithmic spirals, $r=e^{a\theta}$, $a>0$ (in polar coordinates); 
+\item $\kappa=\kappa_0$: the exponential curve $y=e^x$;
+\item $\kappa<\kappa_0$: generalized parabolas, $y=x^m$, $m>0$, $m\neq 2, 1, 1/2.$ 
+\end{itemize}
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+\mn{\bf The curves.} Take $\q_0=(0, 0, 1)^t$, $\p_0=(1,0,0).$ Then $Y\cdot(\q_0,\p_0)\in\D_{(\q_0,\p_0)}$, $Y\in\slth$,  implies 
+$$Y=
+\left(\begin{array}{c|c}A&\bv\\ \hline\bv^*& 0\end{array}\right),\quad 
+\bv={v_1\choose v_2}, \quad \bv^*=(v_2, -v_1), \quad A\in\slt.$$
+%
+Let $H_0\cong \SLt$ be the stabilizer subgroup of $(\q_0, \p_0)$. It  acts on $Y$ by the adjoint representation, $$(A,\bv)\mapsto (hAh^{-1}, h\bv), \quad h\in\SLt.$$ Then, reducing by this $\SLt$-action as well as by rescaling, $Y\mapsto \lambda Y, $ $ \lambda\in\R^*$ (this just reparametrizes the orbit), and  removing orbits which are fixed points and straight lines, we are left with a list of ``normal forms''  of $Y$ (two one-parameter families and one isolated case):
+\begin{subequations}\label{Y}
+
+\begin{align}  Y_1&:=
+ \left( 
+\begin{array}{rrr} 
+1& 0 &1\\ 
+0&-1&a\\ 
+a&-1&0
+\end {array} 
+\right), 
+\quad a> 0.\\  
+%
+Y_2&:=
+\left( \begin{array}{rrr} 
+0&1&b\\
+-1&0&0\\
+0&-b&0
+\end{array} 
+\right), 
+\quad b>0,\\ 
+Y_3&:=
+\left(
+\begin{array}{rrr}
+0 &1&0\\ 
+0&0&1\\ 
+1&0&0
+\end{array} 
+\right).
+%
+\end{align}
+\end{subequations}
+
+
+\begin{proposition} The pair of curves $[\q(t)], [\p(t)],$ in $\RPt, \RPts$ (resp.), where $\q(t)=exp(tY)\q_0$, $\p(t)=\p_0exp(-tY)$,
+  $\q_0=(0,0,1)^t$, $\p_0=(0,0,1)$ and $Y$ is any of the matrices in Eqns.~\eqref{Y} above, is a dancing pair  of curves with constant projective curvature $\kappa$ (same value of $\kappa$ for each member of the pair). All values of $\kappa\in\R$ can be obtained in such a way. 
+  
+
+\end{proposition}
+
+\begin{proof} A matrix $Y$ with $\tr(Y)=0$  has characteristic  polynomial  of the form $\det(\lambda I-Y)={\lambda}^{3}+a_1\lambda+a_0.$ 
+Then, using $Y^3+a_1Y+a_0I=0$ (Cayley-Hamilton), we have that  $\q(t):=exp(tY)\q_0$ satisfies the tautological ODE
+$$\q'''+a_1\q'+a_0\q=0.$$ 
+From Cartan's formulas (\cite{Cbook}, p.~69 and  p.~71), we then find easily
+$$\kappa=a_1a_0^{-2/3}/2.$$
+Now in our case, the characteristic  polynomials are 
+\begin{align*}
+ (a)\quad&{\lambda}^{3}-\lambda-2a, &
+ (b)\quad  & {\lambda}^{3}+\lambda-\,b^2, &
+  (c)\quad & {\lambda}^{3}-1,
+  \end{align*}   
+hence we get projective curvatures 
+\begin{align*}
+ (a)\quad&  \kappa=-(32a^2)^{-1/3}&
+ (b)\quad  &\kappa=b^{-4/3}/2,&
+  (c)\quad & \kappa=0.
+  \end{align*}   
+We thus get all possible values of $\kappa$. \end{proof}
+%
+To visualize such a pair, we draw the pair $(q(t), p^*(t))$, where $p^*(t)=[\p^*(t)]$ is the curve dual  to $p(t)$, given by $\p^*(t)=\p(t)\times\p'(t)=-Y\q(t)$.
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.6\textwidth]{dancingWcurvesY3}
+\caption{\small A dancing pair of logarithmic spirals with $\kappa=0$.}
+\end{figure}
+
+
+
+
+\subsection{Projective rolling without slipping and twisting}\label{RT}
+
+\newcommand{\RC}{\mathcal{RC}}
+
+\subsubsection{About riemannian rolling}
+Let us describe  first   ordinary (riemannian) rolling, following \cite[p.~456]{BrHs}.   Let $(\Sigma_i, \met_i)$, $i=1,2,$ be two   riemannian surfaces. 
+The configuration space for  the rolling of the two  surfaces along each other  is the space $\RC$ of {\em riemannian contact elements} $(u_1, u_2, \psi)$, where $u_i\in\Sigma_i$ and $$\psi:T_{u_1}\Sigma_1\to T_{u_2}\Sigma_2$$ is an isometry.  
+$\RC$ is a 5-manifold, and if $\Sigma_i$ are oriented then $\RC$ is the disjoint union $\RC=\RC^+\sqcup\RC^-$, where each $\RC^\pm$ is a circle bundle over $\Sigma_1\times\Sigma_2$ in an obvious way, so that  $\RC^+$ consists of the  orientation preserving riemannian contact elements and   $\RC^-$ are the orientation  reversing. 
+
+
+
+A parametrized curve $(u_1(t), u_2(t), \psi(t))$ in $\RC$ satisfies the {\em non-slip condition} if 
+$$u'_2(t)=\psi(t)u_1'(t)$$ 
+for all $t$. It satisfies also the {\em no-twist condition}   if for every  parallel vector field $v_1(t)$   along $u_1(t)$, 
+$$v_2(t)=\psi(t)v_1(t)$$
+ is parallel along $u_2(t)$ (``parallel" is with respect to   the Levi-Civita connection of the corresponding metric). 
+
+It is easy to show that these two conditions define together a rank 2 distribution $\D\subset T\RC$ which is $(2,3,5)$ unless the surfaces are isometric (\cite{BrHs}, p. 458). For some special pairs of surfaces (e.g. a pair of round spheres  of radius ratio $3:1$) $\D$ is maximally symmetric, i.e. admits $\g_2$-symmetry (maximum possible). Recently \cite{AN}, some new pairs of surfaces were found where the corresponding {\em rolling distribution} $(\RC, \D)$ admits $\g_2$-symmetry, but the general case is not settled yet.  
+
+Now  in \cite{AN} it was  noticed that  riemannian rolling can be reformulated as follows. 
+Let $\M:=\Sigma_1\times\Sigma_2$, equipped with the difference metric $\met=\met_1\ominus \met_2$. 
+This is a pseudo-riemannian metric of signature $(2,2)$. Then one can check easily that $\psi:T_{u_1}\Sigma_1\to T_{u_2}\Sigma_2$ is an isometry 
+if and only if its graph 
+$$W_\psi=\{(v,\psi v)|v \in T_{u_1}\Sigma_1\}\subset 
+T_{u_1}\Sigma_1\oplus T_{u_2}\Sigma_2\simeq T_{(u_1,u_2)}\M$$ 
+is a {\em non-principal null 2-plane}; i.e.~a null 2-plane not of the form  $T_{u_1}\Sigma_1\oplus \{0\}$ or  $\{0\}\oplus T_{u_2}\Sigma_2$ (compare with Cor.~\ref{grancor}a). This defines an embedding  of $\RC$ in the total space of the twistor fibration $\T \M\to\M$ of $(\M, [\met])$ (see Sect.~\ref{twist}). Furthermore, if $\Sigma_i$ are oriented then  one can orient $\M$ so that $\RC^+$ (orientation preserving $\psi$'s) is mapped to the self-dual twistor space  $\T^+\M$ and $\RC^-$ to the anti-self-dual twistor space $\T^-\M$. Finally, it is shown in \cite{AN}, that under the embedding $\RC\hookrightarrow\T\M$, the {\em rolling distribution} $\D$ on $\RC$ goes over to the {\em twistor distribution} associated with  Levi-Civita connection of $(\M, \met)$. 
+
+ In what follows, we give a similar ``rolling interpretation" of the self-dual twistor space of  the dancing space $(\M, [\met])$, and thus, via the identification $\Q\hookrightarrow \T^+\M$ of Thm.~\ref{ident}, a ``rolling interpretation" of our Eqns.~\eqnsss. The novelty here is that the dancing metric $(\M, \met)$ is irreducible, i.e.   not a difference metric as in the case of riemannian rolling. And yet,  it can be given a rolling interpretation of some sort and in addition   admits $\g_2$-symmetry. 
+
+We try to keep our   terminology as close as possible to the above terminology of riemannian rolling, in order to make the analogy transparent. 
+
+
+\subsubsection{A natural isomorphism of projective spaces} 
+
+ A projective isomorphism of two projective spaces $\P(V),$ $\P(W)$  is the projectivization $[T]$ of a linear isomorphism $T:V\eto W$ of the underlying vector spaces, $[T]:[v]\mapsto [Tv]$. Two linear isomorphisms $T, T':V\to W$ induce the same projective isomorphism if and only if $T'=\lambda T$ for some $\lambda \in \R^*$. 
+
+
+For each non-incident pair $(q,p)\in\M$ we define a projective isomorphism  
+\be\label{eq:pi}\Psi_{q,p}: \P(T_q\RPt)\eto\P(T_p\RPts) 
+\ee
+%$\P(T_q\RPt)\eto\P(T_p\RPts) $
+by first identifying  $\P(T_q\RPt)$ with the pencil of   lines through $q$ and $ \P(T_p\RPts)$ with the  points on the line  $p$. We then send a line $\ell$ through $q$ to its   intersection point $\ell^*$ with $p$.
+One can verify easily that $\Psi_{q,p}$  is a projective isomorphism. 
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.3\textwidth]{can_iso1}
+\caption{\small The natural isomorphism $\Psi_{q,p}:\ell\mapsto \ell^*$}
+\end{figure}
+%
+
+\subsubsection{Projective contact} 
+
+
+
+
+\begin{definition} 
+ A {\em projective contact element} between $\RPt$ and  $\RPts$ is a triple  $(q,p,\psi)$ where $(q,p)\in\M$ and  
+ $$\psi:T_q\RPt\to T_p\RPts$$
+  is a  linear isomorphism covering the natural projective  isomorphism $\Psi_{q,p}$ of Eq.~\eqref{eq:pi}; that is, $[\psi]=\Psi_{q,p}.$ 
+ The set of projective contact elements forms a principal $\R^*$-fibration  $\PC\to \M,$ $(q,p,\psi)\mapsto (q,p)$. 
+\end{definition}
+
+\begin{rmrk} We only allow projective contacts between $\RPt$ and $\RPts$  at a {\em non-incident} pair $(q,p)\in\M.$ 
+ \end{rmrk}
+ 
+Let us look at  the projective contact condition on $\psi$. We take a non-zero $v\in T_q\RPt$ and let $w=\psi(v)$.  To $v$ corresponds a line $\ell$ through $q$, tangent to $v$ at $q$. Likewise, to $w$ corresponds a point  $\ell^*\in p$, whose dual line in $\RPts$ (the pencil of lines through $\ell^*$) is tangent to $w$ at $p$. The projective contact condition on $\psi$ is then the incidence relation  $\ell^*\in \ell$. But this is precisely the {\em dancing condition}, i.e. $(v,w)\in T_{(q,p)}\M$ is a null vector. In other words, the graph of $\psi$,
+$$W_\psi=\{(v, \psi (v))\st v\in T_q\RPt\}\subset T_q\RPt\oplus T_p\RPts=T_{(q,p)}\M,$$
+is a null 2-plane. More precisely,
+
+
+\begin{proposition}
+A linear isomorphism $\psi:T_q\RPt\to T_p\RPts$ is a projective contact if and only if its graph $W_\psi\subset T_{(q,p)}\M$ is a non-principal self-dual null 2-plane (see Cor.~\ref{grancor}). 
+\end{proposition}
+
+\begin{proof} We recall from Sect.~\ref{proofs}: a local section $\sigma$ of   $j:\SLth\to M$ around $(q,p)\in M$ provides  a null coframing
+$\weta:=\sigma^*\eta=(\weta^1, \weta^2, \weta_1, \weta_2)^t$ such  that $T_q\RPt\oplus\{0\}=\{ \weta_1= \weta_2=0\}$,  
+$\{0\}\oplus T_p\RPts=\{ \weta^1= \weta^2=0\}$  and
+$\met=2\weta_a\,\weta^a.$ 
+Let  
+$f=(f_1, f_2, f^1, f^2)$ be the dual framing, $\psi(f_a)=\psi_{ab}f^b.$ Now   the projective contact condition is $\psi(v)(v)=0\ent \psi_{ab}=-\psi_{ba}.$ Say $\psi(f_1)=\lambda f^2,$ $\psi(f_2)=-\lambda f^1$ for some $\lambda\in\R^*\ent  W_\psi=\Span\{f_1+\lambda f^2, f_2-\lambda f^1\}=\Ker\{\lambda\weta^1-\weta_2, \lambda\weta^2-\weta_1\}$. The 2-form corresponding to $W_\psi$  is thus $\beta=(\lambda\weta^1-\weta_2)\wedge(\lambda\weta^2+\weta_1).$ Using formula (\ref{iso}), this is easily seen to be the general form of a SD non-principal null 2-plane. \end{proof} 
+
+
+
+
+\begin{cor} The map $\psi\mapsto W_\psi$ defines an $\SLth$-equivariant embedding 
+$$\PC\hookrightarrow \T^+\M$$ 
+whose image is the set $\T^+_*\M$ of non-principal SD 2-planes in $T\M$ (the non-integrable locus of the twistor distribution $\D^+$).  
+\end{cor}
+
+Now combining this last Corollary  with  Prop.~\ref{ident}, we obtain the 
+identifications
+$$\Q \simeq\T^+_*\M\simeq\PC.$$
+Tracing through our definitions, we find 
+
+
+\begin{proposition}
+There is an isomorphism of principal $\R^*$-bundles over $\M$
+$$\Q\eto\PC$$
+%$$\begin{tikzcd}[column sep=tiny]\Q \arrow{dr} &\longrightarrow&\PC\arrow{dl}\\&\M&\end{tikzcd}$$
+sending $(\q,\p)\in\Q$  to the projective contact element $(q,p,\psi)$, where $q=[\q], p=[\p]$ and $\psi:T_q\RPt\to T_p\RPts$ is given in homogeneous coordinates by $$\psi([\bv])=[\q\times\bv].$$ 
+That is, if $v=d\pi_\q(\bv),$ then $\psi(v)=d\bar \pi_\p(\q\times\bv)$. 
+\end{proposition}
+
+
+\begin{definition}
+A parametrized curve $(q(t), p(t), \psi(t))$ in $\PC$ satisfies the {\em no-slip condition} if  $$\psi(t)q'(t)=p'(t)$$ for all $t$.
+\end{definition}
+
+\begin{proposition}The projection $\PC\to \M$ defines a bijection between curves in $\PC$ satisfying the no-slip condition and non-degenerate null-curves in $\M$. 
+\end{proposition}
+
+\begin{proof} If $(q(t), p(t), \psi(t))$ satisfies the no-slip condition then $(q'(t),p'(t))\in W_{\psi(t)}$, which is a null plane, hence $(q'(t),p'(t))$ is a null vector. Conversely, if $(q(t), p(t))$ is  null and non-degenerate then for all $t$ there is a unique non-principal  SD null 2-plane $W_t$ containing the null vector $(q'(t), p'(t))$. By the previous proposition, there is a unique $\psi(t)$ such that $W_t=W_{\psi(t)}$, hence $\psi(t)q'(t)=p'(t)$ and so 
+$(q(t), p(t), \psi(t))$ satisfies the no-slip condition. \end{proof}
+
+
+
+%\begin{proposition}Under the identification $\PC\cong\Q$, projective rolling without slipping correspond to  integral curves of the rank-3 distribution $\D^{(2)}=[\D,\D]$. \end{proposition}\pf [complete]
+
+
+
+
+
+\subsubsection{The normal acceleration}
+
+\begin{definition}Given a parametrized regular curve $q(t)$ in $\RP^2$, i.e. $q'(t)\neq 0$, 
+its {\em normal acceleration}, denoted by  $q''$, is  a section  of the normal line bundle of the curve, defined as follows:  
+lift the curve to $\q(t)$ in $\R^3\setminus 0$, then  let 
+$$q'':=  d\pi_{\q}(\q'')\;(\mod q'), $$ where $\pi:\R^3\setminus 0\to \RPt$ is the canonical projection, $\q\mapsto [\q].$ 
+\end{definition}
+
+
+\mn {\bf Claim:} {\em  this definition is independent  of the lift $\q(t)$ chosen.} 
+
+\begin{proof} Note first  that $\R\q=\Ker(  d\pi_\q)$ and that $  d\pi_\q\q'=q'$. Now if  we modify the lift by $\q\mapsto \lambda\q$, where $\lambda$ is some non-vanishing real function of $t$, 
+then $\q''\mapsto (\lambda\q)''\equiv\lambda\q''\;(\mod \q, \q')\ent  d\pi_{\lambda\q}(\lambda\q)''
+\equiv  d\pi_{ \lambda\q}(\lambda\q'')=
+  d\pi_{\lambda\q}(d\lambda_\q(\q''))=
+d(\pi\circ\lambda)_{\q}(\q'')=
+d\pi _\q(\q'')\;(\mod q')$. \end{proof}
+
+\begin{rmrk}  If we write $q(t)$ in some affine coordinate chart, $q(t)=(x(t), y(t))$, then    the above definition implies that $q''=(x'', y'')\; \mod (x',y')$. The disadvantage of this simple formula is that it is not so easy to show directly that this definition is independent of the affine coordinates chosen (the reader is invited to try). 
+\end{rmrk}
+
+\begin{definition}\label{def:inflect} An inflection point of a regular curve in $\RP^2$ is a point where the normal acceleration vanishes. 
+\end{definition}
+%
+\begin{figure}[H]\centering
+\includegraphics[width=0.18\textwidth]{inflection}
+\caption{An inflection point}
+\end{figure}
+%
+\begin{rmrk} It is easy to check that the definition is parametrization independent. In fact, it is equivalent to the following, perhaps better-known, definition:  an inflection point   is a point where the tangent line has a higher order of contact  with the curve than expected  (second order or higher).  
+ \end{rmrk}
+
+
+ Now given a curve $(q(t), p(t), \psi(t))$ in $\PC$, 
+if it  satisfies the no-slip condition,  $\psi(t)q'(t)=p'(t)$,  
+then $\psi(t)$ induces a bundle map, denoted also by $\psi(t)$,  
+between the normal line bundles along $q(t)$ and $p(t)$.
+
+ \begin{proposition}For any  curve $(q(t), p(t), \psi(t))$ in $\PC$ satisfying the no-slip condition $\psi(t)q'(t)=p'(t)$, $$\psi(t) q''(t)=p''(t).$$
+ \end{proposition}
+ 
+\begin{proof} First note that for the normal accelerations $q'', p''$
+ to be well-defined, both $q', p'$ must be non-vanishing, 
+ i.e.  $\Gamma(t):=(q(t), p(t))$ is a non-degenerate null curve 
+ in $\M$ (see Def.~\ref{ng}). It follows (see Lemma~\ref{adapted}), 
+ that we can choose  an {\em adapted} lift $\sigma$ of $\Gamma$ to $\SLth$ with associated coframing  
+ $\weta=\sigma^*\eta$ and dual framing $\{f_1, f_2, f^1, f^2\}$ such that  
+ $\Gamma'=f_2+f^1$. Let $\tG=\tj\circ\sigma$, with $\tG(t)=(\q(t), \p(t))$, $s^i_{\,j}=\om{i}{j}(\tG'),$ $E_i(t)=E_i(\sigma(t)).$ 
+Then  $\q'=E_3'=E_2+s^3_{\,3}E_3\ent \q''\equiv E_2'\equiv s^1_{\,2} E_1\;(\mod \q, \q')\ent
+q''\equiv s^1_{\,2} f_1\;(\mod q'),$ and similarly $p''\equiv s^1_{\,2} f^2\;(\mod p').$ Now $W^+=\Span\{f_2+f^1, f_1-f^2\}\ent \psi f_2=f^1\ent  \psi q''=\psi(s^2_{\,1}f_2)=s^2_{\,1}f^1=p'' \;(\mod p').$
+\end{proof}
+ 
+ 
+
+
+\begin{cor}For a pair of regular curves $(q(t), p(t))$ satisfying the dancing condition (equivalently, 
+$\Gamma(t)=(q(t), p(t))$ is a non-degenerate null-curve in $\M$), $q(t)$ is an inflection point if and only if $p(t)$ is an inflection point. 
+\end{cor}
+
+
+
+
+
+
+
+
+\subsubsection{Osculating conics and Cartan's developments}\label{osc}
+ To complete the ``projective rolling" interpretation of   $(\Q,\D)$ we introduce a  projective connection associated with a plane curve $\gamma\subset\RPt$, defined on  its fibration of osculating conics $\CC_\gamma$; the  associated horizontal curves of this connection project to plane curves  which are the ``Cartan's developments" of $\gamma$. The ``no twist" condition for projective rolling is then   expressed in terms of this   connection, in analogy with the rolling of riemannian surfaces. 
+
+
+
+
+
+
+
+
+\newcommand{\LL}{\mathcal L}
+
+ Let    $\gamma\subset\RPt$ be a smooth \lc\ curve (i.e. without   inflection points).  
+For each $q\in\gamma$ there is a unique conic $\CC_q\subset \RPt$ which is tangent to 
+$\gamma$ to order 4 at $q$ (this is the projective analog of the osculating circle to a curve 
+in euclidean differential geometry). Define $$\CC_\gamma=\{(q,x)\st q\in \gamma, x\in \CC_q\}\subset \gamma\times\RPt.$$ We get a fibration 
+\renewcommand{\II}{\mathbb I}
+$$\CC_\gamma\to \gamma, \quad (q,x)\to q.$$ 
+
+
+
+\begin{rmrk}  The fibration $\CC_\gamma\to \gamma$ has some remarkable properties. We refer the reader to the beautiful article \cite{GTT}, from which the following figure is taken. 
+ \end{rmrk}
+%
+\begin{figure}[h]\centering
+\includegraphics[width=0.6\textwidth]{osculating}
+\caption{\small The osculating conics of a spiral }
+\end{figure}
+%
+There is a {\em projective connection}  defined on $\CC_\gamma\to \gamma$, i.e. a line field on $\CC_\gamma$, transverse to the fibers, whose associated parallel transport identifies the fibers of $\CC_\gamma$ projectively; its integral curves (the horizontal lifts of $\gamma$ to $\CC_\gamma$)   are defined   as follows: if we parametrize $\gamma$ by $q(t)$, then its horizontal lifts are parametrized curves $(q(t),x(t))\in\CC_\gamma$ such that  $x(t)\in\CC_{q(t)}$ is tangent to the line $\ell(t)$ passing through  $x(t)$ and  $q(t)$.  The projections $x(t)$ of such  horizontal curves on $\RPt$  are   {\em Cartan's developments} of 
+$\gamma$ (see \cite[p.~58]{Cbook}). 
+
+\begin{figure}[H]\centering
+\includegraphics[width=0.4\textwidth]{development1st}
+\caption{\small Cartan's development  $x(t)$ of $\gamma$}
+\end{figure}
+
+Next we consider another  fibration of projective lines along $\gamma$
+$$\LL_\gamma:= \P(T\RPt)|_\gamma\to \gamma.$$
+The fiber over $q\in\gamma$ is the projectivized tangent space $\P(T_q\RPt)$, which we can also identify with $\hat q\subset\RPts$ (the pencil of lines through $q$). 
+
+
+
+ We    identify the  fiber bundles $\CC_\gamma\simeq \LL_\gamma$ using the usual ``stereographic projection": a point $x\in \CC_{q}$, $x\neq q$, is mapped to  the line $\ell$ joining $x$ with $q$, while $q$ itself is mapped to the tangent line to $\gamma$ at $q$. 
+ Thus the projective connection on $\CC_\gamma$ defines, via the identification $\CC_\gamma\simeq \LL_\gamma,$
+a projective connection on $\LL_\gamma.$
+
+
+\subsubsection{Examples of developments.} \label{examples}
+ 
+These are important examples and will be used later.
+
+
+\begin{enumerate}[leftmargin=18pt,label=(\arabic*)]\setlength\itemsep{5pt}
+\item    Parametrize  a \lc\ curve $\gamma\subset\RPt$ by $A(t)$   in LF form, i.e. $A'''+rA=0$ (see Prop.~\ref{TwentyOne}). Using  homogeneous coordinate $(x,y,z)$ on $\RPt$  with respect to the frame $A(t),A'(t),A''(t)$, the osculating conic  $\CC_t$ at  $[A(t)]$    is given by 
+$y^2=2xz$  (see \cite{Cbook}, p.~55). 
+
+In particular, taking  $x=y=0$, we get that  
+$[A''(t)]$  is on the osculating conic at $[A(t)]$. In   fact:  {\em $ x(t):=[A''(t)]$
+is  a  development of $\gamma$}. 
+
+\begin{proof}  $(A'')' =-r A,$ so the tangent line to $A''(t)$ passes through $A(t)$. \end{proof}
+
+The associated parallel line $\ell(t)$ along $\gamma$ is given by $a'=A\times A''$ where  $a=A\times A'$ is the dual curve. 
+
+
+\item  In fact, the development $[A''(t)]$ of the previous item is not so special. It is easy to see that for any point $x\in\CC_q$ (other then $x=q$), one can   pick a parametrization   $A(t)$ of $\gamma$ in LF form such that $x=[A''(0)]$. 
+
+\begin{proof} (Sketch).  Start with any $A(t)$ such that $q=[A(0)]$, than find a M\"obius transformation $\bar t=f(t)$ such that $f(0)=0$ and  $\bar A(\bar t)=f'(t)A(t)$ satisfies $x=[\bar A''(0)].$\end{proof}
+
+\item    Another way to get all  developments of $\gamma$, using the notation of the 1st example,  is to parametrize $\CC_t$ by $P(u)=A(t)+uA'(t)+(u^2/2)A''(t)$, than the developments are given by $x(t)=[P(u(t))], $ where  $u(t)$ satisfies $u'+1=0,$ i.e. $P_c(t)=A(t)+(c-t)A'(t)+[(c-t)^2/2]A''(t) $ is a  development of $\gamma$ for every  constant $c$. (Note that these developments miss exactly the first example $x(t)=[A''(t)]$ above). 
+
+Using this formula, Cartan shows that every development curve $P_c(t)$ is tangent to  $\gamma$ as $t\to c$, with a cusp at $t=c$. 
+
+
+
+\item    Consider the  curve $\gamma^*\subset \RPts$ dual to a curve $\gamma\subset\RPt$ with a parametrization $A(t)$ in LF form. Parametrize $\gamma^*$  by $a =A\times A'$. One can check easily that $a(t)$ satisfies $a'''-ra=0$, so is also in LF form. It follows, as  in the last example,  that $a''(t)$ is a  development  of $\gamma^*$. The associated   ``parallel line"  along $a(t)$ (a point on $a(t)$) is $A'=a\times a''$. 
+
+\begin{figure}[h]\centering
+\includegraphics[width=0.6\textwidth]{development}
+\caption{Development of the 2nd kind (development of the dual curve)}
+\end{figure}
+
+\begin{rmrk} Cartan calls the curve $A'(t)$ a {\em development of the 2nd kind} of $\gamma$.  It can be also characterized as the envelope (or dual) of the family of tangents to osculating conics along the development  $A''(t)$ (of the 1st kind). 
+\end{rmrk}
+
+
+  
+
+
+
+\item    When $\gamma$ is itself a conic $\CC$, then the osculating conic is obviously $\CC$ itself for all $q\in \CC$, hence  the  development curves $(q(t),x(t))$ satisfy  $x(t)=const$. It follows that  if we parallel transport a line along a conic, we get a family of {\em concurrent} lines $\ell(t). $
+\begin{figure}[h]\centering
+\includegraphics[width=0.35\textwidth]{parallel}
+\caption{Parallel transport of a line along a conic}
+\end{figure}
+
+\end{enumerate}
+
+
+
+
+\subsubsection{The no-twist condition} 
+
+\begin{definition}
+A {\em projective rolling without slipping or twisting} of $\RPt$ along $\RPts$ is a parametrized curve $(q(t), p(t), \psi(t))$ in $\PC$, satisfying for all $t$
+
+\begin{itemize}
+\item the no-slip condition: $\psi(t)q'(t)=p'(t)$;
+
+
+\item the no-twist condition: if $u(t)$ is a parallel section of $\P(T\RPt)$ along $q(t)$,  then $\psi(t)u(t)$ is a parallel section of 
+ $\P(T\RPts)$ along  $p(t)$. 
+\end{itemize}
+\end{definition}
+
+
+\begin{proposition}\label{TwentyNine}
+Under the identification $ \Q\simeq\PC$, integral curves of the Cartan-Engel distribution $(\Q,\D)$ correspond to projective rolling  curves in $\PC$ satisfying the no-slip and no-twist condition. 
+
+
+\end{proposition}
+
+\begin{proof}  Let $(\q(t), \p(t))$ be an integral curve of $(\Q, \D)$ and $(q(t), p(t), \psi(t))$  the corresponding projective rolling curve in $\PC$. Then $(q(t), p(t))$ is a null curve in $\M$ hence $(q(t), p(t), \psi(t))$ satisfies the no-slip condition.  Let $\ell(t)$ be a parallel line along $q(t)$. We need to show that $\ell^*(t):=\psi(t)\ell(t)=\ell(t)\cap p(t)$ is parallel along $p(t)$. Pick a projective parameter $t$   for  $q(t)$ and    a lift $A(t)$ of $q(t)$ to $\R^3\setminus 0$ such that 
+  (1) $A'''+rA=0$ (the LF form) and (2) $\ell(t)$ is the line $a'=A\times A''$ connecting $A(t)$ and $A''(t)$ (see Example (2)  in Sect. \ref{examples}). Now $p(t)$ is a dancing mate of $q(t)$ hence  its dual $p^*(t)$  is  given   by $B =xA+yA'$, where $B'''\times B=0, x+y'=0$. It follows that  $\ell^*(t)=[B'(t)]$ (see the remark following Proposition \ref{TwentyThree}),  which is parallel along $p(t)=[b(t)],$ by  Example (4)  in Sect. \ref{examples}. \end{proof} 
+  
+\begin{figure}[H]\centering
+\includegraphics[width=.9\textwidth]{doble_huevo}
+\caption{\small The proof of Proposition \ref{TwentyNine}}
+\end{figure}
+
+
+
+
+
+
+
+
