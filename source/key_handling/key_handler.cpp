@@ -29,6 +29,7 @@ key_handler::key_handler(screen_handler& sh, file_request_handler& fh) : sh(sh),
 	km.add_key("ctrl-r",		"toggle relation labels",			"ctrl-r");
 	km.add_key("save",			"save to file",						"ctrl-s");
 	km.add_key("open",			"open file",						"ctrl-o");
+	km.add_key("merge",			"merge in file",					"ctrl-m");
 	km.add_key("escape",		"quit program",						"escape-escape(twice)");
 	km.startup();
 }
@@ -53,6 +54,15 @@ bool key_handler::listening()
 		if (k == "open")
 		{
 			if(!fh.open(sh.wm.sb))
+			{
+				sh.wm.sb.restore_current_filename();
+				sh.wm.sb.set_temporary_status("open failed; check file name");
+			}
+			sh.wm.refresh_data();
+		}
+		if (k == "merge")
+		{
+			if(!fh.merge_in(sh.wm.sb))
 			{
 				sh.wm.sb.restore_current_filename();
 				sh.wm.sb.set_temporary_status("open failed; check file name");

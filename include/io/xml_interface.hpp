@@ -19,9 +19,15 @@ class xml_interface
 	pugi::xml_node gml;
 	pugi::xml_node categories_graph;
 	pugi::xml_node nodes_graph;
+	bool merge_mode = false;
 
 public:
 	xml_interface(database_manager& dm) : dm(dm){};
+
+	void set_merge_mode()
+	{
+		merge_mode = true;
+	};
 
 	bool save(string filename)
 	{
@@ -45,13 +51,15 @@ public:
 		
 		if(r)
 		{
-			dm.db.clear();
+			if(!merge_mode)
+				dm.db.clear(); // only do this if not merging?
 			gml = doc.child("graphml");
 			categories_graph = gml.child("graph");
 			nodes_graph = categories_graph.next_sibling("graph");
 			extract_categories();
 			extract_nodes();
 			extract_links();
+			merge_mode=false;
 			return true;
 		}
 		else

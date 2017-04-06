@@ -142,7 +142,8 @@ public:
 	{
 		pushed_filename = current_file;
 		linking = false;
-		current_file = obtain_file_name("save ", "/g", ".graphml");
+		// current_file = obtain_file_name("save ", "/g", ".graphml");
+		current_file = obtain_file_name("save ", "/g", "");
 		set_status(current_file);
 		return current_file;
 	};
@@ -151,9 +152,20 @@ public:
 	{
 		pushed_filename = current_file;
 		linking = false;
-		current_file = obtain_file_name("open ", "/", ".graphml");
+		// current_file = obtain_file_name("open ", "/", ".graphml");
+		current_file = obtain_file_name("open ", "/", "");
 		set_status(current_file);
 		return current_file;
+	};
+
+	string merge_in_dialog()
+	{
+		pushed_filename = current_file;
+		linking = false;
+		// string merge_in_file = obtain_file_name("merge in contents of ", "/", ".graphml");
+		string merge_in_file = obtain_file_name("merge in contents of ", "/", "");
+		set_status(current_file);
+		return merge_in_file;
 	};
 
 	string obtain_file_name(string addend, string def, string caboose)

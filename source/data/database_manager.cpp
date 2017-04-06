@@ -16,7 +16,7 @@ node_container*	database_manager::get_category(string category)
 node_container* database_manager::add_category(string name)
 {
 	if(get_category(name)!=NULL)
-		return NULL;
+		return NULL;//should this return get_category(name)?
 	node_container* new_category = new node_container(name);
 	node_type& nt = new_category->get_node_type();
 	db.get_node_containers().push_back(new_category);
@@ -78,7 +78,7 @@ node* database_manager::add_node(string	contents, string category, bool prepend)
 		add_node_to_linked_list(nc, new_node, prepend);
 		return new_node;
 	}
-	return NULL;
+	return NULL; // return get_node(...) if not null?
 }
 
 void database_manager::register_link_by_ids(string id1, string id2, string relation_description)

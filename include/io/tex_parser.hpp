@@ -30,6 +30,7 @@ class tex_parser
 {
 	database_manager& dm;
 	ifstream f;
+	bool merge_mode = false;
 
 	int num_phases = 100;
 	int min_freq[10] = {-1,15,7,6,3,3,2,2,2,2};
@@ -40,12 +41,18 @@ class tex_parser
 public:
 	tex_parser(database_manager& dm) : dm(dm){};
 
+	void set_merge_mode()
+	{
+		merge_mode=true;
+	};
+
 	bool open(string filename)
 	{
 		f.open(filename);
 		if(f.is_open())
 		{
-			dm.db.clear();
+			if(!merge_mode)
+				dm.db.clear();
 			extract_graph_data_from_tex();
 			return true;
 		}
@@ -57,7 +64,7 @@ public:
 		define_categories();
 		get_simple_metadata();
 		strip_to_document();
-		render_math_environments_and_mark_notations();
+		render_or_elide_math_environments_except_notations();
 		strip_unhandled_environments();
 		get_and_mark_keyphrases();
 		sort_keyphrases();
@@ -89,7 +96,7 @@ public:
 
 	};
 
-	void render_math_environments_and_mark_notations()
+	void render_or_elide_math_environments_except_notations()
 	{
 
 	};

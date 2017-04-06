@@ -70,6 +70,32 @@ public:
 	    return (stat(file.c_str(), &buf) == 0);
 	};
 
+	bool merge_in(status_bar& sb)
+	{
+		string filename = sb.merge_in_dialog();
+		return merge_in(filename);
+	};
+
+	bool merge_in(string filename)
+	{
+		if(!file_exists(filename))
+			return false;
+
+		if(is_graphml(filename))
+		{
+			xml_interface x(dm);
+			x.set_merge_mode();
+			return x.open(filename);
+		}
+		if(is_tex(filename))
+		{
+			tex_parser t(dm);
+			t.set_merge_mode();
+			return t.open(filename);
+		}
+		return false;
+	};
+
 	string get_working_path()
 	{
 		int MAXPATHLEN = 1000;
