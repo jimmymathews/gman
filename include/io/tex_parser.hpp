@@ -72,14 +72,65 @@ public:
 	};
 
 	void define_categories()
-	{	
-		node_container* c=dm.add_category("dummy cat"); //*
-		c->get_node_type().set_color(1); //*
-		dm.add_node("mm","dummy cat"); //*		
+	{ // title person date item_type sec subsec subsubsec key1 key2 key3 item_num notation text
+		node_container* title=		dm.add_category("title");
+		node_container* person=		dm.add_category("person");
+		node_container* date=		dm.add_category("date");
+		node_container* item_type=	dm.add_category("item type");
+		node_container* sec=		dm.add_category("sec");
+		node_container* subsec=		dm.add_category("subsec");
+		node_container* subsubsec=	dm.add_category("subsubsec");
+		node_container* key1=		dm.add_category("key1");
+		node_container* key2=		dm.add_category("key2");
+		node_container* key3=		dm.add_category("key3");
+		node_container* item_num=	dm.add_category("item num");
+		node_container* notation=	dm.add_category("notation");
+		node_container* text=		dm.add_category("text");
+		
+		title->get_node_type().set_color(1);
+		person->get_node_type().set_color(2);
+		date->get_node_type().set_color(3);
+		item_type->get_node_type().set_color(4);
+		sec->get_node_type().set_color(5);
+		subsec->get_node_type().set_color(6);
+		subsubsec->get_node_type().set_color(7);
+		key1->get_node_type().set_color(0);
+		key2->get_node_type().set_color(1);
+		key3->get_node_type().set_color(2);
+		item_num->get_node_type().set_color(3);
+		notation->get_node_type().set_color(4);
+		text->get_node_type().set_color(5);
+
+		dm.add_node("definition","item type");
+		dm.add_node("proposition","item type");
+		dm.add_node("theorem","item type");
+		dm.add_node("corollary","item type");
+		dm.add_node("lemma","item type");
+		dm.add_node("conjecture","item type");
+		dm.add_node("claim","item type");
+		dm.add_node("axiom","item type");
+		dm.add_node("example","item type");
+		dm.add_node("remark","item type");
 	};
 
 	void get_simple_metadata()
 	{
+		//Try to grab title, author, date, proper names, list of environments.
+		
+		node* t = dm.add_node("...","title");
+
+		// boost::regex re("\\title\s*\{(.*)\}");
+		// ...boost::regex_search(s,re);
+
+		// regex on large string, pass by reference?
+
+		node* a = dm.add_node("...","person");
+
+		// loop...
+		// node* it = dm.add_node(,"item type");
+
+		node* d = dm.add_node("...","date");
+
 		// node* n1 = dm.add_node("m1","dummy cat");
 		// n1->set_id("A");
 		// node* n2 = dm.add_node("m2","dummy cat");
