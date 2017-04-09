@@ -281,9 +281,9 @@ public:
 		unsigned char c = ch;
 
 		//superscipts
-		if(c==24)
+		if(c==164)
 			waddstr(win,"\u207A"); //+ 43 ascii
-		if(c==25)
+		if(c==165)
 			waddstr(win,"\u207B"); //- 45 ascii
 		//numerals
 		if(c==14)
@@ -308,12 +308,11 @@ public:
 			waddstr(win,"\u2079");
 
 		//subscripts
-		if(c==27)
+		if(c==166)
 			waddstr(win,"\u208A"); //+ 43 ascii
-		if(c==28)
+		if(c==167)
 			waddstr(win,"\u208B"); //- 45 ascii
-
-		//numerals
+			//numerals
 		if(c==128)
 			waddstr(win,"\u2080");	//0
 		if(c==129)
@@ -334,8 +333,7 @@ public:
 			waddstr(win,"\u2088");
 		if(c==137)
 			waddstr(win,"\u2089");
-
-		//nonnumerals
+			//nonnumerals
 		if(c==(138-97)+'a')
 			waddstr(win,"\u2090");
 		if(c==(138-97)+'e')
@@ -390,6 +388,12 @@ public:
 		// 	waddstr(win,"\u209B");	//s
 		// if(c==(138-97)+'t')
 		// 	waddstr(win,"\u209C");	//t
+
+		//curly d
+		if(c==168)
+			waddstr(win,"\u2202");
+		// if(c==26)
+		// 	waddstr(win,"PARTIAL");
 
 		if(193<=c && c<=250)
 		{

@@ -69,6 +69,14 @@ node* database_manager::add_node(string contents, string category)
 	return add_node(contents,category,false);
 }
 
+node* database_manager::add_simple_node(string contents, string category)
+{
+	node* sn = add_node(contents,category,false);
+	if(sn!=NULL)
+		sn->set_id(contents);
+	return sn;
+}
+
 node* database_manager::add_node(string	contents, string category, bool prepend)
 {
 	node_container* nc = get_category(category);

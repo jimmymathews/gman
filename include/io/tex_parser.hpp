@@ -6,6 +6,8 @@
 #include <sstream>
 #include <queue>
 #include <boost/regex.hpp>
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 #include "data/data_structures.hpp"
 #include "data/database_manager.hpp"
 #include "data_interaction/node_iterators.hpp"
@@ -26,11 +28,13 @@ struct keyness_comparator
 	};
 };
 
+
 class tex_parser
 {
 	database_manager& dm;
 	ifstream f;
 	bool merge_mode = false;
+	string document;
 
 	int num_phases = 100;
 	int min_freq[10] = {-1,15,7,6,3,3,2,2,2,2};
@@ -61,20 +65,28 @@ public:
 
 	void extract_graph_data_from_tex()
 	{
+		setup();
 		define_categories();
-		get_simple_metadata();
 		strip_to_document();
 		render_or_elide_math_environments_except_notations();
+		get_simple_metadata();
 		strip_unhandled_environments();
 		get_and_mark_keyphrases();
 		sort_keyphrases();
 		unmark_and_push_links();
 	};
 
+	void setup()
+	{
+		std::stringstream ss;
+		ss << f.rdbuf();
+		document = ss.str();
+	};
+
 	void define_categories()
-	{ // title person date item_type sec subsec subsubsec key1 key2 key3 item_num notation text
+	{ // title name date item_type sec subsec subsubsec key1 key2 key3 item_num notation text
 		node_container* title=		dm.add_category("title");
-		node_container* person=		dm.add_category("person");
+		node_container* name=		dm.add_category("name");
 		node_container* date=		dm.add_category("date");
 		node_container* item_type=	dm.add_category("item type");
 		node_container* sec=		dm.add_category("sec");
@@ -88,7 +100,7 @@ public:
 		node_container* text=		dm.add_category("text");
 		
 		title->get_node_type().set_color(1);
-		person->get_node_type().set_color(2);
+		name->get_node_type().set_color(2);
 		date->get_node_type().set_color(3);
 		item_type->get_node_type().set_color(4);
 		sec->get_node_type().set_color(5);
@@ -101,55 +113,296 @@ public:
 		notation->get_node_type().set_color(4);
 		text->get_node_type().set_color(5);
 
-		dm.add_node("definition","item type");
-		dm.add_node("proposition","item type");
-		dm.add_node("theorem","item type");
-		dm.add_node("corollary","item type");
-		dm.add_node("lemma","item type");
-		dm.add_node("conjecture","item type");
-		dm.add_node("claim","item type");
-		dm.add_node("axiom","item type");
-		dm.add_node("example","item type");
-		dm.add_node("remark","item type");
+		dm.add_simple_node("definition","item type");
+		dm.add_simple_node("proposition","item type");
+		dm.add_simple_node("theorem","item type");
+		dm.add_simple_node("corollary","item type");
+		dm.add_simple_node("lemma","item type");
+		dm.add_simple_node("conjecture","item type");
+		dm.add_simple_node("claim","item type");
+		dm.add_simple_node("axiom","item type");
+		dm.add_simple_node("example","item type");
+		dm.add_simple_node("remark","item type");
 	};
 
 	void get_simple_metadata()
 	{
 		//Try to grab title, author, date, proper names, list of environments.
-		
-		node* t = dm.add_node("...","title");
 
-		// boost::regex re("\\title\s*\{(.*)\}");
-		// ...boost::regex_search(s,re);
+		boost::regex re = boost::regex(R"(\\title\s*\{([^\}]*)\})");
+		boost::cmatch matches;
+		boost::regex_search(document.c_str(),matches,re);
+		node* t = dm.add_simple_node(matches[1].str(),"title");
 
-		// regex on large string, pass by reference?
-
-		node* a = dm.add_node("...","person");
-
-		// loop...
-		// node* it = dm.add_node(,"item type");
-
-		node* d = dm.add_node("...","date");
-
-		// node* n1 = dm.add_node("m1","dummy cat");
-		// n1->set_id("A");
-		// node* n2 = dm.add_node("m2","dummy cat");
-		// n2->set_id("B");
-		// node* n3 = dm.add_node("d1","dummy dog");
-		// n3->set_id("C");
-		// // if(n!=NULL)
-		// // 	n->set_id("an identifying string that I guess is used instead of the whole string sometimes for efficiency");
-
+		re = boost::regex(R"([A-Z](\w+|\.)\s[A-Z](\w+|\.)(\s[A-Z](\w+|\.))?)");
+		boost::sregex_iterator b = boost::sregex_iterator(document.begin(), document.end(), re);
+    	boost::sregex_iterator e = boost::sregex_iterator();
+	    for (boost::sregex_iterator i = b; i != e; ++i)
+        	dm.add_simple_node((*i)[0].str(),"name");
+	
 	};
 
 	void strip_to_document()
 	{
-
+		boost::regex begdoc = boost::regex(R"(\\begin\{document\})");
+		boost::regex enddoc = boost::regex(R"(\\end\{document\})");
+		boost::cmatch b;
+		boost::cmatch e;
+		boost::regex_search(document.c_str(),b,begdoc);
+		boost::regex_search(document.c_str(),e,enddoc);
+		document=document.substr(b.position()+16,e.position()-b.position()-16);
+		// dm.add_node(document,"text");//test
 	};
 
 	void render_or_elide_math_environments_except_notations()
 	{
+		boost::regex inlineformula = boost::regex(R"(\$([^\$])+\$)"); //size limit?
+		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun = boost::bind(&tex_parser::render_math_environment, this, _1);
+		document = boost::regex_replace(document, inlineformula, fun);
 
+		// boost::sregex_iterator b = boost::sregex_iterator(document.begin(), document.end(), inlineformula);
+  //   	boost::sregex_iterator e = boost::sregex_iterator();
+	 //    for (boost::sregex_iterator i = b; i != e; ++i)
+	 //    {
+	 //    	string con = (*i)[0].str();
+  //       	dm.add_simple_node(con.substr(1,con.size()-2),"notation");
+  //       }
+	};
+
+	string code_for_greek(int ch)
+	{
+		//	32~126: 						regular chars, includes, numerals 48~57, symbols before that, and 65~122 letters
+		//	65~122 + 128 = 193~250:			greek letters
+		unsigned char char_cache = ch;
+		char_cache = ch + 128;
+		return string(1,char_cache);
+	};
+
+	string code_for_superscript(int ch)
+	{
+		if(ch==' ')
+		return "";
+
+		//	48~57 - (48-14) = 14~23:		superscript numerals
+		//	24,25,27,28:					special +/- sup and superscripts	
+		unsigned char char_cache = ch;
+		if(ch >= 48 && ch <=57)
+			char_cache = ch - (48-14);
+		if(ch == 43)
+			char_cache = 24;	//+
+		if(ch == 45)
+			char_cache = 25;	//-
+
+		return string(1,char_cache);		
+	};
+
+	string code_for_subscript(int ch)
+	{
+		if(ch==' ')
+		return "";
+
+		//	48~57 + (128-48) = 128~137:		subscript numerals
+		//	97~122 + (138-97) = 138~163:	subscript lowercase letters
+		//	24,25,27,28:					special +/- sup and superscripts	
+		unsigned char char_cache = ch;
+		if( (ch>=48 && ch<=57))
+			char_cache = ch + (128-48);
+		if(ch=='a' || ch=='e' || ch=='h' || ch=='i' || ch=='j' ||ch =='k' || ch=='l'|| ch=='m'|| ch=='n'|| ch=='p'|| ch=='s'|| ch=='t'|| ch=='u'|| ch=='v' || ch =='x')
+			char_cache = ch + (138-97);
+		if(ch == 43)
+			char_cache = 27;	//+
+		if(ch == 45)
+			char_cache = 28;	//-
+		return string(1,char_cache);
+	};
+
+	string render_math_environment(const boost::smatch& match)
+	{
+		string in = match[0].str();
+		boost::regex re;
+
+		re = boost::regex(R"(\\geq)");
+		in = regex_replace(in, re, ">=");
+		re = boost::regex(R"(\\leq)");
+		in = regex_replace(in, re, "<=");
+		re = boost::regex(R"(\\neq)");
+		in = regex_replace(in, re, "!=");
+		re = boost::regex(R"(\\wedge)");
+		in = regex_replace(in, re, code_for_greek('L'));
+		re = boost::regex(R"(\\rightarrow)");
+		in = regex_replace(in, re, "->");
+		re = boost::regex(R"(\\partial)");
+		string cd = string(1,168);
+		in = regex_replace(in, re, cd);
+		re = boost::regex(R"(\\ast|\\star)");
+		in = regex_replace(in, re, "*");
+
+		re = boost::regex(R"(\\right)");
+		in = regex_replace(in, re, "");
+		re = boost::regex(R"(\\left)");
+		in = regex_replace(in, re, "");
+		re = boost::regex(R"(\\langle)");
+		in = regex_replace(in, re, "<");
+		re = boost::regex(R"(\\rangle)");
+		in = regex_replace(in, re, ">");
+
+		re = boost::regex(R"(\\alpha)");
+		in = regex_replace(in, re, code_for_greek('a'));
+		re = boost::regex(R"(\\beta)");
+		in = regex_replace(in, re, code_for_greek('b'));
+		re = boost::regex(R"(\\psi)");
+		in = regex_replace(in, re, code_for_greek('c'));
+		re = boost::regex(R"(\\delta)");
+		in = regex_replace(in, re, code_for_greek('d'));
+		re = boost::regex(R"(\\epsilon|\\varepsilon)");
+		in = regex_replace(in, re, code_for_greek('e'));
+		re = boost::regex(R"(\\phi|\\varphi)");
+		in = regex_replace(in, re, code_for_greek('f'));
+		re = boost::regex(R"(\\gamma)");
+		in = regex_replace(in, re, code_for_greek('g'));
+		re = boost::regex(R"(\\theta)");
+		in = regex_replace(in, re, code_for_greek('h'));
+		re = boost::regex(R"(\\iota)");
+		in = regex_replace(in, re, code_for_greek('i'));
+		// re = boost::regex(R"(j)");
+		// in = regex_replace(in, re, code_for_greek('j'));
+		re = boost::regex(R"(\\kappa)");
+		in = regex_replace(in, re, code_for_greek('k'));
+		re = boost::regex(R"(\\lambda)");
+		in = regex_replace(in, re, code_for_greek('l'));
+		re = boost::regex(R"(\\mu)");
+		in = regex_replace(in, re, code_for_greek('m'));
+		re = boost::regex(R"(\\nu)");
+		in = regex_replace(in, re, code_for_greek('n'));
+		re = boost::regex(R"(\\omega)");
+		in = regex_replace(in, re, code_for_greek('o'));
+		re = boost::regex(R"(\\pi)");
+		in = regex_replace(in, re, code_for_greek('p'));
+		re = boost::regex(R"(\\eta)");
+		in = regex_replace(in, re, code_for_greek('q'));
+		re = boost::regex(R"(\\rho)");
+		in = regex_replace(in, re, code_for_greek('r'));
+		re = boost::regex(R"(\\sigma)");
+		in = regex_replace(in, re, code_for_greek('s'));
+		re = boost::regex(R"(\\tau)");
+		in = regex_replace(in, re, code_for_greek('t'));
+		// re = boost::regex(R"(u)");
+		// in = regex_replace(in, re, code_for_greek('u'));
+		// re = boost::regex(R"(v)");
+		// in = regex_replace(in, re, code_for_greek('v'));
+		// re = boost::regex(R"(w)");
+		in = regex_replace(in, re, code_for_greek('w'));
+		re = boost::regex(R"(\\xi)");
+		in = regex_replace(in, re, code_for_greek('x'));
+		// re = boost::regex(R"(y)");
+		// in = regex_replace(in, re, code_for_greek('y'));
+		re = boost::regex(R"(\\zeta)");
+		in = regex_replace(in, re, code_for_greek('z'));
+		re = boost::regex(R"(\\Alpha)");
+		in = regex_replace(in, re, code_for_greek('a'));
+		re = boost::regex(R"(\\Beta)");
+		in = regex_replace(in, re, code_for_greek('b'));
+		re = boost::regex(R"(\\Psi)");
+		in = regex_replace(in, re, code_for_greek('c'));
+		re = boost::regex(R"(\\Delta)");
+		in = regex_replace(in, re, code_for_greek('d'));
+		re = boost::regex(R"(\\Epsilon)");
+		in = regex_replace(in, re, code_for_greek('e'));
+		re = boost::regex(R"(\\Phi)");
+		in = regex_replace(in, re, code_for_greek('f'));
+		re = boost::regex(R"(\\Gamma)");
+		in = regex_replace(in, re, code_for_greek('g'));
+		re = boost::regex(R"(\\Theta)");
+		in = regex_replace(in, re, code_for_greek('h'));
+		re = boost::regex(R"(\\Iota)");
+		in = regex_replace(in, re, code_for_greek('i'));
+		// re = boost::regex(R"(J)");
+		// in = regex_replace(in, re, code_for_greek('j'));
+		re = boost::regex(R"(\\Kappa)");
+		in = regex_replace(in, re, code_for_greek('k'));
+		re = boost::regex(R"(\\Lambda)");
+		in = regex_replace(in, re, code_for_greek('l'));
+		re = boost::regex(R"(\\Mu)");
+		in = regex_replace(in, re, code_for_greek('m'));
+		re = boost::regex(R"(\\Nu)");
+		in = regex_replace(in, re, code_for_greek('n'));
+		re = boost::regex(R"(\\Omega)");
+		in = regex_replace(in, re, code_for_greek('o'));
+		re = boost::regex(R"(\\Pi)");
+		in = regex_replace(in, re, code_for_greek('p'));
+		re = boost::regex(R"(\\Eta)");
+		in = regex_replace(in, re, code_for_greek('q'));
+		re = boost::regex(R"(\\Rho)");
+		in = regex_replace(in, re, code_for_greek('r'));
+		re = boost::regex(R"(\\Sigma)");
+		in = regex_replace(in, re, code_for_greek('s'));
+		re = boost::regex(R"(\\Tau)");
+		in = regex_replace(in, re, code_for_greek('t'));
+		// re = boost::regex(R"(u)");
+		// in = regex_replace(in, re, code_for_greek('u'));
+		// re = boost::regex(R"(v)");
+		// in = regex_replace(in, re, code_for_greek('v'));
+		// re = boost::regex(R"(w)");
+		in = regex_replace(in, re, code_for_greek('w'));
+		re = boost::regex(R"(\\Xi)");
+		in = regex_replace(in, re, code_for_greek('x'));
+		// re = boost::regex(R"(y)");
+		// in = regex_replace(in, re, code_for_greek('y'));
+		re = boost::regex(R"(\\Zeta)");
+		in = regex_replace(in, re, code_for_greek('z'));
+
+		re = boost::regex(R"(\$)");		//get rid of demarcation from tex syntax
+		in = regex_replace(in, re, "");
+
+		re = boost::regex(R"(\\(\w)+)");
+		in = regex_replace(in, re, "");
+
+
+		re = boost::regex(R"((\s)+)");	//get rid of extra spaces in math environment
+		in = regex_replace(in, re, "");
+
+		re = boost::regex(R"([\.|,|!|;|:]$)");	//get rid of trailing punctuation
+		in = regex_replace(in, re, "");
+
+		re = boost::regex(R"(\^\{([\w\s]+)\}|\^([\w\s]))");  //render superscript
+		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun1 = boost::bind(&tex_parser::superscript_string, this, _1);
+		in = boost::regex_replace(in, re, fun1);
+
+		re = boost::regex(R"(_\{([\w|\s]+)\}|_([\w|\s]))");  //render subscript
+		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun2 = boost::bind(&tex_parser::subscript_string, this, _1);
+		in = boost::regex_replace(in, re, fun2);
+
+		re = boost::regex(R"(_\{([^\}]*)\}|\^{([^\}]*)\})");  //erase notation around unrendered super/sub
+		in = regex_replace(in, re, "$2");
+
+		re = boost::regex(R"(\\|%)");		//shouldn't do this; takes away command names regardless of arguments; better to handle the commands?
+		in = regex_replace(in, re, "");
+		
+		//still need otimes, nabla,  mathbb,  ast , subset, in , frac
+		// ... need to learn user-defined macros, at least the simples ones like my \ra as \rightarrow!
+		// subscript/superscript functionality breaks if + or -, perhaps other symbols too?
+		// definitely way to many things are created, need to break it down; inline math, versus equation...
+		if(in.size()<35)
+			dm.add_simple_node(in,"notation");
+		return in;
+	};
+
+	string superscript_string(const boost::smatch& match)
+	{
+		string in = match[1];
+		string out = "";
+		for(int i=0; i<in.size();i++)
+			out = out + code_for_superscript(in.at(i));
+		return out;
+	};
+
+	string subscript_string(const boost::smatch& match)
+	{
+		string in = match[1];
+		string out = "";
+		for(int i=0; i<in.size();i++)
+			out = out + code_for_subscript(in.at(i));
+		return out;
 	};
 
 	void strip_unhandled_environments()

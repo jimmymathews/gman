@@ -416,6 +416,7 @@ bool tree_viewer::handle_delete()
 		
 		selection_history.erase(selection_history.begin() + (n-1));
 		selection_history.push_back(new_node);
+		new_node->get_focus();//test... seemed right after preliminary test
 		dm.get_category(cached->get_node_type().get_name())->delete_node(cached);
 	}
 	else
@@ -440,6 +441,7 @@ bool tree_viewer::handle_delete()
 		}
 		cached_category->delete_node(cached);  //data refresh supposedly not needed
 	}
+	// return true;
 	return false;
 }
 

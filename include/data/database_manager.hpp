@@ -22,6 +22,7 @@ public:
 	void delete_category(string name);
 	node* add_node_and_insert_before(string contents, string category, node* n);
 	node* add_node(string contents, string category);
+	node* add_simple_node(string contents, string category);
 	node* add_node(string contents, string category, bool prepend);
 	void register_link_by_ids(string id1, string id2, string relation_description);
 	bool are_linked_by_id(string s, string t);

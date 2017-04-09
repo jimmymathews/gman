@@ -406,7 +406,10 @@ public:
 		//	48~57 + (128-48) = 128~137:		subscript numerals
 		//	97~122 + (138-97) = 138~163:	subscript lowercase letters
 		//	65~122 + 128 = 193~250:			greek letters
-		//	24,25,27,28:					special +/- sup and superscripts	
+						// 24,25,27,28:					special +/- sub and superscripts
+						// 26:							curly d	
+		// 164,165,166,167					special +/- sub and superscripts
+		// 168								curly d
 
 		unsigned char char_cache = ch;
 		if(greek_input)
@@ -425,9 +428,9 @@ public:
 				if(ch >= 48 && ch <=57)
 					char_cache = ch - (48-14);
 				if(ch == 43)
-					char_cache = 24;	//+
+					char_cache = 164;	//+
 				if(ch == 45)
-					char_cache = 25;	//-
+					char_cache = 165;	//-
 			}
 
 			if(bout_to_subscript)
@@ -438,9 +441,9 @@ public:
 				if(ch=='a' || ch=='e' || ch=='h' || ch=='i' || ch=='j' ||ch =='k' || ch=='l'|| ch=='m'|| ch=='n'|| ch=='p'|| ch=='s'|| ch=='t'|| ch=='u'|| ch=='v' || ch =='x')
 					char_cache = ch + (138-97);
 				if(ch == 43)
-					char_cache = 27;	//+
+					char_cache = 166;	//+
 				if(ch == 45)
-					char_cache = 28;	//-
+					char_cache = 167;	//-
 			}
 
 			if(ch == 95)
