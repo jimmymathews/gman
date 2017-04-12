@@ -156,12 +156,14 @@ public:
 
 	void render_or_elide_math_environments_except_notations()
 	{
+		boost::regex re= boost::regex(R"(%.*?\n)");
+		document = regex_replace(document, re, "");
+		re= boost::regex(R"((\w|\.|,|\$|\(|\))[\t ]{0,50}\n[\t ]{0,50}([^\n]))");
+		document = regex_replace(document, re, "$1 $2");
+
 		boost::regex inlineformula = boost::regex(R"(\$([^\$])+\$)"); //size limit?
 		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun = boost::bind(&tex_parser::render_math_environment, this, _1);
 		document = boost::regex_replace(document, inlineformula, fun);
-
-		boost::regex re= boost::regex(R"((\w|\.|\%|,|\$|\(|\))[\t ]{0,50}\n[\t ]{0,50}(\w|\\|\$|\-|,|\(|\)))");
-		document = regex_replace(document, re, "\2 \3");
 
 		// boost::sregex_iterator b = boost::sregex_iterator(document.begin(), document.end(), inlineformula);
 	//	boost::sregex_iterator e = boost::sregex_iterator();
@@ -232,13 +234,40 @@ public:
 		in = regex_replace(in, re, "!=");
 		re = boost::regex(R"(\\wedge)");
 		in = regex_replace(in, re, code_for_greek('L'));
-		re = boost::regex(R"(\\rightarrow)");
+		re = boost::regex(R"(\\rightarrow|\\mapsto)");
 		in = regex_replace(in, re, "->");
+		re = boost::regex(R"(\\Rightarrow)");
+		in = regex_replace(in, re, "=>");
+		re = boost::regex(R"(\\leftarrow)");
+		in = regex_replace(in, re, "<-");
+		re = boost::regex(R"(\\Leftarrow)");
+		in = regex_replace(in, re, "<=");
+		re = boost::regex(R"(\\longmapsto)");
+		in = regex_replace(in, re, "-->");
+		re = boost::regex(R"(\\leftrightarrow)");
+		in = regex_replace(in, re, "<->");
+		re = boost::regex(R"(\\Leftrightarrow)");
+		in = regex_replace(in, re, "<=>");
+		re = boost::regex(R"(\\equiv)");
+		in = regex_replace(in, re, "<=>");
 		re = boost::regex(R"(\\partial)");
 		string cd = string(1,168);
 		in = regex_replace(in, re, cd);
+		re = boost::regex(R"(\\otimes)");
+		cd = string(1,169);
+		in = regex_replace(in, re, cd);
 		re = boost::regex(R"(\\ast|\\star)");
 		in = regex_replace(in, re, "*");
+		re = boost::regex(R"(\\oplus)");
+		in = regex_replace(in, re, "+");
+		re = boost::regex(R"(\\cong|\\equiv)");
+		in = regex_replace(in, re, "=");
+		re = boost::regex(R"(\\simeq|\\sim)");
+		in = regex_replace(in, re, "~");
+		re = boost::regex(R"(\\cdot)");
+		in = regex_replace(in, re, ".");
+		re = boost::regex(R"(\\prime)");
+		in = regex_replace(in, re, "'");
 
 		re = boost::regex(R"(\\right)");
 		in = regex_replace(in, re, "");
@@ -302,67 +331,82 @@ public:
 		re = boost::regex(R"(\\zeta)");
 		in = regex_replace(in, re, code_for_greek('z'));
 		re = boost::regex(R"(\\Alpha)");
-		in = regex_replace(in, re, code_for_greek('a'));
+		in = regex_replace(in, re, code_for_greek('A'));
 		re = boost::regex(R"(\\Beta)");
-		in = regex_replace(in, re, code_for_greek('b'));
+		in = regex_replace(in, re, code_for_greek('B'));
 		re = boost::regex(R"(\\Psi)");
-		in = regex_replace(in, re, code_for_greek('c'));
+		in = regex_replace(in, re, code_for_greek('C'));
 		re = boost::regex(R"(\\Delta)");
-		in = regex_replace(in, re, code_for_greek('d'));
+		in = regex_replace(in, re, code_for_greek('D'));
 		re = boost::regex(R"(\\Epsilon)");
-		in = regex_replace(in, re, code_for_greek('e'));
+		in = regex_replace(in, re, code_for_greek('E'));
 		re = boost::regex(R"(\\Phi)");
-		in = regex_replace(in, re, code_for_greek('f'));
+		in = regex_replace(in, re, code_for_greek('F'));
 		re = boost::regex(R"(\\Gamma)");
-		in = regex_replace(in, re, code_for_greek('g'));
+		in = regex_replace(in, re, code_for_greek('G'));
 		re = boost::regex(R"(\\Theta)");
-		in = regex_replace(in, re, code_for_greek('h'));
+		in = regex_replace(in, re, code_for_greek('H'));
 		re = boost::regex(R"(\\Iota)");
-		in = regex_replace(in, re, code_for_greek('i'));
+		in = regex_replace(in, re, code_for_greek('I'));
 		// re = boost::regex(R"(J)");
 		// in = regex_replace(in, re, code_for_greek('j'));
 		re = boost::regex(R"(\\Kappa)");
-		in = regex_replace(in, re, code_for_greek('k'));
+		in = regex_replace(in, re, code_for_greek('K'));
 		re = boost::regex(R"(\\Lambda)");
-		in = regex_replace(in, re, code_for_greek('l'));
+		in = regex_replace(in, re, code_for_greek('L'));
 		re = boost::regex(R"(\\Mu)");
-		in = regex_replace(in, re, code_for_greek('m'));
+		in = regex_replace(in, re, code_for_greek('M'));
 		re = boost::regex(R"(\\Nu)");
-		in = regex_replace(in, re, code_for_greek('n'));
+		in = regex_replace(in, re, code_for_greek('N'));
 		re = boost::regex(R"(\\Omega)");
-		in = regex_replace(in, re, code_for_greek('o'));
+		in = regex_replace(in, re, code_for_greek('O'));
 		re = boost::regex(R"(\\Pi)");
-		in = regex_replace(in, re, code_for_greek('p'));
+		in = regex_replace(in, re, code_for_greek('P'));
 		re = boost::regex(R"(\\Eta)");
-		in = regex_replace(in, re, code_for_greek('q'));
+		in = regex_replace(in, re, code_for_greek('Q'));
 		re = boost::regex(R"(\\Rho)");
-		in = regex_replace(in, re, code_for_greek('r'));
+		in = regex_replace(in, re, code_for_greek('R'));
 		re = boost::regex(R"(\\Sigma)");
-		in = regex_replace(in, re, code_for_greek('s'));
+		in = regex_replace(in, re, code_for_greek('S'));
 		re = boost::regex(R"(\\Tau)");
-		in = regex_replace(in, re, code_for_greek('t'));
+		in = regex_replace(in, re, code_for_greek('T'));
 		// re = boost::regex(R"(u)");
 		// in = regex_replace(in, re, code_for_greek('u'));
 		// re = boost::regex(R"(v)");
 		// in = regex_replace(in, re, code_for_greek('v'));
 		// re = boost::regex(R"(w)");
-		in = regex_replace(in, re, code_for_greek('w'));
+		in = regex_replace(in, re, code_for_greek('W'));
 		re = boost::regex(R"(\\Xi)");
-		in = regex_replace(in, re, code_for_greek('x'));
+		in = regex_replace(in, re, code_for_greek('X'));
 		// re = boost::regex(R"(y)");
 		// in = regex_replace(in, re, code_for_greek('y'));
 		re = boost::regex(R"(\\Zeta)");
-		in = regex_replace(in, re, code_for_greek('z'));
+		in = regex_replace(in, re, code_for_greek('Z'));
 
 		re = boost::regex(R"(\$)");		//get rid of demarcation from tex syntax
 		in = regex_replace(in, re, "");
 
-		re = boost::regex(R"(\\(\w)+)");
-		in = regex_replace(in, re, "");
-
-
+		re = boost::regex(R"(\\ )");
+		in = regex_replace(in, re, " ");
 		re = boost::regex(R"((\s)+)");	//get rid of extra spaces in math environment
 		in = regex_replace(in, re, "");
+		re = boost::regex(R"(\\,|\\!)");	// explicit spaces
+		in = regex_replace(in, re, "");
+		re = boost::regex(R"(\\>|\\;)");
+		in = regex_replace(in, re, " ");
+		re = boost::regex(R"(\\subset)");
+		in = regex_replace(in, re, " contained in ");
+		re = boost::regex(R"(\\supset|\\ni)");
+		in = regex_replace(in, re, " contains ");
+		re = boost::regex(R"(\\in)");
+		in = regex_replace(in, re, " in ");
+
+		re = boost::regex(R"(\\begin\{[bp]?matrix\}|\\end\{[bp]?matrix\})");
+		in = regex_replace(in,re,"\n");
+		re = boost::regex(R"(&)");	//try to render matrix type things
+		in = regex_replace(in,re," ");
+		re = boost::regex(R"(\\\\)");
+		in = regex_replace(in,re,"\n");
 
 		re = boost::regex(R"([\.|,|!|;|:]$)");	//get rid of trailing punctuation
 		in = regex_replace(in, re, "");
@@ -377,9 +421,29 @@ public:
 
 		re = boost::regex(R"(_\{([^\}]*)\}|\^{([^\}]*)\})");  //erase notation around unrendered super/sub
 		in = regex_replace(in, re, "$2");
-
-		re = boost::regex(R"(\\|%)");		//shouldn't do this; takes away command names regardless of arguments; better to handle the commands?
+		
+		re = boost::regex(R"(\\label\{[\w\s]{1,150}\})");  //erase notation
 		in = regex_replace(in, re, "");
+
+		re = boost::regex(R"(\\\{)");  //render brackets
+		in = regex_replace(in, re, "{");
+		re = boost::regex(R"(\\\})");
+		in = regex_replace(in, re, "}");
+
+		re = boost::regex(R"(\\mathb[fb]\{([^\}]*\})|\\bf\{([^\}]*)\})");
+		in = regex_replace(in, re, "$1");
+		re = boost::regex(R"(\\operatorname\{([^\}]*)\})");
+		in = regex_replace(in, re, "$1 ");
+		re = boost::regex(R"(\\[t]?frac\{([^\}]*)\}\{([^\}]*)\})");
+		in = regex_replace(in, re, " $1/$2 ");
+
+		//ref label
+
+		// re = boost::regex(R"(\\(\w)+)");
+		// in = regex_replace(in, re, "");
+
+		// re = boost::regex(R"(\\|%)");		//shouldn't do this; takes away command names regardless of arguments; better to handle the commands?
+		// in = regex_replace(in, re, "");
 		
 		//still need otimes, nabla,  mathbb,  ast , subset, in , frac
 		// ... need to learn user-defined macros, at least the simples ones like my \ra as \rightarrow!
