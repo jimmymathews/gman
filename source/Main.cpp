@@ -1,9 +1,12 @@
 
 #include "gat.hpp"
 #include <string>
+#include <locale.h>
 
 int main(int argc, char** argv)
 {
+	// std::setlocale(LC_ALL, "en_US.UTF-8");
+	std::setlocale(LC_ALL, "");//??
 	gat g;
 	std::string filename = std::string("");
 	if(argc > 1)

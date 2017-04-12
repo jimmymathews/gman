@@ -87,6 +87,8 @@ public:
 	{ // title name date item_type sec subsec subsubsec key1 key2 key3 item_num notation text
 		node_container* title=		dm.add_category("title");
 		node_container* name=		dm.add_category("name");
+		node_container* inlinemath=	dm.add_category("inline");
+		node_container* equation=	dm.add_category("equation");
 		node_container* date=		dm.add_category("date");
 		node_container* item_type=	dm.add_category("item type");
 		node_container* sec=		dm.add_category("sec");
@@ -96,12 +98,13 @@ public:
 		node_container* key2=		dm.add_category("key2");
 		node_container* key3=		dm.add_category("key3");
 		node_container* item_num=	dm.add_category("item num");
-		node_container* notation=	dm.add_category("notation");
 		node_container* text=		dm.add_category("text");
 		
 		title->get_node_type().set_color(1);
 		name->get_node_type().set_color(2);
-		date->get_node_type().set_color(3);
+		inlinemath->get_node_type().set_color(3);
+		equation->get_node_type().set_color(4);
+		date->get_node_type().set_color(5);
 		item_type->get_node_type().set_color(4);
 		sec->get_node_type().set_color(5);
 		subsec->get_node_type().set_color(6);
@@ -110,7 +113,6 @@ public:
 		key2->get_node_type().set_color(1);
 		key3->get_node_type().set_color(2);
 		item_num->get_node_type().set_color(3);
-		notation->get_node_type().set_color(4);
 		text->get_node_type().set_color(5);
 
 		dm.add_simple_node("definition","item type");
@@ -134,8 +136,12 @@ public:
 		boost::regex_search(document.c_str(),matches,re);
 		node* t = dm.add_simple_node(matches[1].str(),"title");
 
-		re = boost::regex(R"([A-Z](\w+|\.)\s[A-Z](\w+|\.)(\s[A-Z](\w+|\.))?)");
-		boost::sregex_iterator b = boost::sregex_iterator(document.begin(), document.end(), re);
+		re = boost::regex(R"(\\author\{([^\}]*)\})");
+		boost::regex_search(document.c_str(),matches,re);
+		string a = matches[1];
+
+		re = boost::regex(R"([A-Z](\w+|\.)\s[A-Z](\w+|\.)(\s[A-Z](\w+|\.))?)");    //This is an OK name finding pattern
+		boost::sregex_iterator b = boost::sregex_iterator(a.begin(), a.end(), re);
     	boost::sregex_iterator e = boost::sregex_iterator();
 	    for (boost::sregex_iterator i = b; i != e; ++i)
         	dm.add_simple_node((*i)[0].str(),"name");
@@ -162,8 +168,12 @@ public:
 		document = regex_replace(document, re, "$1 $2");
 
 		boost::regex inlineformula = boost::regex(R"(\$([^\$])+\$)"); //size limit?
-		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun = boost::bind(&tex_parser::render_math_environment, this, _1);
-		document = boost::regex_replace(document, inlineformula, fun);
+		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun1 = boost::bind(&tex_parser::render_inline_environment, this, _1);
+		document = boost::regex_replace(document, inlineformula, fun1);
+
+		boost::regex eqformula = boost::regex(R"(\\begin\{(equation|eqnarry)\*?\}(.*?)\\end\{(equation|eqnarry)\*?\})"); //size limit?
+		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun2 = boost::bind(&tex_parser::render_equation_environment, this, _1);
+		document = boost::regex_replace(document, eqformula, fun2);
 
 		// boost::sregex_iterator b = boost::sregex_iterator(document.begin(), document.end(), inlineformula);
 	//	boost::sregex_iterator e = boost::sregex_iterator();
@@ -221,10 +231,30 @@ public:
 		return string(1,char_cache);
 	};
 
-	string render_math_environment(const boost::smatch& match)
+	string render_equation_environment(const boost::smatch& match)
 	{
-		string in = match[0].str();
+		string in = render_math_environment(match[2].str()); 
+		if(in.size()<5000) //?
+			dm.add_simple_node(in,"equation");
+		return "\n" + in +"\n";
+	};
+
+	string render_inline_environment(const boost::smatch& match)
+	{
+		string in = render_math_environment(match[0].str());
+		if(in.size()<45)
+			dm.add_simple_node(in,"inline");
+		return in;
+	};
+
+	string render_math_environment(string in)
+	{
 		boost::regex re;
+
+		// re = boost::regex(R"(\\[t]?frac(\{((?>[^{}]+|(?1))*)\})\{)");                      //frac requires care in case it is nested!
+		// in = regex_replace(in, re, "myspecialfrac$1termmyspecialfracnow{");
+		// re = boost::regex(R"(myspecialfrac\{(.*?)\}termmyspecialfracnow(\{((?>[^{}]+|(?1))*)\}))");
+		// in = regex_replace(in, re, " $1/($3) ");
 
 		re = boost::regex(R"(\\geq)");
 		in = regex_replace(in, re, ">=");
@@ -408,7 +438,7 @@ public:
 		re = boost::regex(R"(\\\\)");
 		in = regex_replace(in,re,"\n");
 
-		re = boost::regex(R"([\.|,|!|;|:]$)");	//get rid of trailing punctuation
+		re = boost::regex(R"([\.|,|!|;|:]\$)");	//get rid of trailing punctuation
 		in = regex_replace(in, re, "");
 
 		re = boost::regex(R"(\^\{([\w\s]+)\}|\^([\w\s]))");  //render superscript
@@ -425,17 +455,19 @@ public:
 		re = boost::regex(R"(\\label\{[\w\s]{1,150}\})");  //erase notation
 		in = regex_replace(in, re, "");
 
-		re = boost::regex(R"(\\\{)");  //render brackets
-		in = regex_replace(in, re, "{");
-		re = boost::regex(R"(\\\})");
-		in = regex_replace(in, re, "}");
-
 		re = boost::regex(R"(\\mathb[fb]\{([^\}]*\})|\\bf\{([^\}]*)\})");
 		in = regex_replace(in, re, "$1");
 		re = boost::regex(R"(\\operatorname\{([^\}]*)\})");
 		in = regex_replace(in, re, "$1 ");
-		re = boost::regex(R"(\\[t]?frac\{([^\}]*)\}\{([^\}]*)\})");
-		in = regex_replace(in, re, " $1/$2 ");
+		re = boost::regex(R"(\\tilde\{([^\}]*)\}|\\widetilde\{([^\}]*)\})");
+		in = regex_replace(in, re, "$1~");
+
+		// re = boost::regex(R"(\\[t]?frac\{([^\}]*)\}\{([^\}]*)\})");  //wrong
+
+		re = boost::regex(R"(\\\{)");  //render brackets
+		in = regex_replace(in, re, "{");
+		re = boost::regex(R"(\\\})");
+		in = regex_replace(in, re, "}");
 
 		//ref label
 
@@ -449,8 +481,6 @@ public:
 		// ... need to learn user-defined macros, at least the simples ones like my \ra as \rightarrow!
 		// subscript/superscript functionality breaks if + or -, perhaps other symbols too?
 		// definitely way to many things are created, need to break it down; inline math, versus equation...
-		if(in.size()<35)
-			dm.add_simple_node(in,"notation");
 		return in;
 	};
 
