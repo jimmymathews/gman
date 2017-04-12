@@ -62,6 +62,8 @@ public:
 	void ctrl_v() 		{ tv.ctrl_v(); };
 	void ctrl_c() 		{ tv.ctrl_c(); };
 	void ctrl_g()		{ tv.ctrl_g();};
+	void ctrl_t()		{ tv.ctrl_t();};
+	void ctrl_d()		{ tv.ctrl_d();};
 	void ctrl_e()		{ tv.ctrl_e();};
 	void ctrl_r()		{ tv.ctrl_r();};
 	void home()			{ tv.home(); };

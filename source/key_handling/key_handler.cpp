@@ -25,11 +25,13 @@ key_handler::key_handler(screen_handler& sh, file_request_handler& fh) : sh(sh),
 	km.add_key("ctrl-v",		"paste",							"ctrl-v");
 	km.add_key("ctrl-c",		"copy",								"ctrl-c");
 	km.add_key("ctrl-g",		"initiate greek input",				"ctrl-g");
+	km.add_key("ctrl-t",		"tensor product",					"ctrl-t");
+	km.add_key("ctrl-d",		"del; curly d",						"ctrl-d");
 	km.add_key("ctrl-e",		"toggle big editor",				"ctrl-e");
 	km.add_key("ctrl-r",		"toggle relation labels",			"ctrl-r");
 	km.add_key("save",			"save to file",						"ctrl-s");
 	km.add_key("open",			"open file",						"ctrl-o");
-	km.add_key("merge",			"merge in file",					"ctrl-m");
+	km.add_key("amalgamate",	"amalgamate with file",				"ctrl-a");
 	km.add_key("escape",		"quit program",						"escape-escape(twice)");
 	km.startup();
 }
@@ -60,7 +62,7 @@ bool key_handler::listening()
 			}
 			sh.wm.refresh_data();
 		}
-		if (k == "merge")
+		if (k == "amalgamate")
 		{
 			if(!fh.merge_in(sh.wm.sb))
 			{
@@ -106,6 +108,10 @@ bool key_handler::listening()
 			sh.wm.ctrl_c();
 		else if( k == "ctrl-g")
 			sh.wm.ctrl_g();
+		else if( k == "ctrl-t")
+			sh.wm.ctrl_t();
+		else if( k == "ctrl-d")
+			sh.wm.ctrl_d();
 		else if( k == "ctrl-e")
 			sh.wm.ctrl_e();
 		else if( k == "ctrl-r")

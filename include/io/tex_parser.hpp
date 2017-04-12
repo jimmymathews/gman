@@ -160,13 +160,16 @@ public:
 		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun = boost::bind(&tex_parser::render_math_environment, this, _1);
 		document = boost::regex_replace(document, inlineformula, fun);
 
+		boost::regex re= boost::regex(R"((\w|\.|\%|,|\$|\(|\))[\t ]{0,50}\n[\t ]{0,50}(\w|\\|\$|\-|,|\(|\)))");
+		document = regex_replace(document, re, "\2 \3");
+
 		// boost::sregex_iterator b = boost::sregex_iterator(document.begin(), document.end(), inlineformula);
-  //   	boost::sregex_iterator e = boost::sregex_iterator();
-	 //    for (boost::sregex_iterator i = b; i != e; ++i)
-	 //    {
-	 //    	string con = (*i)[0].str();
-  //       	dm.add_simple_node(con.substr(1,con.size()-2),"notation");
-  //       }
+	//	boost::sregex_iterator e = boost::sregex_iterator();
+	//	for (boost::sregex_iterator i = b; i != e; ++i)
+	//	{
+	//		string con = (*i)[0].str();
+  	//		dm.add_simple_node(con.substr(1,con.size()-2),"notation");
+	//	}
 	};
 
 	string code_for_greek(int ch)

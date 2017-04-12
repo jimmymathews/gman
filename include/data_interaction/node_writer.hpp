@@ -392,6 +392,8 @@ public:
 		//curly d
 		if(c==168)
 			waddstr(win,"\u2202");
+		if(c==169)
+			waddstr(win,"\u2297");
 		// if(c==26)
 		// 	waddstr(win,"PARTIAL");
 

@@ -61,6 +61,16 @@ public:
 			greek_input = true;
 	};
 
+	void curly_d()
+	{
+		alphanumeric(168);
+	};
+
+	void tensor()
+	{
+		alphanumeric(169);
+	};
+
 	void enter()
 	{
 		if(using_big_editor)
@@ -407,18 +417,19 @@ public:
 		//	97~122 + (138-97) = 138~163:	subscript lowercase letters
 		//	65~122 + 128 = 193~250:			greek letters
 						// 24,25,27,28:					special +/- sub and superscripts
-						// 26:							curly d	
 		// 164,165,166,167					special +/- sub and superscripts
 		// 168								curly d
+		// 169								tensor product
 
 		unsigned char char_cache = ch;
-		if(greek_input)
+		if(greek_input && ( (65<=ch && ch<=90)|| (97<=ch && ch<=122) ))
 		{
 			greek_input = false;
 			char_cache = ch + 128;
 		}
 		else
 		{
+			greek_input = false;
 			if(32<=ch && ch<=126)
 				char_cache = ch;
 

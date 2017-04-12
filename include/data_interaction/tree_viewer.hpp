@@ -94,6 +94,14 @@ public:
 	{
 		if(mne.is_editing()) mne.initiate_greek_input();
 	};
+	void ctrl_t()
+	{
+		if(mne.is_editing()) mne.tensor();
+	};
+	void ctrl_d()
+	{
+		if(mne.is_editing()) mne.curly_d();
+	};
 	void ctrl_r()
 	{
 		if(mne.nw.is_showing_relations())

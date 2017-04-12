@@ -187,6 +187,8 @@ public:
 	void ctrl_v(){if(focal_text_window == &mt) mt.ctrl_v();};
 	void ctrl_c(){if(focal_text_window == &mt) mt.ctrl_c();};
 	void ctrl_g(){if(focal_text_window == &mt) mt.ctrl_g();};
+	void ctrl_t(){if(focal_text_window == &mt) mt.ctrl_t();};
+	void ctrl_d(){if(focal_text_window == &mt) mt.ctrl_d();};
 	void ctrl_e(){if(focal_text_window == &mt) mt.ctrl_e();};
 	void ctrl_r(){if(focal_text_window == &mt) mt.ctrl_r();};
 	void home(){if(focal_text_window == &mt) mt.home();};
