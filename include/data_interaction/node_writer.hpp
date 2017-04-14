@@ -483,7 +483,7 @@ public:
 			if(latin_version == 'q')	//eta
 				waddstr(win,"\u03B7");	
 			if(latin_version == 'Q')
-				waddstr(win,"Q");	
+				waddstr(win,"\u2207");			//NABLA
 			
 			if(latin_version == 'r')	//rho
 				waddstr(win,"\u03C1");

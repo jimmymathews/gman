@@ -167,7 +167,7 @@ public:
 		re= boost::regex(R"((\w|\.|,|\$|\(|\))[\t ]{0,50}\n[\t ]{0,50}([^\n]))");
 		document = regex_replace(document, re, "$1 $2");
 
-		boost::regex inlineformula = boost::regex(R"(\$([^\$])+\$)"); //size limit?
+		boost::regex inlineformula = boost::regex(R"(\$([^\$])+\$)"); //size limit?      //Why is this working?   // Still getting $ signs?
 		boost::function<std::string (boost::match_results<std::string::const_iterator>)> fun1 = boost::bind(&tex_parser::render_inline_environment, this, _1);
 		document = boost::regex_replace(document, inlineformula, fun1);
 
