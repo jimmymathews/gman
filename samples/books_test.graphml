@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<graphml>
+	<graph id="C" edgedefault="directed">
+		<node id="c0">
+			<data key="d1">record type</data>
+			<data key="d2">2</data>
+		</node>
+		<node id="c1">
+			<data key="d1">title</data>
+			<data key="d2">2</data>
+		</node>
+		<node id="c2">
+			<data key="d1">date</data>
+			<data key="d2">3</data>
+		</node>
+		<node id="c3">
+			<data key="d1">person</data>
+			<data key="d2">1</data>
+		</node>
+		<node id="c4">
+			<data key="d1">publisher</data>
+			<data key="d2">4</data>
+		</node>
+		<node id="c5">
+			<data key="d1">note</data>
+			<data key="d2">0</data>
+		</node>
+	</graph>
+	<graph id="N" edgedefault="directed">
+		<node id="n0">
+			<data key="d0">book</data>
+			<data key="d1">record type</data>
+		</node>
+		<node id="n1">
+			<data key="d0">The Communistic Societies of the United States</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n7">
+			<data key="d0">The Dispossessed</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n13">
+			<data key="d0">The Enchantment of Modern Life</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n19">
+			<data key="d0">Mammals of the Canadian Rockies</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n25">
+			<data key="d0">Nine-Tenths of the Law</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n31">
+			<data key="d0">The Phantom Public Sphere</data>
+			<data key="d1">title</data>
+		</node>
+		<node id="n2">
+			<data key="d0">1875</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n8">
+			<data key="d0">1966</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n14">
+			<data key="d0">1974</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n20">
+			<data key="d0">1993</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n26">
+			<data key="d0">1995</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n32">
+			<data key="d0">2001</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n38">
+			<data key="d0">2012</data>
+			<data key="d1">date</data>
+		</node>
+		<node id="n3">
+			<data key="d0">Jane Bennett</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n9">
+			<data key="d0">Hannah Dobbz</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n15">
+			<data key="d0">Nancy Fraser</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n21">
+			<data key="d0">Ursula Le Guin</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n27">
+			<data key="d0">Frederic Jameson</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n33">
+			<data key="d0">Charles Nordhoff</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n39">
+			<data key="d0">Dana Polan</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n45">
+			<data key="d0">Bruce Robbins</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n51">
+			<data key="d0">George W Scotter</data>
+			<data key="d1">person</data>
+		</node>
+		<node id="n4">
+			<data key="d0">Dover</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n10">
+			<data key="d0">AK Press</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n16">
+			<data key="d0">Avon Books</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n22">
+			<data key="d0">Fifth House</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n28">
+			<data key="d0">Harper &amp; Brothers</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n34">
+			<data key="d0">Princeton University Press</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n40">
+			<data key="d0">University of Minnesota Press</data>
+			<data key="d1">publisher</data>
+		</node>
+		<node id="n5">
+			<data key="d0">Nordhoff was a journalist, and this was his account "from personal visit and observation" of the Amana, the Harmonists, Shakers, and several other experimental communities of the mid-19th century.</data>
+			<data key="d1">note</data>
+		</node>
+		<edge id="n0n19" source="n0" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n13" source="n0" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n31" source="n0" target="n31">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n1" source="n0" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n7" source="n0" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n0n25" source="n0" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n0" source="n1" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n4" source="n1" target="n4">
+			<data key="d3">republisher</data>
+		</edge>
+		<edge id="n1n8" source="n1" target="n8">
+			<data key="d3">republished in</data>
+		</edge>
+		<edge id="n1n33" source="n1" target="n33">
+			<data key="d3">written by</data>
+		</edge>
+		<edge id="n1n5" source="n1" target="n5">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n1n2" source="n1" target="n2">
+			<data key="d3">originally published in</data>
+		</edge>
+		<edge id="n1n28" source="n1" target="n28">
+			<data key="d3">original publisher</data>
+		</edge>
+		<edge id="n7n0" source="n7" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n7n14" source="n7" target="n14">
+			<data key="d3">published in</data>
+		</edge>
+		<edge id="n7n21" source="n7" target="n21">
+			<data key="d3">written by</data>
+		</edge>
+		<edge id="n7n16" source="n7" target="n16">
+			<data key="d3">published by</data>
+		</edge>
+		<edge id="n13n0" source="n13" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n13n3" source="n13" target="n3">
+			<data key="d3">written by </data>
+		</edge>
+		<edge id="n13n32" source="n13" target="n32">
+			<data key="d3">published in</data>
+		</edge>
+		<edge id="n13n34" source="n13" target="n34">
+			<data key="d3">published by</data>
+		</edge>
+		<edge id="n19n0" source="n19" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n19n51" source="n19" target="n51">
+			<data key="d3">written by</data>
+		</edge>
+		<edge id="n19n26" source="n19" target="n26">
+			<data key="d3">published in</data>
+		</edge>
+		<edge id="n19n22" source="n19" target="n22">
+			<data key="d3">published by</data>
+		</edge>
+		<edge id="n25n0" source="n25" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n25n9" source="n25" target="n9">
+			<data key="d3">written by</data>
+		</edge>
+		<edge id="n25n38" source="n25" target="n38">
+			<data key="d3">published in</data>
+		</edge>
+		<edge id="n25n10" source="n25" target="n10">
+			<data key="d3">published by</data>
+		</edge>
+		<edge id="n31n0" source="n31" target="n0">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n31n20" source="n31" target="n20">
+			<data key="d3">published in</data>
+		</edge>
+		<edge id="n31n27" source="n31" target="n27">
+			<data key="d3">author</data>
+		</edge>
+		<edge id="n31n40" source="n31" target="n40">
+			<data key="d3">published by</data>
+		</edge>
+		<edge id="n31n39" source="n31" target="n39">
+			<data key="d3">author</data>
+		</edge>
+		<edge id="n31n15" source="n31" target="n15">
+			<data key="d3">author</data>
+		</edge>
+		<edge id="n31n45" source="n31" target="n45">
+			<data key="d3">edited by</data>
+		</edge>
+		<edge id="n2n1" source="n2" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n8n1" source="n8" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n14n7" source="n14" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n20n31" source="n20" target="n31">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n26n19" source="n26" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n32n13" source="n32" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n38n25" source="n38" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n3n13" source="n3" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n9n25" source="n9" target="n25">
+			<data key="d3">authored</data>
+		</edge>
+		<edge id="n15n31" source="n15" target="n31">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n21n7" source="n21" target="n7">
+			<data key="d3">authored</data>
+		</edge>
+		<edge id="n27n31" source="n27" target="n31">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n33n1" source="n33" target="n1">
+			<data key="d3">authored</data>
+		</edge>
+		<edge id="n39n31" source="n39" target="n31">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n45n31" source="n45" target="n31">
+			<data key="d3">authored</data>
+		</edge>
+		<edge id="n51n19" source="n51" target="n19">
+			<data key="d3">authored</data>
+		</edge>
+		<edge id="n4n1" source="n4" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n10n25" source="n10" target="n25">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n16n7" source="n16" target="n7">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n22n19" source="n22" target="n19">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n28n1" source="n28" target="n1">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n34n13" source="n34" target="n13">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n40n31" source="n40" target="n31">
+			<data key="d3"></data>
+		</edge>
+		<edge id="n5n1" source="n5" target="n1">
+			<data key="d3"></data>
+		</edge>
+	</graph>
+</graphml>

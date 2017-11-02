@@ -2,7 +2,7 @@
 #define FILE_REQUEST_HANDLER_HPP
 
 #include "sys/stat.h"
-#include <boost/regex.hpp>
+// #include <boost/regex.hpp>
 #include <unistd.h>
 #include <regex>
 #include <string>
@@ -54,14 +54,18 @@ public:
 
 	bool is_graphml(string s)
 	{
-		boost::regex re("\\.graphml$");
-		return boost::regex_search(s,re);
+		// boost::regex re("\\.graphml$");
+		// return boost::regex_search(s,re);
+		if (std::regex_match (s, std::regex("\\.(graphml|GRAPHML)$") ))
+			return true;
+		return false;
 	};
 
 	bool is_tex(string s)
 	{
-		boost::regex re("\\.tex$");
-		return boost::regex_search(s,re);
+		if (std::regex_match (s, std::regex("\\.(tex|TEX)$") ))
+			return true;
+		return false;
 	};
 
 	bool file_exists(string file)
