@@ -48,7 +48,7 @@ public:
 	bool open(string filename)
 	{
 		pugi::xml_parse_result r = doc.load_file(filename.c_str());
-		
+				
 		if(r)
 		{
 			if(!merge_mode)

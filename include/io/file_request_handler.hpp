@@ -12,7 +12,7 @@
 #include "gui/screen_handler.hpp"
 #include "gui/window_manager.hpp"
 #include "io/xml_interface.hpp"
-#include "io/tex_parser.hpp"
+// #include "io/tex_parser.hpp"
 
 
 class file_request_handler
@@ -44,11 +44,11 @@ public:
 			xml_interface x(dm);
 			return x.open(filename);
 		}
-		if(is_tex(filename))
-		{
-			tex_parser t(dm);
-			return t.open(filename);
-		}
+		// if(is_tex(filename))
+		// {
+		// 	tex_parser t(dm);
+		// 	return t.open(filename);
+		// }
 		return false;
 	};
 
@@ -56,17 +56,17 @@ public:
 	{
 		// boost::regex re("\\.graphml$");
 		// return boost::regex_search(s,re);
-		if (std::regex_match (s, std::regex("\\.(graphml|GRAPHML)$") ))
+		if (std::regex_match (s, std::regex(".*\\.(graphml|GRAPHML)") ))
 			return true;
 		return false;
 	};
 
-	bool is_tex(string s)
-	{
-		if (std::regex_match (s, std::regex("\\.(tex|TEX)$") ))
-			return true;
-		return false;
-	};
+	// bool is_tex(string s)
+	// {
+	// 	if (std::regex_match (s, std::regex("\\.(tex|TEX)$") ))
+	// 		return true;
+	// 	return false;
+	// };
 
 	bool file_exists(string file)
 	{
@@ -91,12 +91,12 @@ public:
 			x.set_merge_mode();
 			return x.open(filename);
 		}
-		if(is_tex(filename))
-		{
-			tex_parser t(dm);
-			t.set_merge_mode();
-			return t.open(filename);
-		}
+		// if(is_tex(filename))
+		// {
+		// 	tex_parser t(dm);
+		// 	t.set_merge_mode();
+		// 	return t.open(filename);
+		// }
 		return false;
 	};
 

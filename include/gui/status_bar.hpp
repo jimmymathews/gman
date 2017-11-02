@@ -1,7 +1,7 @@
 #ifndef STATUS_BAR_HPP
 #define STATUS_BAR_HPP
 
-#include <boost/regex.hpp>
+// #include <boost/regex.hpp>
 
 #include "data/data_structures.hpp"
 #include "gui/text_window.hpp"
@@ -36,9 +36,9 @@ public:
 	void first_time_opened(string f)
 	{
 		string g=f;
-		boost::regex tex("\\.tex$");
-		if(boost::regex_search(g,tex))
-			g = boost::regex_replace(g,tex,".graphml");
+		// boost::regex tex("\\.tex$");
+		// if(boost::regex_search(g,tex))
+		// 	g = boost::regex_replace(g,tex,".graphml");
 		
 		status = cwd + "/" + g;
 		if(g!="")
