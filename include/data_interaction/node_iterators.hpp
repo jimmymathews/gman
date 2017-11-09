@@ -72,7 +72,7 @@ public:
 		return base_node;
 	};
 
-	int calculate_max_relation_length()
+	int calculate_max_relation_length(int relation_display_index)
 	{
 		//Assumes no iteration has taken place yet.
 		//Does a run through, then restores to initial state;
@@ -85,7 +85,7 @@ public:
 		directed_link* dl;
 		while( (dl= next_link() )!=NULL)
 		{
-			int relation_length = dl->get_name().length();
+			int relation_length = dl->get_name(relation_display_index + 1).length();
 			if(relation_length> max_relation_length)
 				max_relation_length = relation_length;
 		}

@@ -43,7 +43,7 @@ bool tree_viewer::write_nodes_and_links_from_iterator(single_category_iterator& 
 bool tree_viewer::write_nodes_and_links_from_link_iterator(category_ordered_link_iterator& i, vector<node*> writing_history)
 {
 	directed_link* dl;
-	int max_relation_length = i.calculate_max_relation_length();
+	int max_relation_length = i.calculate_max_relation_length(relation_display_index);
 	while( (dl=i.next_link()) != NULL)
 	{
 		node* subnode = dl->get_end_node();
@@ -82,7 +82,7 @@ bool tree_viewer::write_link(int max_relation_length, directed_link* dl, vector<
 	if(n->has_focus() && mne.is_editing_specific_element(writing_history))
 		mne.write_editing_node(n);
 	else
-		mne.nw.write_link(max_relation_length, dl, writing_history.size());
+		mne.nw.write_link(max_relation_length, dl, writing_history.size(), relation_display_index);
 	return write_reflection(n,writing_history);
 }
 
@@ -483,6 +483,10 @@ void tree_viewer::alphanumeric(int ch)
 			linkee->link(selection_history.back());
 			linkos_number++;
 			sb.notify_of_new_linko(selection_history.back(),linkos_number);
+		}
+		if(ch == 'r')
+		{
+			relation_display_index = (relation_display_index + 1) % 4;
 		}
 	}
 }

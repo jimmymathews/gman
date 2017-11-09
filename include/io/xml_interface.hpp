@@ -92,6 +92,18 @@ public:
 		relation_key.append_attribute("attr.name") = "relation";
 		relation_key.append_attribute("attr.type") = "string";	
 
+		pugi::xml_node evidence_key = doc.append_child("key");
+		relation_key.append_attribute("id") = "d4";
+		relation_key.append_attribute("for") = "edge";
+		relation_key.append_attribute("attr.name") = "evidence";
+		relation_key.append_attribute("attr.type") = "string";	
+
+		pugi::xml_node reference_key = doc.append_child("key");
+		relation_key.append_attribute("id") = "d5";
+		relation_key.append_attribute("for") = "edge";
+		relation_key.append_attribute("attr.name") = "reference";
+		relation_key.append_attribute("attr.type") = "string";	
+
 		gml = doc.append_child("graphml");
 
 		categories_graph = gml.append_child("graph");
@@ -202,6 +214,14 @@ public:
 		c.append_attribute("key") = "d3";
 		c.append_child(pugi::node_pcdata).set_value(l->get_name().c_str());
 
+		pugi::xml_node e = xn.append_child("data");
+		e.append_attribute("key") = "d4";
+		e.append_child(pugi::node_pcdata).set_value(l->get_name(2).c_str());
+
+		pugi::xml_node r = xn.append_child("data");
+		r.append_attribute("key") = "d5";
+		r.append_child(pugi::node_pcdata).set_value(l->get_name(3).c_str());
+
 	}
 
 	void flush()
@@ -248,8 +268,11 @@ public:
 			string s = e.attribute("source").value();
 			string t = e.attribute("target").value();
 			string relation_description = e.first_child().child_value();
+			string r2 = e.first_child().next_sibling().child_value();
+			string r3 = e.first_child().next_sibling().next_sibling().child_value();
+			string r4 = e.first_child().next_sibling().next_sibling().next_sibling().child_value();
 			if(!dm.are_linked_by_id(s,t))
-				dm.register_link_by_ids(s,t,relation_description);
+				dm.register_link_by_ids(s,t,relation_description, r2, r3, r4);
 		}
 	};
 };

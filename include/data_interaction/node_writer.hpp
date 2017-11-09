@@ -26,7 +26,7 @@ public:
 	void turn_on_relations() {showing_relations = true;};
 	bool is_showing_relations() {return showing_relations;};
 
-	void write_link(int max_relation_length, directed_link* dl,int depth)
+	void write_link(int max_relation_length, directed_link* dl,int depth, int relation_display_index)
 	{
 		int print_size = w-tab_size*depth;
 		if(print_size <=0 )
@@ -34,7 +34,7 @@ public:
 	
 		node* n = dl->get_end_node();
 		string c = n->get_contents();
-		string rd= pad_string_to(max_relation_length,dl->get_name());
+		string rd= pad_string_to(max_relation_length,dl->get_name(relation_display_index + 1));
 
 		waddstr(win,string(tab_size*depth,' ').c_str());
 

@@ -31,6 +31,7 @@ class tree_viewer
 	bool had_to_scroll = false;
 	bool reached_selection = false;
 
+	int relation_display_index = 0;
 public:
 	mini_node_editor		mne;
 	tree_viewer(database_manager& dm, status_bar& sb)

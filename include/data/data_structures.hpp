@@ -40,9 +40,32 @@ class directed_link
 	node*	end_node = NULL;
 
 public:
+	string  name2 = "";
+	string  name3 = "";
+	string  name4 = "";
 	directed_link(string name, node* end_node) : name(name), end_node(end_node) {};
 	node*	get_end_node()	{return end_node;};
 	string	get_name()		{return name;};
+	string  get_name(int k)
+	{
+		if(k == 1)
+		{
+			return name;
+		}
+		if(k == 2)
+		{
+			return name2;
+		}
+		if(k == 3)
+		{
+			return name3;
+		}
+		if(k == 4)
+		{
+			return name4;
+		}
+		return "";
+	};
 	void	set_name(string n){name = n;};
 };
 
@@ -113,9 +136,13 @@ public:
 		other->get_links().insert(other->get_links().begin(),new directed_link(relation_reversal,this));	//should be alphabetically managed?
 		// update_max_relation_length();
 	};
-	void one_way_link(string relation, node* other)
+	void one_way_link(string relation, string r2, string r3, string r4, node* other)
 	{
-		links.insert(links.begin(),new directed_link(relation,other));	
+		directed_link* dll = new directed_link(relation,other);
+		dll->name2 = r2;
+		dll->name3 = r3;
+		dll->name4 = r4;
+		links.insert(links.begin(),dll);	
 		// update_max_relation_length();
 	};
 	void link(vector<node*> others)

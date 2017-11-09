@@ -24,7 +24,7 @@ public:
 	node* add_node(string contents, string category);
 	node* add_simple_node(string contents, string category);
 	node* add_node(string contents, string category, bool prepend);
-	void register_link_by_ids(string id1, string id2, string relation_description);
+	void register_link_by_ids(string id1, string id2, string relation_description, string r2, string r3, string r4);
 	bool are_linked_by_id(string s, string t);
 
 	void swap_nodes(node* n1, node* n2);

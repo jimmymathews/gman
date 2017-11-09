@@ -89,7 +89,7 @@ node* database_manager::add_node(string	contents, string category, bool prepend)
 	return NULL; // return get_node(...) if not null?
 }
 
-void database_manager::register_link_by_ids(string id1, string id2, string relation_description)
+void database_manager::register_link_by_ids(string id1, string id2, string relation_description, string r2, string r3, string r4)
 {
 	node* n1;
 	node* n2;
@@ -105,7 +105,8 @@ void database_manager::register_link_by_ids(string id1, string id2, string relat
 				n2 = ni[j];
 		}
 	}
-	n1->one_way_link(relation_description, n2);
+	n1->one_way_link(relation_description, r2, r3, r4, n2);
+	n2->one_way_link(relation_description, r2, r3, r4, n1);
 }
 
 bool database_manager::are_linked_by_id(string id1, string id2)
