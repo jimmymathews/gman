@@ -306,10 +306,15 @@ void database_manager::swap_nodes(node* n1, node* n2)
 		if(s1!=NULL)
 			s1->set_predecessor(n2);
 	}
-	
+
 }
 
-
+void database_manager::sort(){
+    vector<node_container*> ncs = db.get_node_containers();
+    for(int i=0; i<ncs.size(); i++) {
+        ncs[i]->sort();
+    }
+}
 
 
 

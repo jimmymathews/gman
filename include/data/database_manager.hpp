@@ -28,6 +28,7 @@ public:
 	bool are_linked_by_id(string s, string t);
 
 	void swap_nodes(node* n1, node* n2);
+	void sort();
 };
 
 #endif

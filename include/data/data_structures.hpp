@@ -4,6 +4,7 @@
 #include <ncurses.h>
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class node_type
@@ -250,6 +251,32 @@ public:
 
 	node_container(string type_name) : nt(type_name){};
 
+        static bool basic_alpha(node* n1, node* n2)
+        {
+                string s1 = n1->get_contents();
+                string s2 = n2->get_contents();
+                // bool comp = s1.compare(s2);
+                bool comp = s1 < s2;
+            return comp;
+        };
+
+        void sort()
+        {
+            vector<node*> cpy;
+            cpy = nodes;
+            std::sort(cpy.begin(), cpy.end(), basic_alpha);
+            if(cpy.size()>1) {
+                    for(int i=0; i<cpy.size()-1; i++) {
+                        cpy[i]->set_successor(cpy[i+1]);
+                        cpy[i+1]->set_predecessor(cpy[i]);
+                    }
+            }
+            set_head(cpy[0]);
+            cpy[0]->set_predecessor(NULL);
+        cpy[cpy.size()-1]->set_successor(NULL);
+        set_tail(cpy[cpy.size()-1]);
+        };
+
 	void delete_node(node* n)
 	{
 		int to_delete_index = -1;
@@ -260,7 +287,7 @@ public:
 		{
 			node* s = nodes[to_delete_index]->get_successor();
 			node* p = nodes[to_delete_index]->get_predecessor();
-			
+
 			if(s!=NULL)
 				s->set_predecessor(p);	
 			if(p!=NULL)

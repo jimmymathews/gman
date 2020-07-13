@@ -488,6 +488,13 @@ void tree_viewer::alphanumeric(int ch)
 		{
 			relation_display_index = (relation_display_index + 1) % 4;
 		}
+                if(ch == 's')
+                {
+                        if(selection_history.size()>0) {
+                                dm.get_category(selection_history[0]->get_node_type().get_name())->sort();
+                                refresh_data();
+                        }
+                }
 	}
 }
 
