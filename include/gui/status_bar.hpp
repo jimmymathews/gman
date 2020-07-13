@@ -236,7 +236,7 @@ public:
 		linko = NULL;
 	}
 
-	void* stop_linking()
+	void stop_linking()
 	{
 		linking = false;
 		more_than_one_linko = false;
