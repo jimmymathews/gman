@@ -457,16 +457,16 @@ public:
 					char_cache = 167;	//-
 			}
 
-			if(ch == 95)
-			{
-				bout_to_subscript = true;
-				return;
-			}
-			if(ch == 94)
-			{
-				bout_to_superscript = true;
-				return;
-			}
+			//if(ch == 95)
+			//{
+			//	bout_to_subscript = true;
+			//	return;
+			//}
+			//if(ch == 94)
+			//{
+			//	bout_to_superscript = true;
+			//	return;
+			//}
 		}
 
 		if(ch == 10)
